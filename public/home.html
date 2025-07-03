@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovista - Home</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header (static include) -->
@@ -23,7 +24,7 @@
             </ul>
             <div class="navbar-actions">
                 <a href="login.html" class="btn btn-secondary">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                <a href="#" class="btn btn-primary" id="openSignupModal">Sign Up</a>
             </div>
             <button class="navbar-toggle" id="navbar-toggle">
                 <span class="navbar-toggle-icon"></span>
@@ -142,17 +143,6 @@
     <footer class="main-footer">
         <p>&copy; 2024 Innovista. All rights reserved.</p>
     </footer>
-    <script>
-    // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const navbarToggle = document.getElementById('navbar-toggle');
-        const navbarMenu = document.querySelector('.navbar-menu');
-        if(navbarToggle && navbarMenu) {
-            navbarToggle.addEventListener('click', function() {
-                navbarMenu.classList.toggle('active');
-            });
-        }
-    });
-    </script>
+    
 </body>
 </html> 

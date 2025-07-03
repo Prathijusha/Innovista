@@ -10,32 +10,19 @@ const interiorCategories = {
     },
     bath: {
         name: "Bathroom",
-        subcategories: [
-            { name: "Bathroom Vanities", icon: "fas fa-bath" },
-            { name: "Bathroom Accessories", icon: "fas fa-shower" },
-            { name: "Bathroom Mirrors", icon: "fas fa-mirror" },
-            { name: "Bathroom Lighting", icon: "fas fa-lightbulb" },
-            { name: "Shower & Tub", icon: "fas fa-hot-tub" }
-        ]
+        subcategories: []
     },
     lighting: {
         name: "Lighting",
         subcategories: [
             { name: "Table Lamps", icon: "fas fa-lightbulb" },
             { name: "Ceiling Lights", icon: "fas fa-lightbulb" },
-            { name: "Floor Lamps", icon: "fas fa-lightbulb" },
-            { name: "Wall Sconces", icon: "fas fa-lightbulb" }
+            { name: "Floor Lamps", icon: "fas fa-lightbulb" }
         ]
     },
     kitchen: {
         name: "Kitchen",
-        subcategories: [
-            { name: "Kitchen Cabinets", icon: "fas fa-cabinet-filing" },
-            { name: "Kitchen Appliances", icon: "fas fa-blender" },
-            { name: "Kitchen Sinks", icon: "fas fa-sink" },
-            { name: "Kitchen Countertops", icon: "fas fa-table" },
-            { name: "Kitchen Storage", icon: "fas fa-boxes" }
-        ]
+        subcategories: []
     }
 };
 
@@ -257,6 +244,9 @@ function showSubcategories(category) {
     // Clear existing subcategories
     subcategoryGrid.innerHTML = '';
     
+    // Reset selected subcategory when changing main category
+    selectedSubcategory = null;
+    
     // Generate subcategory cards
     categoryData.subcategories.forEach(subcategory => {
         const subcategoryCard = document.createElement('div');
@@ -300,8 +290,8 @@ function filterInteriorProducts() {
             showItem = false;
         }
         
-        // Filter by subcategory if selected
-        if (selectedSubcategory && showItem) {
+        // Filter by subcategory if selected (only if a subcategory is actually selected)
+        if (selectedSubcategory && showItem && selectedSubcategory.trim() !== '') {
             const categoryName = item.querySelector('.category-name')?.textContent;
             if (categoryName && !categoryName.toLowerCase().includes(selectedSubcategory.toLowerCase())) {
                 showItem = false;

@@ -1,0 +1,21 @@
+{
+  "name": "innovista",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "live-server ."
+},
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prathijusha/Innovista.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prathijusha/Innovista/issues"
+  },
+  "homepage": "https://github.com/Prathijusha/Innovista#readme"
+}
