@@ -8,8 +8,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: #2d3748;
+    background-color: #f8fafc;
 }
 
 .container {
@@ -20,11 +20,9 @@ body {
 
 /* Hero Section */
 .products-hero {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.6) 0%, rgba(118, 75, 162, 0.6) 100%), 
-                url('modern-living-room-sofa.jpg');
+    background: url('../images/images/producthero.avif');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     color: white;
     padding: 80px 0;
     text-align: center;
@@ -39,7 +37,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
@@ -88,7 +86,7 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #333;
+    color: #2d3748;
 }
 
 .service-nav ul {
@@ -107,12 +105,12 @@ body {
 }
 
 .nav-item:hover {
-    background-color: #f0f0f0;
+    background-color: #edf2f7;
 }
 
 .nav-item.active {
-    background-color: #667eea;
-    color: white;
+    background-color: #3b82f6;
+    color: #fff;
 }
 
 .nav-item i {
@@ -136,7 +134,7 @@ body {
 }
 
 .sidebar-category-item:hover {
-    background-color: #f0f0f0;
+    background-color: #edf2f7;
 }
 
 .sidebar-category-item.selected {
@@ -161,11 +159,11 @@ body {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #333;
+    color: #2d3748;
 }
 
 .section-header p {
-    color: #666;
+    color: #718096;
     font-size: 1rem;
 }
 
@@ -174,7 +172,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #333;
+    color: #2d3748;
 }
 
 .products-list {
@@ -238,7 +236,7 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #333;
+    color: #2d3748;
     line-height: 1.3;
 }
 
@@ -250,7 +248,7 @@ body {
 }
 
 .category-name {
-    color: #666;
+    color: #718096;
     font-size: 0.85rem;
     margin-bottom: 10px;
 }
@@ -268,7 +266,7 @@ body {
 }
 
 .product-rating span {
-    color: #666;
+    color: #718096;
     font-size: 0.85rem;
 }
 
@@ -280,7 +278,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-size: 0.9rem;
-    color: #555;
+    color: #4a5568;
 }
 
 .product-options select,
@@ -313,7 +311,7 @@ body {
 }
 
 .btn-add-cart {
-    background: #667eea;
+    background: #3b82f6;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -325,7 +323,7 @@ body {
 }
 
 .btn-add-cart:hover {
-    background: #5a6fd8;
+    background: #1d4ed8;
 }
 
 .subcategory-selection {
@@ -336,7 +334,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #333;
+    color: #2d3748;
 }
 
 .subcategory-grid {
@@ -382,11 +380,11 @@ body {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 5px;
-    color: #333;
+    color: #2d3748;
 }
 
 .subcategory-card p {
-    color: #666;
+    color: #718096;
     font-size: 0.85rem;
 }
 
@@ -402,7 +400,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #333;
+    color: #2d3748;
 }
 
 .brand-grid {
@@ -437,7 +435,7 @@ body {
 .brand-logo {
     font-size: 18px;
     font-weight: 700;
-    color: #333;
+    color: #2d3748;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -666,7 +664,7 @@ body {
 }
 
 .btn-add-cart-modal {
-    background: #667eea;
+    background: #3b82f6;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -678,7 +676,7 @@ body {
 }
 
 .btn-add-cart-modal:hover {
-    background: #5a6fd8;
+    background: #1d4ed8;
 }
 
 .modal-description,
@@ -691,11 +689,11 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #333;
+    color: #2d3748;
 }
 
 .modal-description p {
-    color: #666;
+    color: #718096;
     line-height: 1.6;
 }
 
@@ -706,7 +704,7 @@ body {
 
 .modal-features li {
     padding: 8px 0;
-    color: #666;
+    color: #718096;
     position: relative;
     padding-left: 20px;
 }
