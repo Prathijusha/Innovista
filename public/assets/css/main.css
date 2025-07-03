@@ -200,13 +200,13 @@
 
 /* --- Header & Navigation (Modern Styles) --- */
 .main-header {
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.07);
 }
 
 .navbar.container {
@@ -341,31 +341,16 @@
    ========================================= */
 
 .main-footer {
-    /* 
-      A dark footer provides a nice visual anchor for the page.
-      We're using the --dark-color variable from your theme.
-    */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     background-color: var(--dark-color);
-    
-    /* 
-      The text color needs to contrast with the dark background.
-      We use a light grey for a softer look than pure white.
-    */
     color: var(--grey-color);
-
-    /* Add some vertical padding to give the content space */
+    box-shadow: 0 -2px 8px rgba(30,41,59,0.07);
     padding: 2.5rem 0;
-    
-    /* Center the text within the footer */
     text-align: center;
-    
-    /* 
-      This is a great trick for "sticky footers". 
-      If your page content is very short, this pushes the footer
-      to the bottom of the screen. You must have display:flex on the body.
-      Let's add that to our base styles.
-    */
-    margin-top: auto; 
 }
 
 /* 
@@ -694,4 +679,10 @@
     font-weight: 600;
     color: var(--dark-color);
     text-align: right;
+}
+
+body {
+    padding-top: 80px; /* Adjust if your header is taller/shorter */
+    padding-bottom: 60px; /* Adjust if your footer is taller/shorter */
+    box-sizing: border-box;
 }

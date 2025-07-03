@@ -4,129 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background: #f3f6fa;
-            min-height: 100vh;
+            /* background: #a3bffa; */
+        }
+        .signup-main {
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Montserrat', Arial, sans-serif;
+            padding: 0;
         }
-        .signup-modern-modal {
+        .signup-split-card {
+            display: flex;
+            flex-direction: row;
+            width: 900px;
+            min-height: 540px;
             border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(30,41,59,0.18);
-            min-width: 320px;
-            max-width: 540px;
-            width: 100%;
-            background: #fff;
-            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-            position: relative;
-            margin: auto;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(30,41,59,0.10);
+            background: none;
+        }
+        .signup-welcome-side {
+            /* Remove background color and use image instead */
+            background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat;
+            color: #fff;
+            flex: 1 1 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            animation: modalPop 0.35s cubic-bezier(.68,-0.55,.27,1.55);
-        }
-        @keyframes modalPop {
-            0% { transform: scale(0.85) translateY(40px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .form-horizontal {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem 2.2rem;
-            width: 100%;
-            justify-content: space-between;
-        }
-        .form-horizontal .form-group {
-            flex: 1 1 45%;
-            min-width: 180px;
-            margin-bottom: 1.1rem;
-        }
-        .form-horizontal .radio-group {
-            flex-basis: 100%;
-            margin-bottom: 1.3rem;
-        }
-        .signup-title {
-            color: #46807f;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            text-align: left;
-            width: 100%;
-        }
-        .close-modal-x {
-            position: absolute;
-            top: 22px;
-            right: 32px;
-            font-size: 2rem;
-            color: #46807f;
-            background: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 38px;
-            height: 38px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.2s, color 0.2s;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            padding: 2.5rem 2.5rem;
+            border-radius: 0 24px 24px 0;
+            width: 50%;
+            position: relative;
         }
-        .close-modal-x:hover {
-            background: #f8d7da;
-            color: #b71c1c;
+        .signup-welcome-side::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30,41,59,0.45); /* semi-transparent dark overlay for text contrast */
+            border-radius: 0 24px 24px 0;
+            z-index: 1;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            color: #222;
-            font-size: 1.08rem;
+        .signup-welcome-side .signup-title,
+        .signup-welcome-side .signup-subtitle {
+            position: relative;
+            z-index: 2;
         }
-        .required { color: #b71c1c; font-weight: bold; }
-        .form-group input, .form-group select {
+        .signup-form-side {
+            background: #fff;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem 2.5rem;
+            border-radius: 24px 0 0 24px;
+            width: 50%;
+        }
+        .signup-form-side form {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 14px;
-            border: 1.5px solid #e0e7ef;
-            background: #f8fafc;
-            font-size: 1.05rem;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+        .form-group, .password-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .input-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #46807f;
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.5rem;
+            border-radius: 10px;
+            border: 1.5px solid #e0e0e0;
+            background: #f5f7fa;
+            font-size: 1rem;
+            font-weight: 500;
             transition: border 0.2s, box-shadow 0.2s;
             outline: none;
             margin-top: 0.1rem;
             box-sizing: border-box;
         }
-        .form-group input:focus {
-            border: 1.5px solid #46807f;
-            box-shadow: 0 2px 8px rgba(70,128,127,0.08);
-            background: #fff;
+        .form-group label {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+            color: #222;
+            font-size: 1.04rem;
         }
-        .radio-group {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 1.3rem;
-            gap: 2.2rem;
+        .signup-btn {
+            width: 100%;
+            padding: 1rem 0;
+            border-radius: 10px;
+            background: #3b5bdb;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            margin-top: 0.7rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .signup-btn:hover {
+            background: #274690;
+        }
+        .signup-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            width: 100%;
+        }
+        .signup-subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .required { color: #b71c1c; font-weight: bold; }
+        .form-group.radio-group {
+            grid-column: 1 / -1;
         }
         .radio-label {
-            font-weight: 600;
+            font-weight: 500;
             color: #222;
-            font-size: 1.08rem;
+            font-size: 1.04rem;
             margin-bottom: 0;
             margin-right: 1.2rem;
         }
         .custom-radio {
             display: inline-flex;
             align-items: center;
-            margin-right: 1.5em;
-            font-size: 1.05rem;
+            margin-right: 1.2em;
+            font-size: 1rem;
             cursor: pointer;
             position: relative;
-            padding-left: 2.1em;
+            padding-left: 1.7em;
             margin-bottom: 0;
         }
         .custom-radio input[type="radio"] {
@@ -134,8 +166,8 @@
             position: absolute;
             left: 0;
             top: 0.1em;
-            width: 1.5em;
-            height: 1.5em;
+            width: 1.1em;
+            height: 1.1em;
             margin: 0;
             cursor: pointer;
         }
@@ -143,27 +175,27 @@
             position: absolute;
             left: 0;
             top: 0.1em;
-            width: 1.5em;
-            height: 1.5em;
+            width: 1.1em;
+            height: 1.1em;
             border-radius: 50%;
-            border: 2.5px solid #46807f;
+            border: 2px solid #46807f;
             background: #fff;
-            box-shadow: 0 1px 4px rgba(70,128,127,0.08);
+            box-shadow: 0 1px 2px rgba(70,128,127,0.06);
             transition: border 0.2s, box-shadow 0.2s;
         }
         .custom-radio input[type="radio"]:checked + .custom-radio-indicator {
             background: #46807f;
-            border: 2.5px solid #46807f;
-            box-shadow: 0 2px 8px rgba(70,128,127,0.12);
+            border: 2px solid #46807f;
+            box-shadow: 0 2px 6px rgba(70,128,127,0.10);
         }
         .custom-radio-indicator:after {
             content: '';
             display: block;
-            width: 0.7em;
-            height: 0.7em;
+            width: 0.5em;
+            height: 0.5em;
             border-radius: 50%;
             background: #fff;
-            margin: 0.4em auto;
+            margin: 0.3em auto;
             opacity: 0;
             transition: opacity 0.2s;
         }
@@ -177,24 +209,6 @@
             margin-top: 0.2em;
             font-weight: 500;
         }
-        .user-type-btn.signup-btn {
-            width: 100%;
-            padding: 1rem 0;
-            border-radius: 30px;
-            background: #46807f;
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-top: 1.2rem;
-            margin-bottom: 0.5rem;
-            box-shadow: 0 2px 8px rgba(70,128,127,0.08);
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .user-type-btn.signup-btn:hover {
-            background: #35605c;
-        }
         .password-rules {
             font-size: 0.97em;
             color: #555;
@@ -204,74 +218,207 @@
             border-radius: 6px;
             margin-bottom: 0.2em;
         }
+        .terms {
+            color: #888;
+            font-size: 0.97em;
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+        .form-group.password-group {
+            position: relative;
+        }
+        .form-group.password-group input[type="password"] {
+            padding: 0.9rem 1rem 0.9rem 2.5rem;
+        }
+        .user-type-btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            width: 100%;
+            justify-content: center;
+        }
+        .user-type-btn-select {
+            flex: 1 1 0;
+            padding: 0.7rem 0.5rem;
+            border-radius: 8px;
+            border: 2px solid #3b5bdb;
+            background: #fff;
+            color: #3b5bdb;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .user-type-btn-select.active, .user-type-btn-select:focus {
+            background: #3b5bdb;
+            color: #fff;
+            border: 2px solid #3b5bdb;
+        }
+        @media (max-width: 1000px) {
+            .signup-split-card {
+                width: 98vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .signup-split-card {
+                flex-direction: column-reverse;
+                width: 100vw;
+                min-height: 0;
+                border-radius: 0;
+            }
+            .signup-form-side, .signup-welcome-side {
+                border-radius: 0;
+                min-height: 320px;
+                padding: 1.2rem 0.7rem;
+            }
+            .signup-title {
+                font-size: 1.3rem;
+            }
+            .signup-form-side form {
+                max-width: 100%;
+            }
+        }
+        /* Modal styles */
+        .signup-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .signup-modal.active {
+            display: flex;
+        }
+        .signup-modal-overlay {
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(30,41,59,0.25);
+            backdrop-filter: blur(6px);
+            z-index: 1;
+        }
+        .signup-modal-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .signup-modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #3b5bdb;
+            cursor: pointer;
+            z-index: 3;
+        }
     </style>
 </head>
 <body>
-    <div class="signup-modern-modal">
-        <button class="close-modal-x" id="closeSignupModal" title="Close" type="button">&times;</button>
-        <form id="signupForm" autocomplete="off" class="form-horizontal">
-            <h2 class="signup-title">Sign Up</h2>
-            <div class="form-group radio-group">
-                <label class="radio-label">Sign up as <span class="required">*</span></label><br>
-                <label class="custom-radio">
-                    <input type="radio" id="customerRadio" name="userType" value="customer" required>
-                    <span class="custom-radio-indicator"></span>
-                    Customer
-                </label>
-                <label class="custom-radio">
-                    <input type="radio" id="providerRadio" name="userType" value="provider" required>
-                    <span class="custom-radio-indicator"></span>
-                    Service Provider
-                </label>
-                <div class="error" id="userTypeError"></div>
-            </div>
-            <div class="form-group">
-                <label for="fullname"><b>Full Name</b> <span class="required">*</span></label>
-                <input type="text" id="fullname" name="fullname" required>
-                <div class="error" id="fullnameError"></div>
-            </div>
-            <div class="form-group">
-                <label for="email"><b>Email Address</b> <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required>
-                <div class="error" id="emailError"></div>
-            </div>
-            <div class="form-group">
-                <label for="city"><b>City</b> <span class="required">*</span></label>
-                <input type="text" id="city" name="city" required>
-                <div class="error" id="cityError"></div>
-            </div>
-            <div class="form-group">
-                <label for="district"><b>District</b> <span class="required">*</span></label>
-                <input type="text" id="district" name="district" required>
-                <div class="error" id="districtError"></div>
-            </div>
-            <div class="form-group">
-                <label for="address"><b>Address</b> <span class="required">*</span></label>
-                <input type="text" id="address" name="address" required>
-                <div class="error" id="addressError"></div>
-            </div>
-            <div class="form-group">
-                <label for="phone"><b>Phone Number</b> <span class="required">*</span></label>
-                <input type="text" id="phone" name="phone" maxlength="10" required>
-                <div class="error" id="phoneError"></div>
-            </div>
-            <div class="form-group">
-                <label for="password"><b>Password</b> <span class="required">*</span></label>
-                <input type="password" id="password" name="password" required>
-                <div class="password-rules">
-                    Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+    <div id="signupModal" class="signup-modal">
+        <div class="signup-modal-overlay"></div>
+        <div class="signup-modal-content">
+            <button class="signup-modal-close" id="closeSignupModal">&times;</button>
+            <div class="signup-split-card">
+                <div class="signup-form-side">
+                    <form id="signupForm" autocomplete="off">
+                        <div class="user-type-btn-group" style="display: flex; gap: 1rem; margin-bottom: 1.2rem; width: 100%; justify-content: center;">
+                            <button type="button" class="user-type-btn-select active" id="btnCustomer">Sign up as Customer</button>
+                            <button type="button" class="user-type-btn-select" id="btnProvider">Sign up as Service Provider</button>
+                            <input type="hidden" id="userType" name="userType" value="customer">
+                        </div>
+                        <div id="customerFields">
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                                <div class="error" id="fullnameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                                <div class="error" id="emailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-phone"></i></span>
+                                <input type="text" id="phone" name="phone" maxlength="10" placeholder="Phone Number" required>
+                                <div class="error" id="phoneError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-city"></i></span>
+                                <input type="text" id="city" name="city" placeholder="City" required>
+                                <div class="error" id="cityError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-map-marker-alt"></i></span>
+                                <input type="text" id="district" name="district" placeholder="District" required>
+                                <div class="error" id="districtError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-home"></i></span>
+                                <input type="text" id="address" name="address" placeholder="Address" required>
+                                <div class="error" id="addressError"></div>
+                            </div>
+                        </div>
+                        <div id="providerFields" style="display:none;">
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name" required>
+                                <div class="error" id="providerFullnameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address" required>
+                                <div class="error" id="providerEmailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-phone"></i></span>
+                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number" required>
+                                <div class="error" id="providerPhoneError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-folder-open"></i></span>
+                                <input type="file" id="portfolio" name="portfolio" multiple accept="image/*">
+                                <div id="portfolioFiles" style="margin-top:0.5rem;"></div>
+                                <div class="error" id="portfolioError"></div>
+                            </div>
+                        </div>
+                        <div class="form-group password-group">
+                            <span class="input-icon"><i class="fa fa-lock"></i></span>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <div class="password-rules">
+                                <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
+                                    <li>At least 8 characters</li>
+                                    <li>At least one uppercase letter</li>
+                                    <li>At least one lowercase letter</li>
+                                    <li>At least one number</li>
+                                    <li>At least one special character</li>
+                                </ul>
+                            </div>
+                            <div class="error" id="passwordError"></div>
+                        </div>
+                        <button type="submit" class="user-type-btn signup-btn">Sign Up</button>
+                    </form>
+                    <div class="terms">
+                        By continuing, you agree to our <a href="#" style="color:#46807f;text-decoration:none;">Terms</a> and <a href="#" style="color:#46807f;text-decoration:none;">Privacy Policy</a>.
+                    </div>
                 </div>
-                <div class="error" id="passwordError"></div>
+                <div class="signup-welcome-side">
+                    <div class="signup-title">Welcome to Innovista</div>
+                    <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
+                </div>
             </div>
-            <button type="submit" class="user-type-btn signup-btn">Sign Up</button>
-        </form>
+        </div>
     </div>
     <script>
-    // Close modal logic for standalone page
-    document.getElementById('closeSignupModal').onclick = function() {
-        window.location.href = 'home.html';
-    };
-    // Signup form validation
     document.getElementById('signupForm').onsubmit = function(e) {
         e.preventDefault();
         let valid = true;
@@ -339,6 +486,72 @@
             document.getElementById('signupForm').reset();
         }
     };
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggle = document.getElementById('navbar-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        if(navbarToggle && navbarMenu) {
+            navbarToggle.addEventListener('click', function() {
+                navbarMenu.classList.toggle('active');
+            });
+        }
+        // User type button logic
+        const btnCustomer = document.getElementById('btnCustomer');
+        const btnProvider = document.getElementById('btnProvider');
+        const userTypeInput = document.getElementById('userType');
+        const customerFields = document.getElementById('customerFields');
+        const providerFields = document.getElementById('providerFields');
+        btnCustomer.addEventListener('click', function() {
+            btnCustomer.classList.add('active');
+            btnProvider.classList.remove('active');
+            userTypeInput.value = 'customer';
+            customerFields.style.display = '';
+            providerFields.style.display = 'none';
+        });
+        btnProvider.addEventListener('click', function() {
+            btnProvider.classList.add('active');
+            btnCustomer.classList.remove('active');
+            userTypeInput.value = 'provider';
+            customerFields.style.display = 'none';
+            providerFields.style.display = '';
+        });
+        // Portfolio file display
+        const portfolioInput = document.getElementById('portfolio');
+        const portfolioFiles = document.getElementById('portfolioFiles');
+        if (portfolioInput) {
+            portfolioInput.addEventListener('change', function() {
+                portfolioFiles.innerHTML = '';
+                for (const file of portfolioInput.files) {
+                    const div = document.createElement('div');
+                    div.textContent = file.name;
+                    portfolioFiles.appendChild(div);
+                }
+            });
+        }
+    });
+    // Modal open/close logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const signupModal = document.getElementById('signupModal');
+        const openSignupBtns = document.querySelectorAll('#openSignupModal, .btn-primary[href="signup.html"]');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+        openSignupBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                signupModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        closeSignupModal.addEventListener('click', function() {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        signupModal.addEventListener('click', function(e) {
+            if (e.target === signupModal || e.target.classList.contains('signup-modal-overlay')) {
+                signupModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
     </script>
 </body>
 </html>
