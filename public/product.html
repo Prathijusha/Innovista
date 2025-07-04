@@ -8,6 +8,289 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 1. Add modal CSS in <head> after other CSS links -->
+    <style>
+    .signup-split-card { display: flex; flex-direction: row; width: 900px; min-height: 540px; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,41,59,0.10); background: none; max-height: 90vh; overflow-y: auto; padding: 0 !important; }
+    .signup-welcome-side { background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat; color: #fff; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 !important; border-radius: 0 24px 24px 0; width: 50%; position: relative; padding-left: 0; padding-right: 0; box-sizing: border-box; }
+    .signup-welcome-side::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30,41,59,0.45); border-radius: 0 24px 24px 0; z-index: 1; }
+    .signup-welcome-side .signup-title, .signup-welcome-side .signup-subtitle { position: relative; z-index: 2; max-width: none; margin-left: 0; margin-right: 0; text-align: center; }
+    .signup-form-side { background: #fff; flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 !important; border-radius: 24px 0 0 24px; width: 50%; padding-left: 32px; padding-right: 32px; }
+    .signup-form-side form { width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-group, .password-group { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
+    .input-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #46807f; font-size: 1.2rem; pointer-events: none; z-index: 2; }
+    .form-group input { width: 100%; padding: 0.9rem 1rem 0.9rem 2.5rem; border-radius: 10px; border: 1.5px solid #e0e0e0; background: #f5f7fa; font-size: 1rem; font-weight: 500; transition: border 0.2s, box-shadow 0.2s; outline: none; margin-top: 0.1rem; box-sizing: border-box; }
+    .signup-btn { width: 100%; padding: 1rem 0; border-radius: 10px; background: #3b5bdb; color: #fff; font-size: 1.1rem; font-weight: 700; border: none; margin-top: 0.7rem; cursor: pointer; transition: background 0.2s; }
+    .signup-btn:hover { background: #274690; }
+    .signup-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem; text-align: center; width: 100%; }
+    .signup-subtitle { font-size: 1.2rem; color: #e0e0e0; margin-bottom: 0; text-align: center; width: 100%; }
+    .required { color: #b71c1c; font-weight: bold; }
+    .error { color: #b71c1c; font-size: 0.97em; margin-top: 0.2em; font-weight: 500; }
+    .password-rules { font-size: 0.97em; color: #555; margin-top: 0.2em; background: #f1f5fa; padding: 0.4em 0.7em; border-radius: 6px; margin-bottom: 0.2em; }
+    .terms { color: #888; font-size: 0.97em; text-align: center; margin-top: 1.5rem; margin-bottom: 0.2rem; }
+    .user-type-btn-group { margin-top: 24px; display: flex; gap: 0.5rem; margin-bottom: 1rem; width: 100%; justify-content: center; flex-wrap: wrap; }
+    .user-type-btn-select { flex: 1 1 90px; min-width: 90px; max-width: 140px; padding: 0.4rem 0.5rem; border-radius: 6px; border: 2px solid #3b5bdb; background: #fff; color: #3b5bdb; font-size: 0.98rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s, border 0.2s; box-sizing: border-box; }
+    .user-type-btn-select.active, .user-type-btn-select:focus { background: #3b5bdb; color: #fff; border: 2px solid #3b5bdb; }
+    .signup-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; justify-content: center; align-items: center; padding-top: 32px; padding-bottom: 32px; align-items: flex-start; }
+    .signup-modal.active { display: flex; }
+    .signup-modal-overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(30,41,59,0.25); backdrop-filter: blur(6px); z-index: 1; }
+    .signup-modal-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; max-height: calc(100vh - 64px); overflow-y: auto; margin-top: 0; margin-bottom: 0; border-radius: 24px; background: #fff; box-shadow: 0 8px 32px rgba(30,41,59,0.18); padding: 0 !important; }
+    .signup-modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 2rem; color: #3b5bdb; cursor: pointer; z-index: 3; }
+    .main-footer {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .main-footer.visible {
+      display: block;
+      opacity: 1;
+    }
+    </style>
+
+    <!-- Signup Modal CSS -->
+    <style>
+    /* Modal background */
+    #signup-modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      justify-content: center; align-items: center;
+    }
+
+    /* Modal container */
+    #signup-modal {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      display: flex;
+      max-width: 700px;
+      width: 95vw;
+      min-height: 400px;
+      overflow: hidden;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95);} to { opacity: 1; transform: scale(1);} }
+
+    /* Left: Form */
+    .signup-modal-left {
+      flex: 1.2;
+      padding: 32px 24px;
+      display: flex; flex-direction: column; justify-content: center;
+      background: #f8f9fa;
+      min-width: 300px;
+      overflow-y: auto;
+    }
+    .signup-modal-left h2 { margin-bottom: 16px; }
+    .signup-modal-left form { display: flex; flex-direction: column; gap: 12px; }
+    .signup-modal-left input, .signup-modal-left select {
+      padding: 10px 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+    }
+    .signup-modal-left button {
+      background: #007bff; color: #fff; border: none; border-radius: 6px;
+      padding: 10px; font-size: 1rem; cursor: pointer; margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .signup-modal-left button:hover { background: #0056b3; }
+    .signup-modal-left .step { display: none; }
+    .signup-modal-left .step.active { display: block; }
+    .signup-modal-left .back-btn { background: #e0e0e0; color: #333; margin-right: 8px; }
+    .signup-modal-left .back-btn:hover { background: #bdbdbd; }
+
+    /* Right: Welcome */
+    .signup-modal-right {
+      flex: 1;
+      background: linear-gradient(135deg, #007bff 60%, #6dd5ed 100%);
+      color: #fff;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 32px 16px;
+      min-width: 200px;
+    }
+    .signup-modal-right h2 { margin-bottom: 12px; }
+    .signup-modal-right p { font-size: 1.1rem; }
+
+    /* Close button */
+    #signup-modal-close {
+      position: absolute; top: 18px; right: 24px; font-size: 1.8rem; color: #888;
+      background: none; border: none; cursor: pointer; z-index: 10001;
+      transition: color 0.2s;
+    }
+    #signup-modal-close:hover { color: #007bff; }
+
+    @media (max-width: 600px) {
+      #signup-modal { flex-direction: column; min-width: 0; }
+      .signup-modal-right { min-width: 0; padding: 24px 8px; }
+      .signup-modal-left { padding: 24px 8px; }
+    }
+    </style>
+
+    <!-- Signup Modal Popup -->
+    <div id="signup-modal-bg">
+      <div id="signup-modal">
+        <button id="signup-modal-close" aria-label="Close">&times;</button>
+        <div class="signup-modal-left">
+          <div class="step step-1 active">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+              <select id="user-type" required>
+                <option value="" disabled selected>Select user type</option>
+                <option value="customer">Customer</option>
+                <option value="provider">Service Provider</option>
+              </select>
+              <input type="text" id="name" placeholder="Full Name" required>
+              <input type="email" id="email" placeholder="Email" required>
+              <input type="password" id="password" placeholder="Password" required>
+              <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+              <div id="provider-extra" style="display:none;">
+                <input type="text" id="company" placeholder="Company Name">
+                <input type="file" id="portfolio" accept=".pdf,.jpg,.png,.doc,.docx">
+              </div>
+              <button type="submit">Next</button>
+            </form>
+          </div>
+          <div class="step step-2">
+            <h2>Terms &amp; Conditions</h2>
+            <div style="height:120px; overflow:auto; background:#fff; border:1px solid #eee; border-radius:6px; padding:8px; margin-bottom:12px;">
+              <p id="terms-text">
+                Please read and accept our terms and conditions to continue.
+              </p>
+            </div>
+            <label><input type="checkbox" id="accept-terms"> I accept the terms and conditions</label>
+            <div style="margin-top:12px;">
+              <button class="back-btn" type="button">Back</button>
+              <button id="terms-next-btn" type="button" disabled>Next</button>
+            </div>
+          </div>
+          <div class="step step-3">
+            <h2>Verify Email</h2>
+            <p>Enter the 6-digit code sent to your email.</p>
+            <input type="text" id="verification-code" maxlength="6" placeholder="123456" required>
+            <div style="margin-top:12px;">
+              <button class="back-btn" type="button">Back</button>
+              <button id="verify-btn" type="button">Verify</button>
+            </div>
+          </div>
+          <div class="step step-4">
+            <h2>Success!</h2>
+            <p>Your account has been created.<br>Welcome to Innovista!</p>
+            <button id="signup-done-btn" type="button">Done</button>
+          </div>
+        </div>
+        <div class="signup-modal-right">
+          <h2>Welcome!</h2>
+          <p>Join Innovista to access exclusive services and offers.<br>Already have an account? <a href="#" style="color:#fff;text-decoration:underline;">Log in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Modal elements
+      const modalBg = document.getElementById('signup-modal-bg');
+      const modal = document.getElementById('signup-modal');
+      const closeBtn = document.getElementById('signup-modal-close');
+      const steps = modal.querySelectorAll('.step');
+      const form = document.getElementById('signup-form');
+      const userType = document.getElementById('user-type');
+      const providerExtra = document.getElementById('provider-extra');
+      const termsText = document.getElementById('terms-text');
+      const acceptTerms = document.getElementById('accept-terms');
+      const termsNextBtn = document.getElementById('terms-next-btn');
+      const verificationCode = document.getElementById('verification-code');
+      const verifyBtn = document.getElementById('verify-btn');
+      const doneBtn = document.getElementById('signup-done-btn');
+
+      // Show/hide provider fields
+      userType.addEventListener('change', function() {
+        if (userType.value === 'provider') {
+          providerExtra.style.display = '';
+          termsText.textContent = "As a Service Provider, you agree to provide accurate portfolio information and adhere to Innovista's quality standards. Please read and accept our terms and conditions to continue.";
+        } else {
+          providerExtra.style.display = 'none';
+          termsText.textContent = "Please read and accept our terms and conditions to continue.";
+        }
+      });
+
+      // Step navigation
+      function showStep(n) {
+        steps.forEach((step, i) => step.classList.toggle('active', i === n));
+      }
+
+      // Step 1: Form submit
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Basic validation
+        if (!userType.value || !form.name.value || !form.email.value || !form.password.value || !form['confirm-password'].value) {
+          alert('Please fill all required fields.');
+          return;
+        }
+        if (form.password.value !== form['confirm-password'].value) {
+          alert('Passwords do not match.');
+          return;
+        }
+        showStep(1);
+      });
+
+      // Step 2: Terms
+      termsNextBtn.addEventListener('click', function() {
+        showStep(2);
+      });
+      acceptTerms.addEventListener('change', function() {
+        termsNextBtn.disabled = !acceptTerms.checked;
+      });
+      modal.querySelectorAll('.step-2 .back-btn').forEach(btn => btn.onclick = () => showStep(0));
+
+      // Step 3: Verification
+      verifyBtn.addEventListener('click', function() {
+        if (verificationCode.value.length !== 6) {
+          alert('Please enter the 6-digit code.');
+          return;
+        }
+        showStep(3);
+      });
+      modal.querySelectorAll('.step-3 .back-btn').forEach(btn => btn.onclick = () => showStep(1));
+
+      // Step 4: Done
+      doneBtn.addEventListener('click', function() {
+        modalBg.style.display = 'none';
+        showStep(0);
+        form.reset();
+        acceptTerms.checked = false;
+        termsNextBtn.disabled = true;
+        verificationCode.value = '';
+      });
+
+      // Modal open/close
+      function openModal() {
+        modalBg.style.display = 'flex';
+        showStep(0);
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modalBg.style.display = 'none';
+        document.body.style.overflow = '';
+        showStep(0);
+        form.reset();
+        acceptTerms.checked = false;
+        termsNextBtn.disabled = true;
+        verificationCode.value = '';
+      }
+      closeBtn.onclick = closeModal;
+      modalBg.onclick = function(e) { if (e.target === modalBg) closeModal(); };
+
+      // Navbar Sign Up button
+      // Try both id and class for flexibility
+      const signupBtn = document.getElementById('signup-btn') || document.querySelector('.signup-btn');
+      if (signupBtn) {
+        signupBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal();
+        });
+      }
+    });
+    </script>
 </head>
 <body>
     <header class="main-header">
@@ -25,7 +308,7 @@
             </ul>
             <div class="navbar-actions">
                 <a href="login.html" class="btn btn-secondary">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                <a href="#" class="btn btn-primary" id="openSignupModal">Sign Up</a>
             </div>
             <button class="navbar-toggle" id="navbar-toggle">
                 <span class="navbar-toggle-icon"></span>
@@ -5900,104 +6183,25 @@
             
             <div class="modal-buttons">
                 <button class="modal-btn secondary" onclick="closePaintTypeModal()">Cancel</button>
-                <button class="modal-btn primary" onclick="proceedToQuantity()">Continue</button>
+                <button class="modal-btn primary" onclick="applyPaintType()">Apply</button>
             </div>
         </div>
     </div>
 
-    <!-- Quantity Selection Modal -->
-    <div id="quantityModal" class="quantity-modal">
-        <div class="quantity-content">
-            <div class="quantity-header">
-                <h3>Select Quantity</h3>
-                <p>Choose your paint quantity</p>
-            </div>
-            
-            <div class="product-summary">
-                <p><strong>Color:</strong> <span id="summaryColorName"></span><div class="color-display" id="summaryColorDisplay"></div></p>
-                <p><strong>Type:</strong> <span id="summaryPaintType"></span></p>
-                <p><strong>Base Price:</strong> <span id="summaryBasePrice"></span></p>
-            </div>
-            
-            <div class="quantity-options">
-                <div class="quantity-option" data-quantity="5">
-                    <h4>5 Liters</h4>
-                    <div class="price" id="price5L">Rs. 0</div>
-                </div>
-                <div class="quantity-option" data-quantity="10">
-                    <h4>10 Liters</h4>
-                    <div class="price" id="price10L">Rs. 0</div>
-                </div>
-                <div class="quantity-option" data-quantity="20">
-                    <h4>20 Liters</h4>
-                    <div class="price" id="price20L">Rs. 0</div>
-                </div>
-                <div class="quantity-option" data-quantity="custom">
-                    <h4>Custom</h4>
-                    <div class="price">Enter liters</div>
-                </div>
-            </div>
-            
-            <div class="custom-quantity" id="customQuantitySection" style="display: none;">
-                <label for="customLiters">Enter quantity in liters:</label>
-                <input type="number" id="customLiters" min="1" max="100" placeholder="Enter liters">
-                <span>liters</span>
-                <div class="price" id="customPrice" style="margin-top: 10px;">Rs. 0</div>
-            </div>
-            
-            <div class="total-price">
-                <h4>Total Price</h4>
-                <div class="price" id="totalPrice">Rs. 0</div>
-            </div>
-            
-            <div class="modal-buttons">
-                <button class="modal-btn secondary" onclick="closeQuantityModal()">Back</button>
-                <button class="modal-btn primary" onclick="addToCart()">Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Professional Paint Shopping Cart Modal -->
-    <div id="paintCartModal" class="paint-cart-modal">
-        <div class="paint-cart-content">
-            <div class="cart-header">
-                <h3><i class="fas fa-shopping-cart"></i> Paint Shopping Cart</h3>
-                <span class="close-cart" onclick="closePaintCart()">&times;</span>
-            </div>
-            
-            <div class="cart-items" id="paintCartItems">
-                <!-- Cart items will be populated here -->
-            </div>
-            
-            <div class="cart-summary">
-                <div class="cart-total">
-                    <span>Total Items: <span id="paintCartTotalItems">0</span></span>
-                    <span>Total Amount: <span id="paintCartTotalAmount">Rs. 0</span></span>
-                </div>
-                <div class="cart-actions">
-                    <button class="btn-clear-cart" onclick="clearPaintCart()">Clear Cart</button>
-                    <button class="btn-checkout" onclick="checkoutPaintCart()">Proceed to Checkout</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="assets/js/product.js"></script>
-    <footer class="main-footer">
-        <p>&copy; 2024 Innovista. All rights reserved.</p>
-    </footer>
-    <script src="assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const footer = document.querySelector('.main-footer');
+      function toggleFooter() {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 100)) {
+          footer.classList.add('visible');
+        } else {
+          footer.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', toggleFooter);
+      window.addEventListener('resize', toggleFooter);
+      toggleFooter();
+    });
+    </script>
 </body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
-
+</html>
