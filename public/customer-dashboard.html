@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - Innovista</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/customer-dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Innovista</h2>
+      <nav class="sidebar-nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">My Appointments</a>
+        <a href="#">My Orders</a>
+        <a href="#">Requested Services</a>
+        <a href="#">Messages</a>
+        <a href="#">Invoices & Payment</a>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <div class="welcome-card">
+        Welcome back, <span id="customerName">Customer</span>!
+      </div>
+      <div class="dashboard-cards">
+        <div class="dashboard-card">
+          <h3>Upcoming Appointments</h3>
+          <ul class="appointments-list">
+            <li>Interior Design Consultation – 12 June 2024, 10:00 AM</li>
+            <li>Painting Service – 15 June 2024, 2:00 PM</li>
+            <li>Restoration Visit – 20 June 2024, 11:30 AM</li>
+          </ul>
+        </div>
+        <div class="dashboard-card">
+          <h3>Recent Product Orders</h3>
+          <ul class="orders-list">
+            <li>Modern Sofa Set – Delivered on 5 June 2024</li>
+            <li>LED Ceiling Lamp – Shipped on 8 June 2024</li>
+            <li>Wall Paint (Nippon) – Delivered on 2 June 2024</li>
+          </ul>
+        </div>
+        <div class="dashboard-card">
+          <h3>Messages from Providers</h3>
+          <ul class="messages-list">
+            <li><b>Maria S.:</b> Your restoration appointment is confirmed for 20 June.</li>
+            <li><b>David L.:</b> Painting service will start at 2:00 PM on 15 June.</li>
+            <li><b>Jeronimo G.:</b> Please confirm your address for the consultation.</li>
+          </ul>
+        </div>
+        <div class="dashboard-card">
+          <h3>Payment Summary</h3>
+          <div class="payment-summary">
+            <div>Total Paid: <span class="paid">Rs. 45,000</span></div>
+            <div>Pending: <span class="pending">Rs. 12,000</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="assets/js/customer-dashboard.js"></script>
+</body>
+</html> 

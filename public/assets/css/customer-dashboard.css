@@ -1,0 +1,134 @@
+body {
+  background: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 240px;
+  background: var(--gradient);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem 1rem 1rem;
+  min-height: 100vh;
+}
+.sidebar h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--text-light);
+}
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.sidebar-nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.sidebar-nav a.active, .sidebar-nav a:hover {
+  background: var(--secondary);
+  color: var(--text-light);
+}
+.main-content {
+  flex: 1;
+  padding: 2.5rem 2.5rem 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.welcome-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+  padding: 2rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.dashboard-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+  padding: 1.5rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+.dashboard-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  color: var(--primary);
+}
+.appointments-list, .orders-list, .messages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--dark-text);
+}
+.appointments-list li, .orders-list li, .messages-list li {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.appointments-list li:last-child, .orders-list li:last-child, .messages-list li:last-child {
+  border-bottom: none;
+}
+.payment-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 1.08rem;
+}
+.payment-summary .paid {
+  color: #2e7d32;
+  font-weight: 600;
+}
+.payment-summary .pending {
+  color: var(--accent);
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    min-height: unset;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 0.7rem;
+  }
+  .main-content {
+    padding: 1.2rem;
+  }
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+} 
