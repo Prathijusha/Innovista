@@ -340,16 +340,21 @@
    7. FOOTER
    ========================================= */
 
+html, body {
+    margin: 0;
+    border: 0;
+}
+
 .main-footer {
-    position: fixed;
-    bottom: 0;
+   
     left: 0;
+    bottom: 0;
     width: 100%;
-    z-index: 1000;
+    
     background-color: var(--dark-color);
     color: var(--grey-color);
     box-shadow: 0 -2px 8px rgba(30,41,59,0.07);
-    padding: 2.5rem 0;
+    padding: 1.1rem 0;
     text-align: center;
 }
 
