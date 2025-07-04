@@ -1,0 +1,96 @@
+body {
+  background: #222733;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  text-align: center;
+  margin: 2rem 0 1.5rem 0;
+  font-size: 2rem;
+  color: #fff;
+}
+.provider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.provider-card {
+  background: #393e4b;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s;
+}
+.provider-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+.profile-img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+}
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.provider-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #b6ff5b;
+  margin-bottom: 0.3rem;
+}
+.provider-location {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.provider-role {
+  color: #b6ff5b;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.provider-desc {
+  color: #e0e0e0;
+  font-size: 0.97rem;
+  margin-bottom: 1rem;
+}
+.get-info-btn {
+  background: none;
+  border: 1.5px solid #b6ff5b;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.get-info-btn:hover {
+  background: #b6ff5b;
+  color: #222733;
+}
+.status-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #ffc107;
+  color: #222733;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+}
+.offline .profile-img {
+  filter: grayscale(1);
+  opacity: 0.7;
+} 
