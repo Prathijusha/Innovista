@@ -361,7 +361,7 @@
             <div class="login-subtitle">Sign in to access your account and continue with your projects.</div>
             <div class="login-signup-message">
                 Don't have an account?
-                <a href="home.html?signup=1">Sign up</a>
+                <a href="signup.html" id="signupLink" style="cursor: pointer;">Sign up</a>
             </div>
         </div>
     </div>
@@ -511,6 +511,12 @@
                 // This will be handled by the home page to open the login modal
                 console.log('Login requested from home page');
             }
+            
+            // Signup link navigation
+            document.getElementById('signupLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'signup.html';
+            });
         });
     </script>
 </body>

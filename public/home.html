@@ -437,22 +437,22 @@
                         <div id="providerFields" style="display:none;">
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-user"></i></span>
-                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name" required>
+                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name">
                                 <div class="error" id="providerFullnameError"></div>
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address" required>
+                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address">
                                 <div class="error" id="providerEmailError"></div>
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-phone"></i></span>
-                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number" required>
+                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number">
                                 <div class="error" id="providerPhoneError"></div>
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-folder-open"></i></span>
-                                <input type="file" id="portfolio" name="portfolio" multiple accept="image/*" required>
+                                <input type="file" id="portfolio" name="portfolio" multiple accept="image/*">
                                 <div id="portfolioFiles" style="margin-top:0.5rem;"></div>
                                 <div class="error" id="portfolioError"></div>
                             </div>
@@ -540,7 +540,7 @@
                 <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
                 <div class="signup-login-message" style="margin-top:2.2rem; text-align:center; font-size:1.05rem; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,0.5);">
                   Already have an account?
-                  <a href="login.html" style="color:#ffd700; text-decoration:underline; font-weight:600;">Log in</a>
+                  <a href="#" id="switchToLogin" onclick="switchToLoginModal()" style="color:#ffd700; text-decoration:underline; font-weight:600; cursor:pointer;">Log in</a>
                 </div>
             </div>
         </div>
@@ -602,7 +602,7 @@
                 <div class="signup-subtitle">Sign in to access your account and continue with your projects.</div>
                 <div class="signup-login-message" style="margin-top:2.2rem; text-align:center; font-size:1.05rem; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,0.5);">
                   Don't have an account?
-                  <a href="#" id="switchToSignup" style="color:#ffd700; text-decoration:underline; font-weight:600;">Sign up</a>
+                  <a href="#" id="switchToSignup" onclick="switchToSignupModal()" style="color:#ffd700; text-decoration:underline; font-weight:600;">Sign up</a>
                 </div>
             </div>
         </div>
@@ -981,6 +981,37 @@ document.addEventListener('DOMContentLoaded', function() {
   const openLoginBtn = document.getElementById('openLoginModal');
   const closeLoginModal = document.getElementById('closeLoginModal');
   const switchToSignupBtn = document.getElementById('switchToSignup');
+  const switchToLoginBtn = document.getElementById('switchToLogin'); // New switch button
+
+  console.log('switchToSignupBtn found:', switchToSignupBtn);
+  console.log('switchToLoginBtn found:', switchToLoginBtn);
+
+  // Add event listeners with a small delay to ensure elements are ready
+  setTimeout(function() {
+    if (switchToSignupBtn) {
+      switchToSignupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Switching to signup modal...');
+        alert('Switching to signup modal...');
+        loginModal.classList.remove('active');
+        document.getElementById('signupModal').classList.add('active');
+        console.log('Signup modal should be active now');
+      });
+      console.log('Signup switch event listener added');
+    }
+    
+    if (switchToLoginBtn) {
+      switchToLoginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Switching to login modal...');
+        alert('Switching to login modal...');
+        document.getElementById('signupModal').classList.remove('active');
+        loginModal.classList.add('active');
+        console.log('Login modal should be active now');
+      });
+      console.log('Login switch event listener added');
+    }
+  }, 100);
 
   // Login form elements
   const loginForm = document.getElementById('loginForm');
@@ -1015,13 +1046,6 @@ document.addEventListener('DOMContentLoaded', function() {
       loginModal.classList.remove('active');
       document.body.style.overflow = '';
     }
-  });
-
-  // Switch to signup modal
-  switchToSignupBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    loginModal.classList.remove('active');
-    document.getElementById('signupModal').classList.add('active');
   });
 
   // Show only one login step at a time
@@ -1150,6 +1174,21 @@ document.addEventListener('DOMContentLoaded', function() {
     alert('Forgot password functionality will be implemented here.');
   });
 });
+
+// Global functions for modal switching
+function switchToLoginModal() {
+  console.log('switchToLoginModal function called');
+  alert('Switching to login modal...');
+  document.getElementById('signupModal').classList.remove('active');
+  document.getElementById('loginModal').classList.add('active');
+}
+
+function switchToSignupModal() {
+  console.log('switchToSignupModal function called');
+  alert('Switching to signup modal...');
+  document.getElementById('loginModal').classList.remove('active');
+  document.getElementById('signupModal').classList.add('active');
+}
     </script>
 </body>
 </html> 
