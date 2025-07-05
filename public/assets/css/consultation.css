@@ -27,19 +27,17 @@ h2 {
   text-align: center;
   position: relative;
   transition: transform 0.2s;
-  border: none;
 }
 .provider-card:hover {
   transform: translateY(-6px) scale(1.03);
 }
 .profile-img {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.2rem auto;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #31406e;
-  background: #1a2032;
+  border: 3px solid #fff;
 }
 .profile-img img {
   width: 100%;
@@ -47,46 +45,44 @@ h2 {
   object-fit: cover;
 }
 .provider-name {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #aeea00;
   margin-bottom: 0.3rem;
 }
 .provider-location {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.2rem;
 }
 .provider-role {
   color: #aeea00;
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 .provider-desc {
-  color: #bfc8e6;
-  font-size: 1.08rem;
-  margin-bottom: 1.2rem;
+  color: #e0e0e0;
+  font-size: 0.97rem;
+  margin-bottom: 1rem;
 }
 .get-info-btn {
-  background: #e6f8fc;
-  border: none;
-  color: #183a6d;
-  border-radius: 10px;
-  padding: 0.8rem 2.5rem;
-  font-size: 1.2rem;
+  background: none;
+  border: 1.5px solid #b6ff5b;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  font-weight: 500;
-  margin-top: 0.5rem;
 }
 .get-info-btn:hover {
-  background: #d0f0fa;
-  color: #183a6d;
+  background: #b6ff5b;
+  color: #222733;
 }
 .status-badge {
   position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
+  top: 1rem;
+  left: 1rem;
   background: #ffc107;
   color: #232b3e;
   font-size: 0.85rem;
@@ -97,4 +93,4 @@ h2 {
 .offline .profile-img {
   filter: grayscale(1);
   opacity: 0.7;
-}
+} 

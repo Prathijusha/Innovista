@@ -5,11 +5,21 @@ body {
   margin: 0;
   padding: 0;
 }
-h2 {
+h2, .top-bar h2 {
   text-align: center;
-  margin: 2rem 0 1.5rem 0;
+  margin: 0;
   font-size: 2.5rem;
   color: #232b3e;
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 .provider-grid {
   display: grid;
@@ -38,7 +48,7 @@ h2 {
   margin: 0 auto 1.2rem auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #31406e;
+  border: 3px solid #b6ff5b;
   background: #1a2032;
 }
 .profile-img img {
@@ -49,7 +59,7 @@ h2 {
 .provider-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #aeea00;
+  color: #b6ff5b;
   margin-bottom: 0.3rem;
 }
 .provider-location {
@@ -58,20 +68,20 @@ h2 {
   margin-bottom: 0.2rem;
 }
 .provider-role {
-  color: #aeea00;
+  color: #b6ff5b;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 .provider-desc {
-  color: #bfc8e6;
+  color: #e0e0e0;
   font-size: 1.08rem;
   margin-bottom: 1.2rem;
 }
 .get-info-btn {
-  background: #e6f8fc;
-  border: none;
-  color: #183a6d;
-  border-radius: 10px;
+  background: none;
+  border: 1.5px solid #b6ff5b;
+  color: #b6ff5b;
+  border-radius: 8px;
   padding: 0.8rem 2.5rem;
   font-size: 1.2rem;
   cursor: pointer;
@@ -80,8 +90,8 @@ h2 {
   margin-top: 0.5rem;
 }
 .get-info-btn:hover {
-  background: #d0f0fa;
-  color: #183a6d;
+  background: #b6ff5b;
+  color: #232b3e;
 }
 .status-badge {
   position: absolute;
@@ -89,12 +99,35 @@ h2 {
   left: 1.2rem;
   background: #ffc107;
   color: #232b3e;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.2rem 0.7rem;
-  border-radius: 6px;
+  padding: 0.25rem 0.9rem;
+  border-radius: 8px;
 }
 .offline .profile-img {
   filter: grayscale(1);
   opacity: 0.7;
+}
+.back-to-services-btn {
+  display: inline-block;
+  background: #e6f8fc;
+  color: #183a6d;
+  padding: 18px 40px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.04);
+  transition: background 0.2s;
+  margin-bottom: 18px;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+.back-to-services-btn:hover {
+  background: #d0f0fa;
+}
+.back-to-services-btn .arrow {
+  font-size: 1.3em;
+  vertical-align: middle;
+  margin-right: 8px;
 }

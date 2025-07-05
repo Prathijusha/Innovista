@@ -1,6 +1,6 @@
 body {
-  background: #222733;
-  color: #fff;
+  background: #f4f7fb;
+  color: #232b3e;
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -8,8 +8,8 @@ body {
 h2 {
   text-align: center;
   margin: 2rem 0 1.5rem 0;
-  font-size: 2rem;
-  color: #fff;
+  font-size: 2.5rem;
+  color: #232b3e;
 }
 .provider-grid {
   display: grid;
@@ -20,24 +20,26 @@ h2 {
   padding: 2rem;
 }
 .provider-card {
-  background: #393e4b;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  background: #232b3e;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
   position: relative;
   transition: transform 0.2s;
+  border: none;
 }
 .provider-card:hover {
   transform: translateY(-6px) scale(1.03);
 }
 .profile-img {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 1rem auto;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.2rem auto;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #fff;
+  border: 3px solid #31406e;
+  background: #1a2032;
 }
 .profile-img img {
   width: 100%;
@@ -45,52 +47,54 @@ h2 {
   object-fit: cover;
 }
 .provider-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #b6ff5b;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #aeea00;
   margin-bottom: 0.3rem;
 }
 .provider-location {
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 0.2rem;
 }
 .provider-role {
-  color: #b6ff5b;
-  font-size: 1rem;
+  color: #aeea00;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 .provider-desc {
-  color: #e0e0e0;
-  font-size: 0.97rem;
-  margin-bottom: 1rem;
+  color: #bfc8e6;
+  font-size: 1.08rem;
+  margin-bottom: 1.2rem;
 }
 .get-info-btn {
-  background: none;
-  border: 1.5px solid #b6ff5b;
-  color: #fff;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
+  background: #e6f8fc;
+  border: none;
+  color: #183a6d;
+  border-radius: 10px;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+  margin-top: 0.5rem;
 }
 .get-info-btn:hover {
-  background: #b6ff5b;
-  color: #222733;
+  background: #d0f0fa;
+  color: #183a6d;
 }
 .status-badge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 1.2rem;
+  left: 1.2rem;
   background: #ffc107;
-  color: #222733;
-  font-size: 0.85rem;
+  color: #232b3e;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.2rem 0.7rem;
-  border-radius: 6px;
+  padding: 0.25rem 0.9rem;
+  border-radius: 8px;
 }
 .offline .profile-img {
   filter: grayscale(1);
   opacity: 0.7;
-} 
+}
