@@ -10,8 +10,8 @@ body {
   padding: 0 1.5rem;
 }
 .contact-hero {
-  background: linear-gradient(120deg, #6c63ff 60%, #b3c0ff 100%);
-  color: #fff;
+  background: var(--gradient);
+  color: var(--text-light);
   padding: 3.5rem 0 2.5rem 0;
   text-align: center;
 }
@@ -37,7 +37,7 @@ body {
 }
 .contact-form-section h2, .contact-info-section h2 {
   font-size: 1.5rem;
-  color: #6c63ff;
+  color: var(--primary);
   margin-bottom: 0.6rem;
 }
 .contact-form {
@@ -68,13 +68,13 @@ body {
 }
 .form-group input:focus, .form-group textarea:focus {
   outline: none;
-  border-color: #6c63ff;
+  border-color: var(--primary);
   background: #fff;
 }
 .btn-contact-submit {
   width: 100%;
-  background: var(--primary-color);
-  color: #fff;
+  background: var(--gradient);
+  color: var(--text-light);
   font-weight: 700;
   border: none;
   border-radius: 1.2rem;
@@ -85,8 +85,8 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 .btn-contact-submit:hover {
-  background: #2541b2;
-  color: #fff;
+  background: var(--secondary);
+  color: var(--text-light);
 }
 .contact-success {
   color: #22c55e;
@@ -156,7 +156,7 @@ body {
 }
 .btn-contact-submit {
   width: 100%;
-  background: var(--primary-color);
+  background: var(--gradient);
   color: #fff;
   font-weight: 700;
   border: none;
@@ -168,7 +168,7 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 .btn-contact-submit:hover {
-  background: #2541b2;
+  background: var(--secondary);
   color: #fff;
 }
 .contact-info-card {
