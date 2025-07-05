@@ -12,7 +12,7 @@ body {
     background: #fff !important;
 }
 
-body, .products-hero, .main-content, .product-section, .product-area, .product-details, .sidebar, .sidebar-header, .sidebar-category-item {
+body, .main-content, .product-section, .product-area, .product-details, .sidebar, .sidebar-header, .sidebar-category-item {
   background: var(--bg-light) !important;
   color: var(--text-dark) !important;
 }
@@ -35,15 +35,16 @@ body, .products-hero, .main-content, .product-section, .product-area, .product-d
 
 /* Hero Section */
 .products-hero {
-    background: url('../images/images/producthero.avif');
-    background-size: cover;
-    background-position: center;
-    color: var(--text-light);
-    padding: 80px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
+    background-image: url('../images/images/service/productpur.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
 .products-hero::before {
     content: '';
@@ -59,6 +60,9 @@ body, .products-hero, .main-content, .product-section, .product-area, .product-d
 .hero-content {
     position: relative;
     z-index: 2;
+    width: 100%;
+    text-align: center;
+    color: #fff;
 }
 
 .hero-content h1 {
