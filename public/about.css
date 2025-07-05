@@ -1,0 +1,4 @@
+body, .about-section, .about-card {
+  background: var(--bg-light) !important;
+  color: var(--text-dark) !important;
+} 

@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Innovista</title>
-  <link rel="stylesheet" href="assets/css/contact.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
 .signup-split-card { display: flex; flex-direction: row; width: 900px; min-height: 540px; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,41,59,0.10); background: none; max-height: 90vh; overflow-y: auto; padding: 0 !important; }
 .signup-welcome-side { background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat; color: #fff; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 !important; border-radius: 0 24px 24px 0; width: 50%; position: relative; padding-left: 0; padding-right: 0; box-sizing: border-box; }
@@ -41,24 +43,24 @@
 <body>
   <header class="main-header">
     <nav class="navbar container">
-      <a href="/" class="navbar-logo">
-        <img src="assets/images/logo.png" alt="Innovista Logo">
-        <span>INNOVISTA</span>
-      </a>
-      <ul style="list-style-type:none;" class="navbar-menu">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="navbar-actions">
-        <a href="login.html" class="btn btn-secondary">Login</a>
-        <a href="home.html?signup=1" class="btn btn-primary" id="openSignupModal">Sign Up</a>
-      </div>
-      <button class="navbar-toggle" id="navbar-toggle">
-        <span class="navbar-toggle-icon"></span>
-      </button>
+        <a href="/" class="navbar-logo">
+            <img src="assets/images/logo.png" alt="Innovista Logo">
+            <span>INNOVISTA</span>
+        </a>
+        <ul style="list-style-type:none;" class="navbar-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button type="button" class="btn-earthy" id="openLoginModal">Login</button>
+            <button type="button" class="btn-earthy" id="openSignupModal">Sign Up</button>
+        </div>
+        <button class="navbar-toggle" id="navbar-toggle">
+            <span class="navbar-toggle-icon"></span>
+        </button>
     </nav>
   </header>
   <main class="contact-main container">
