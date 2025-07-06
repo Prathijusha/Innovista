@@ -118,6 +118,9 @@
     text-align: center;
     color: #ad8b00;
 }
+.signup-welcome-side {
+  background: url('assets/images/images/service/signup.jpg') center center/cover no-repeat !important;
+}
 /* Responsive */
 @media (max-width: 600px) {
     .signup-container {

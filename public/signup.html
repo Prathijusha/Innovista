@@ -30,7 +30,7 @@
         }
         .signup-welcome-side {
             /* Remove background color and use image instead */
-            background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat;
+            background: url('../images/images/service/signup.jpg') center center/cover no-repeat !important;
             color: #fff;
             flex: 1 1 0;
             display: flex;
@@ -72,6 +72,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.1rem;
+            padding-bottom: 1rem;
         }
         .form-group, .password-group {
             position: relative;
@@ -113,8 +114,8 @@
             width: 100%;
             padding: 1rem 0;
             border-radius: 10px;
-            background: #3b5bdb;
-            color: #fff;
+            background: var(--gradient);
+            color: var(--text-light);
             font-size: 1.1rem;
             font-weight: 700;
             border: none;
@@ -123,7 +124,8 @@
             transition: background 0.2s;
         }
         .signup-btn:hover {
-            background: #274690;
+            background: var(--secondary);
+            color: var(--text-light);
         }
         .signup-title {
             font-size: 2.2rem;
@@ -321,6 +323,11 @@
             cursor: pointer;
             z-index: 3;
         }
+        body .signup-welcome-side {
+            background: url('../images/images/service/signup.jpg') center center/cover no-repeat !important;
+            color: #fff !important;
+            border: 3px solid red !important;
+        }
     </style>
 </head>
 <body>
@@ -371,17 +378,17 @@
                         <div id="providerFields" style="display:none;">
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-user"></i></span>
-                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name" required>
+                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name">
                                 <div class="error" id="providerFullnameError"></div>
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address" required>
+                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address">
                                 <div class="error" id="providerEmailError"></div>
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-phone"></i></span>
-                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number" required>
+                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number">
                                 <div class="error" id="providerPhoneError"></div>
                             </div>
                             <div class="form-group">
@@ -405,8 +412,47 @@
                             </div>
                             <div class="error" id="passwordError"></div>
                         </div>
-                        <button type="submit" class="user-type-btn signup-btn">Sign Up</button>
+                        <button type="submit" class="user-type-btn signup-btn" style="margin-bottom: 4rem;">Sign Up</button>
+                        <button type="button" onclick="testTermsStep()" style="background: #ff6b35; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; width: 100%; display: block;">Test Terms Step</button>
+                        <button type="button" onclick="testForm()" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; width: 100%; display: block;">Test Form</button>
                     </form>
+                    <!-- Multi-step signup sections -->
+                    <div id="termsStep" style="display:none; margin-top:2rem;">
+                        <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
+                            <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Terms and Conditions</h2>
+                            <div style="font-size:1.01rem; margin-bottom:1.2rem; line-height:1.6;">
+                                By proceeding with your booking on Innovista, you agree to the following terms and conditions. All appointments are subject to confirmation based on the availability of the selected service provider. Once a booking is confirmed, it cannot be cancelled for a refund. However, you may request to reschedule your appointment at least 24 hours in advance, subject to the service provider's availability. Refunds will not be issued for cancellations, change of mind, dissatisfaction with design preferences, or delays caused by the customer. Service timelines may vary due to external factors such as weather conditions, supply availability, or prior project delays. Innovista will make reasonable efforts to inform you in advance of any such changes. As a customer, you are responsible for providing accurate contact details and ensuring access to the service location at the agreed time. Innovista connects you with independent service providers and does not take responsibility for any disputes or damages related to their services. By signing up or making a booking, you acknowledge and accept these terms in full.
+                            </div>
+                            <div style="margin-bottom:1.2rem;">
+                                <input type="checkbox" id="acceptTerms"> <label for="acceptTerms">I accept the terms and conditions</label>
+                            </div>
+                            <button id="termsNextBtn" class="signup-btn" style="width:100%;" disabled>Next</button>
+                        </div>
+                    </div>
+                    <div id="verifyStep" style="display:none; margin-top:2rem;">
+                        <div style="max-width: 420px; background: #E7EFC7; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
+                            <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:1.1rem; color:#8A784E;">Verify Your Account</h2>
+                            <div style="font-size:1.01rem; margin-bottom:1.2rem;">Enter the 6-digit verification code sent to your email/phone.</div>
+                            <div id="codeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;">
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                                <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            </div>
+                            <button id="verifyBtn" class="signup-btn" style="width:100%;">Verify</button>
+                            <div id="verifyError" style="color:#b71c1c; margin-top:0.7em; font-size:1em;"></div>
+                        </div>
+                    </div>
+                    <div id="successStep" style="display:none; margin-top:2rem;">
+                        <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2.2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222; text-align:center;">
+                            <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Account Successfully Created!</h2>
+                            <div style="font-size:1.08rem; margin-bottom:1.2rem;">Welcome to Innovista. You can now log in and start booking services.</div>
+                            <a href="login.html" class="signup-btn" style="width:100%; text-align:center; display:inline-block;">Go to Login</a>
+                        </div>
+                    </div>
+                    <!-- End multi-step signup sections -->
                     <div class="terms">
                         By continuing, you agree to our <a href="#" style="color:#46807f;text-decoration:none;">Terms</a> and <a href="#" style="color:#46807f;text-decoration:none;">Privacy Policy</a>.
                     </div>
@@ -414,80 +460,147 @@
                 <div class="signup-welcome-side">
                     <div class="signup-title">Welcome to Innovista</div>
                     <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
+                    <div class="signup-login-message" style="margin-top: 2.2rem; text-align: center; font-size: 1.05rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
+                        Already have an account?
+                        <a href="login.html" id="loginLink" style="color: #ffd700; text-decoration: underline; font-weight: 600; cursor: pointer;">Login</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-    document.getElementById('signupForm').onsubmit = function(e) {
-        e.preventDefault();
-        let valid = true;
-        document.querySelectorAll('.error').forEach(el => el.textContent = '');
-        // User Type (radio)
-        const userType = document.querySelector('input[name="userType"]:checked');
-        if (!userType) {
-            document.getElementById('userTypeError').textContent = 'Please select user type.';
-            valid = false;
-        }
-        // Full Name
-        const fullname = document.getElementById('fullname').value.trim();
-        if (!fullname) {
-            document.getElementById('fullnameError').textContent = 'Full name is required.';
-            valid = false;
-        }
-        // Email
-        const email = document.getElementById('email').value.trim();
-        if (!email) {
-            document.getElementById('emailError').textContent = 'Email is required.';
-            valid = false;
-        } else if (!email.endsWith('@gmail.com')) {
-            document.getElementById('emailError').textContent = 'Email must be a @gmail.com address.';
-            valid = false;
-        }
-        // City
-        const city = document.getElementById('city').value.trim();
-        if (!city) {
-            document.getElementById('cityError').textContent = 'City is required.';
-            valid = false;
-        }
-        // District
-        const district = document.getElementById('district').value.trim();
-        if (!district) {
-            document.getElementById('districtError').textContent = 'District is required.';
-            valid = false;
-        }
-        // Address
-        const address = document.getElementById('address').value.trim();
-        if (!address) {
-            document.getElementById('addressError').textContent = 'Address is required.';
-            valid = false;
-        }
-        // Phone
-        const phone = document.getElementById('phone').value.trim();
-        if (!phone) {
-            document.getElementById('phoneError').textContent = 'Phone number is required.';
-            valid = false;
-        } else if (!/^\d{10}$/.test(phone)) {
-            document.getElementById('phoneError').textContent = 'Phone number must be exactly 10 digits.';
-            valid = false;
-        }
-        // Password
-        const password = document.getElementById('password').value;
-        const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
-        if (!password) {
-            document.getElementById('passwordError').textContent = 'Password is required.';
-            valid = false;
-        } else if (!passwordRules.test(password)) {
-            document.getElementById('passwordError').textContent = 'Password does not meet the requirements.';
-            valid = false;
-        }
-        if (valid) {
-            alert('Sign up successful! (Form submission logic goes here)');
-            document.getElementById('signupForm').reset();
-        }
-    };
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
+        // Form submission logic
+        const signupForm = document.getElementById('signupForm');
+        if (signupForm) {
+            signupForm.onsubmit = function(e) {
+                e.preventDefault();
+                console.log('Form submitted!');
+                let valid = true;
+                document.querySelectorAll('.error').forEach(el => el.textContent = '');
+                
+                // Check if user type is selected
+                const userType = document.getElementById('userType').value;
+                console.log('User type:', userType);
+                if (!userType || userType === '') {
+                    document.getElementById('userTypeError').textContent = 'Please select user type.';
+                    valid = false;
+                }
+                
+                // Only validate fields based on user type
+                if (userType === 'customer') {
+                    // Customer fields validation
+                    const fullname = document.getElementById('fullname').value.trim();
+                    if (!fullname) {
+                        document.getElementById('fullnameError').textContent = 'Full name is required.';
+                        valid = false;
+                    }
+                    
+                    const email = document.getElementById('email').value.trim();
+                    if (!email) {
+                        document.getElementById('emailError').textContent = 'Email is required.';
+                        valid = false;
+                    } else if (!email.endsWith('@gmail.com')) {
+                        document.getElementById('emailError').textContent = 'Email must be a @gmail.com address.';
+                        valid = false;
+                    }
+                    
+                    const city = document.getElementById('city').value.trim();
+                    if (!city) {
+                        document.getElementById('cityError').textContent = 'City is required.';
+                        valid = false;
+                    }
+                    
+                    const district = document.getElementById('district').value.trim();
+                    if (!district) {
+                        document.getElementById('districtError').textContent = 'District is required.';
+                        valid = false;
+                    }
+                    
+                    const address = document.getElementById('address').value.trim();
+                    if (!address) {
+                        document.getElementById('addressError').textContent = 'Address is required.';
+                        valid = false;
+                    }
+                    
+                    const phone = document.getElementById('phone').value.trim();
+                    if (!phone) {
+                        document.getElementById('phoneError').textContent = 'Phone number is required.';
+                        valid = false;
+                    } else if (!/^\d{10}$/.test(phone)) {
+                        document.getElementById('phoneError').textContent = 'Phone number must be exactly 10 digits.';
+                        valid = false;
+                    }
+                } else if (userType === 'provider') {
+                    // Provider fields validation
+                    const providerFullname = document.getElementById('providerFullname').value.trim();
+                    if (!providerFullname) {
+                        document.getElementById('providerFullnameError').textContent = 'Full name is required.';
+                        valid = false;
+                    }
+                    
+                    const providerEmail = document.getElementById('providerEmail').value.trim();
+                    if (!providerEmail) {
+                        document.getElementById('providerEmailError').textContent = 'Email is required.';
+                        valid = false;
+                    } else if (!providerEmail.endsWith('@gmail.com')) {
+                        document.getElementById('providerEmailError').textContent = 'Email must be a @gmail.com address.';
+                        valid = false;
+                    }
+                    
+                    const providerPhone = document.getElementById('providerPhone').value.trim();
+                    if (!providerPhone) {
+                        document.getElementById('providerPhoneError').textContent = 'Phone number is required.';
+                        valid = false;
+                    } else if (!/^\d{10}$/.test(providerPhone)) {
+                        document.getElementById('providerPhoneError').textContent = 'Phone number must be exactly 10 digits.';
+                        valid = false;
+                    }
+                }
+                
+                // Password validation (common for both)
+                const password = document.getElementById('password').value;
+                const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+                if (!password) {
+                    document.getElementById('passwordError').textContent = 'Password is required.';
+                    valid = false;
+                } else if (!passwordRules.test(password)) {
+                    document.getElementById('passwordError').textContent = 'Password does not meet the requirements.';
+                    valid = false;
+                }
+                
+                if (valid) {
+                    // Instead of redirect, show terms step
+                    console.log('Form is valid, showing terms step...');
+                    alert('Form is valid! Attempting to show terms step...');
+                    
+                    const signupFormElement = document.getElementById('signupForm');
+                    const termsStep = document.getElementById('termsStep');
+                    console.log('signupForm element:', signupFormElement);
+                    console.log('termsStep element:', termsStep);
+                    
+                    if (signupFormElement && termsStep) {
+                        console.log('Both elements found, hiding form and showing terms...');
+                        signupFormElement.style.display = 'none';
+                        termsStep.style.display = 'block';
+                        console.log('Terms step should now be visible');
+                        alert('Terms step should be visible now!');
+                    } else {
+                        console.error('Could not find signupForm or termsStep elements');
+                        console.log('Available elements with "terms" in ID:');
+                        document.querySelectorAll('[id*="terms"]').forEach(el => console.log(el.id));
+                        console.log('Available elements with "signup" in ID:');
+                        document.querySelectorAll('[id*="signup"]').forEach(el => console.log(el.id));
+                        alert('Error: Could not find form elements. Check console for details.');
+                    }
+                } else {
+                    console.log('Form validation failed');
+                    alert('Please fix the form errors before proceeding.');
+                }
+            };
+        }
+        
         const navbarToggle = document.getElementById('navbar-toggle');
         const navbarMenu = document.querySelector('.navbar-menu');
         if(navbarToggle && navbarMenu) {
@@ -528,6 +641,50 @@
                 }
             });
         }
+        
+        // Terms step logic
+        const acceptTerms = document.getElementById('acceptTerms');
+        const termsNextBtn = document.getElementById('termsNextBtn');
+        if (acceptTerms && termsNextBtn) {
+            acceptTerms.addEventListener('change', function() {
+                termsNextBtn.disabled = !acceptTerms.checked;
+            });
+            termsNextBtn.addEventListener('click', function() {
+                document.getElementById('termsStep').style.display = 'none';
+                document.getElementById('verifyStep').style.display = '';
+                // Focus first code input
+                document.querySelector('#verifyStep .code-input').focus();
+            });
+        }
+        
+        // Verification code logic
+        const codeInputs = document.querySelectorAll('#verifyStep .code-input');
+        const verifyBtn = document.getElementById('verifyBtn');
+        if (codeInputs.length > 0 && verifyBtn) {
+            codeInputs.forEach((input, idx) => {
+                input.addEventListener('input', function() {
+                    if (input.value.length === 1 && idx < codeInputs.length - 1) {
+                        codeInputs[idx + 1].focus();
+                    }
+                });
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && input.value === '' && idx > 0) {
+                        codeInputs[idx - 1].focus();
+                    }
+                });
+            });
+            verifyBtn.addEventListener('click', function() {
+                let code = '';
+                codeInputs.forEach(input => code += input.value);
+                if (code.length !== 6 || !/^[0-9]{6}$/.test(code)) {
+                    document.getElementById('verifyError').textContent = 'Please enter a valid 6-digit code.';
+                    return;
+                }
+                // Simulate success
+                document.getElementById('verifyStep').style.display = 'none';
+                document.getElementById('successStep').style.display = '';
+            });
+        }
     });
     // Modal open/close logic
     document.addEventListener('DOMContentLoaded', function() {
@@ -551,7 +708,62 @@
                 document.body.style.overflow = '';
             }
         });
+        
+        // Login link navigation
+        document.getElementById('loginLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'login.html';
+        });
     });
+    
+    // Test redirect function
+    function testRedirect() {
+        console.log('Test redirect clicked');
+        alert('Redirecting to terms page...');
+        window.location.replace('terms.html?fromSignup=true');
+    }
+    
+    // Direct terms redirect function
+    function goToTerms() {
+        console.log('Going to terms page directly');
+        alert('Going to terms page...');
+        window.location.replace('terms.html?fromSignup=true');
+    }
+    
+    // Test function to manually show terms step
+    function testTermsStep() {
+        console.log('Testing terms step...');
+        const signupForm = document.getElementById('signupForm');
+        const termsStep = document.getElementById('termsStep');
+        console.log('signupForm:', signupForm);
+        console.log('termsStep:', termsStep);
+        
+        if (signupForm && termsStep) {
+            signupForm.style.display = 'none';
+            termsStep.style.display = 'block';
+            console.log('Terms step should be visible now');
+            alert('Terms step should be visible!');
+        } else {
+            console.error('Elements not found');
+            alert('Error: Elements not found');
+        }
+    }
+    
+    // Test function to check form submission
+    function testForm() {
+        console.log('Testing form submission...');
+        const signupForm = document.getElementById('signupForm');
+        console.log('signupForm found:', signupForm);
+        
+        if (signupForm) {
+            console.log('Form has onsubmit:', signupForm.onsubmit);
+            // Trigger form submission
+            const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+            signupForm.dispatchEvent(submitEvent);
+        } else {
+            alert('Form not found!');
+        }
+    }
     </script>
 </body>
 </html>

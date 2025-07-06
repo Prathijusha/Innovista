@@ -1,6 +1,8 @@
 body {
+
   background: #f4f7fb;
   color: #232b3e;
+
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -10,6 +12,7 @@ h2 {
   margin: 2rem 0 1.5rem 0;
   font-size: 2.5rem;
   color: #232b3e;
+
 }
 .provider-grid {
   display: grid;
@@ -40,6 +43,7 @@ h2 {
   overflow: hidden;
   border: 3px solid #31406e;
   background: #1a2032;
+
 }
 .profile-img img {
   width: 100%;
@@ -47,6 +51,7 @@ h2 {
   object-fit: cover;
 }
 .provider-name {
+
   font-size: 1.5rem;
   font-weight: 700;
   color: #aeea00;
@@ -74,6 +79,7 @@ h2 {
   border-radius: 10px;
   padding: 0.8rem 2.5rem;
   font-size: 1.2rem;
+
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   font-weight: 500;
@@ -90,6 +96,7 @@ h2 {
   background: #ffc107;
   color: #232b3e;
   font-size: 1rem;
+
   font-weight: 600;
   padding: 0.25rem 0.9rem;
   border-radius: 8px;
