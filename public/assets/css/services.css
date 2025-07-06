@@ -720,3 +720,87 @@ body {
 .painting-card .service-content {
   padding-top: 0;
 } 
+
+/* Service Selection Sidebar */
+.service-sidebar {
+  background: #b3cee5;
+  border-radius: 18px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,31,63,0.08);
+}
+.service-tab {
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8em 1.2em;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.service-tab.active, .service-tab:hover {
+  background: #005792;
+  color: #fff;
+}
+
+/* Service Card Style */
+.service-card {
+  background: #e3f0fa;
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(0,31,63,0.10);
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.service-card:hover {
+  box-shadow: 0 6px 24px rgba(0,31,63,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+.service-header-box h3 {
+  color: #003366;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.service-header-desc {
+  color: #4a90a4;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+.subcategory-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(0,31,63,0.07);
+  padding: 1.2rem 1rem 1rem 1rem;
+  margin: 0.7rem;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.subcategory-card:hover {
+  box-shadow: 0 4px 16px rgba(0,31,63,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+.subcategory-title {
+  color: #003366;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+.subcategory-desc {
+  color: #4a90a4;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+} 
+
+.services-layout {
+  background: #b3cee5;
+  display: flex;
+  border-radius: 24px;
+  padding: 2.5rem 0;
+  margin: 2rem 0;
+} 

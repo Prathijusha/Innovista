@@ -12,8 +12,9 @@ body {
     background: #fff !important;
 }
 
-body, .main-content, .product-section, .product-area, .product-details, .sidebar, .sidebar-header, .sidebar-category-item {
-  background: var(--bg-light) !important;
+/* Remove blue backgrounds from main containers */
+.main-content, .product-section, .product-area, .product-details, .sidebar, .sidebar-header, .sidebar-category-item {
+  background: #fff !important;
   color: var(--text-dark) !important;
 }
 
@@ -23,7 +24,7 @@ body, .main-content, .product-section, .product-area, .product-details, .sidebar
 }
 
 .price-section {
-  background: var(--accent) !important;
+  background: #fff !important;
   color: var(--text-dark) !important;
 }
 

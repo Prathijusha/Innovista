@@ -283,7 +283,7 @@
         }
         /* Modal styles */
         .signup-modal {
-            display: none;
+            display: flex;
             position: fixed;
             z-index: 2000;
             left: 0; top: 0; right: 0; bottom: 0;
@@ -328,10 +328,28 @@
             color: #fff !important;
             border: 3px solid red !important;
         }
+        
+        /* Login link hover effects */
+        .login-link-welcome:hover {
+            color: #fff !important;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+        
+        .signup-form-side a[href="login.html"]:hover {
+            background: #46807f;
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(70, 128, 127, 0.3);
+        }
+        .login-link-welcome-btn:hover {
+            color: #fff !important;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
     </style>
 </head>
 <body>
-    <div id="signupModal" class="signup-modal">
+    <!-- Signup Modal -->
+    <div id="signupModal" class="signup-modal" style="position:fixed; z-index:1000;">
         <div class="signup-modal-overlay"></div>
         <div class="signup-modal-content">
             <button class="signup-modal-close" id="closeSignupModal">&times;</button>
@@ -412,9 +430,13 @@
                             </div>
                             <div class="error" id="passwordError"></div>
                         </div>
-                        <button type="submit" class="user-type-btn signup-btn" style="margin-bottom: 4rem;">Sign Up</button>
-                        <button type="button" onclick="testTermsStep()" style="background: #ff6b35; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; width: 100%; display: block;">Test Terms Step</button>
-                        <button type="button" onclick="testForm()" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px; cursor: pointer; width: 100%; display: block;">Test Form</button>
+                        <button type="submit" class="user-type-btn signup-btn" style="margin-bottom: 1rem;">Sign Up</button>
+                        
+                        <!-- Login link for existing users -->
+                        <div style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; border: 1px solid #e9ecef;">
+                            <p style="margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.95rem;">Already have an account?</p>
+                            <a href="login.html" style="color: #46807f; text-decoration: none; font-weight: 600; font-size: 1rem; padding: 0.5rem 1rem; border: 2px solid #46807f; border-radius: 8px; transition: all 0.3s ease; display: inline-block;">Login Here</a>
+                        </div>
                     </form>
                     <!-- Multi-step signup sections -->
                     <div id="termsStep" style="display:none; margin-top:2rem;">
@@ -460,17 +482,34 @@
                 <div class="signup-welcome-side">
                     <div class="signup-title">Welcome to Innovista</div>
                     <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
-                    <div class="signup-login-message" style="margin-top: 2.2rem; text-align: center; font-size: 1.05rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.5);">
+                    <div class="signup-login-message" style="margin-top:2.2rem; text-align:center; font-size:1.05rem; color:#fff;">
                         Already have an account?
-                        <a href="login.html" id="loginLink" style="color: #ffd700; text-decoration: underline; font-weight: 600; cursor: pointer;">Login</a>
+                        <a href="#" id="welcomeLoginLink" style="color:#ffd700; text-decoration:underline; font-weight:600; cursor:pointer;">Log in</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal" style="display:none; position:fixed; z-index:1001;">
+        <div class="login-welcome-side">
+            <div class="login-title">Welcome Back</div>
+            <div class="login-subtitle">Sign in to access your account and continue with your projects.</div>
+            <!-- Your login form here -->
+            <button onclick="closeLoginModal()" style="position:absolute; top:1.2rem; right:1.2rem; background:none; border:none; font-size:2rem; color:#3b5bdb; cursor:pointer; z-index:3;">×</button>
+        </div>
+    </div>
+
     <script>
-    // Mobile menu toggle
+        
+    // Initialize signup modal and form functionality
     document.addEventListener('DOMContentLoaded', function() {
+        // Remove the code that shows the signup modal by default
+        // const signupModal = document.getElementById('signupModal');
+        // if (signupModal) {
+        //     signupModal.classList.add('active');
+        // }
         // Form submission logic
         const signupForm = document.getElementById('signupForm');
         if (signupForm) {
@@ -571,32 +610,14 @@
                 }
                 
                 if (valid) {
-                    // Instead of redirect, show terms step
-                    console.log('Form is valid, showing terms step...');
-                    alert('Form is valid! Attempting to show terms step...');
-                    
+                    // Show terms step
                     const signupFormElement = document.getElementById('signupForm');
                     const termsStep = document.getElementById('termsStep');
-                    console.log('signupForm element:', signupFormElement);
-                    console.log('termsStep element:', termsStep);
                     
                     if (signupFormElement && termsStep) {
-                        console.log('Both elements found, hiding form and showing terms...');
                         signupFormElement.style.display = 'none';
                         termsStep.style.display = 'block';
-                        console.log('Terms step should now be visible');
-                        alert('Terms step should be visible now!');
-                    } else {
-                        console.error('Could not find signupForm or termsStep elements');
-                        console.log('Available elements with "terms" in ID:');
-                        document.querySelectorAll('[id*="terms"]').forEach(el => console.log(el.id));
-                        console.log('Available elements with "signup" in ID:');
-                        document.querySelectorAll('[id*="signup"]').forEach(el => console.log(el.id));
-                        alert('Error: Could not find form elements. Check console for details.');
                     }
-                } else {
-                    console.log('Form validation failed');
-                    alert('Please fix the form errors before proceeding.');
                 }
             };
         }
@@ -710,60 +731,31 @@
         });
         
         // Login link navigation
-        document.getElementById('loginLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'login.html';
-        });
+        const formLoginLink = document.querySelector('.signup-form-side a[href="login.html"]');
+        if (formLoginLink) {
+            formLoginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+        }
+
+        var loginLink = document.getElementById('welcomeLoginLink');
+        if (loginLink) {
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Hide the signup modal
+                var signupModal = document.getElementById('signupModal');
+                if (signupModal) signupModal.classList.remove('active');
+                // Show the login modal (use 'active' class for consistency)
+                var loginModal = document.getElementById('loginModal');
+                if (loginModal) loginModal.classList.add('active');
+                // Prevent background scroll
+                document.body.style.overflow = 'hidden';
+            });
+        }
     });
     
-    // Test redirect function
-    function testRedirect() {
-        console.log('Test redirect clicked');
-        alert('Redirecting to terms page...');
-        window.location.replace('terms.html?fromSignup=true');
-    }
-    
-    // Direct terms redirect function
-    function goToTerms() {
-        console.log('Going to terms page directly');
-        alert('Going to terms page...');
-        window.location.replace('terms.html?fromSignup=true');
-    }
-    
-    // Test function to manually show terms step
-    function testTermsStep() {
-        console.log('Testing terms step...');
-        const signupForm = document.getElementById('signupForm');
-        const termsStep = document.getElementById('termsStep');
-        console.log('signupForm:', signupForm);
-        console.log('termsStep:', termsStep);
-        
-        if (signupForm && termsStep) {
-            signupForm.style.display = 'none';
-            termsStep.style.display = 'block';
-            console.log('Terms step should be visible now');
-            alert('Terms step should be visible!');
-        } else {
-            console.error('Elements not found');
-            alert('Error: Elements not found');
-        }
-    }
-    
-    // Test function to check form submission
-    function testForm() {
-        console.log('Testing form submission...');
-        const signupForm = document.getElementById('signupForm');
-        console.log('signupForm found:', signupForm);
-        
-        if (signupForm) {
-            console.log('Form has onsubmit:', signupForm.onsubmit);
-            // Trigger form submission
-            const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
-            signupForm.dispatchEvent(submitEvent);
-        } else {
-            alert('Form not found!');
-        }
-    }
+
     </script>
 </body>
 </html>

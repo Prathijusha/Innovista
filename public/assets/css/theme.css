@@ -1,408 +1,46 @@
-/* =========================================
-   INNOVISTA - OLIVE/KHAKI/CREAM PALETTE THEME
-   ========================================= */
-
+/* Blue Theme Variables */
 :root {
-  --gradient: linear-gradient(to bottom, #8A784E 0%, #E7EFC7 50%, #B1AB86 80%, #FEFAE0 100%);
-  --primary: #8A784E;      /* Olive Brown */
-  --secondary: #E7EFC7;    /* Soft Sage */
-  --accent: #B1AB86;       /* Earthy Khaki */
-  --bg-light: #FEFAE0;     /* Light Cream */
-  --text-dark: #8A784E;
-  --text-light: #FEFAE0;
-  --shadow: 0 4px 10px rgba(138, 120, 78, 0.15);
-  --shadow-hover: 0 6px 15px rgba(138, 120, 78, 0.22);
-  --border: 1px solid rgba(138, 120, 78, 0.12);
+  --gradient: linear-gradient(to right, #001f3f, #005792, #b3cee5);
+  --primary: #003366;
+  --secondary: #005792;
+  --accent: #4a90a4;
+  --bg-light: #b3cee5;
+  --text-dark: #001f3f;
+  --text-light: #ffffff;
 }
 
-/* =========================================
-   GLOBAL BUTTON STYLES
-   ========================================= */
-
-.btn-earthy {
-  background: var(--gradient);
-  color: var(--text-light);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  font-weight: 900;
-  font-size: 16px;
-  box-shadow: 0 4px 10px rgba(138, 120, 78, 0.15);
-  cursor: pointer;
-  transition: 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.12);
-}
-
-.btn-earthy:hover {
-  background: var(--secondary);
-  color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(138, 120, 78, 0.22);
-}
-
-.btn-earthy:active {
-  transform: translateY(0);
-}
-
-/* Keep .btn-purple, .btn-lavender, .btn-sunshine, .btn-lux, .btn-soft for legacy support, but recommend .btn-earthy */
-
-/* =========================================
-   HEADER & NAVIGATION STYLES
-   ========================================= */
-
-.main-header {
-  background: var(--gradient);
-  box-shadow: var(--shadow);
-}
-
-.navbar {
-  background: transparent;
-}
-
-.navbar-logo span {
-  color: #ffffff;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
-  font-size: 1.2em;
-}
-
-.navbar-menu li a {
-  color: #ffffff;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
-  transition: color 0.3s ease;
-  font-size: 1.1em;
-}
-
-.navbar-menu li a:hover {
-  color: var(--accent);
-}
-
-.navbar-actions .btn {
-  background: var(--accent);
+body {
+  background: #fff;
   color: var(--text-dark);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 800;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
-.navbar-actions .btn:hover {
-  background: var(--secondary);
-  color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-/* =========================================
-   HERO SECTION STYLES
-   ========================================= */
-
-.hero {
-  background: var(--gradient);
-  color: var(--text-light);
-}
-
-.hero h1 {
-  color: var(--text-light);
-  text-shadow: 0 2px 4px rgba(138, 120, 78, 0.18);
-}
-
-.hero .btn-primary {
-  background: var(--accent);
-  color: var(--text-dark);
-  border: none;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-}
-
-.hero .btn-primary:hover {
-  background: var(--secondary);
-  color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* =========================================
-   SECTION STYLES
-   ========================================= */
-
-.why-choose-us,
-.how-it-works,
-.services-section,
-.featured-providers,
-.testimonials {
-  background: var(--bg-light);
-}
-
-.why-choose-us h2,
-.how-it-works h2,
-.services-section h2,
-.featured-providers h2,
-.testimonials h2 {
-  color: var(--primary);
-}
-
-/* =========================================
-   CARD STYLES
-   ========================================= */
-
-.choose-card,
-.service-card,
-.provider-card,
-.testimonial-card {
-  background: var(--text-light);
-  border-radius: 15px;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-  border: var(--border);
-}
-
-.choose-card:hover,
-.service-card:hover,
-.provider-card:hover,
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.step-icon {
-  background: var(--gradient);
-  color: var(--text-light);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0 auto 20px;
-}
-
-/* =========================================
-   MODAL STYLES
-   ========================================= */
-
-.signup-modal-content,
-.login-modal-content {
-  background: var(--text-light);
+.section-container {
+  background: #fff;
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(138, 120, 78, 0.10);
+  box-shadow: 0 2px 12px rgba(0,31,63,0.08);
+  padding: 2.5rem 1.5rem;
+  margin: 2rem 0;
+}
+.section-blue {
+  background: #e3f0fa;
+}
+.section-accent {
+  background: #b3cee5;
 }
 
-.signup-welcome-side,
-.login-welcome-side {
-  background: var(--gradient);
-}
-
-.signup-title,
-.login-title {
-  color: var(--text-dark);
-}
-
-.signup-subtitle,
-.login-subtitle {
-  color: var(--accent);
-}
-
-.signup-btn,
-.login-btn {
+.btn-sunshine {
   background: var(--gradient);
   color: var(--text-light);
   border: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: bold;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-}
-
-.signup-btn:hover,
-.login-btn:hover {
-  background: var(--secondary);
-  color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-.user-type-btn-select {
-  background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 14px;
+  border-radius: 8px;
+  padding: 0.7em 1.5em;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s, color 0.2s;
 }
 
-.user-type-btn-select.active,
-.user-type-btn-select:hover {
-  background: var(--gradient);
-  color: var(--text-light);
-  border-color: var(--primary);
-}
-
-.form-group input {
-  border: 1.5px solid #e0e0e0;
-  background: #f5f7fa;
-  transition: border 0.2s, box-shadow 0.2s;
-}
-
-.form-group input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(138, 120, 78, 0.08);
-}
-
-.input-icon {
-  color: var(--primary);
-}
-
-/* =========================================
-   FOOTER STYLES
-   ========================================= */
-
-.main-footer {
-  background: var(--gradient);
-  color: var(--text-dark);
-  text-align: center;
-  padding: 2rem 0;
-  box-shadow: var(--shadow);
-}
-
-/* =========================================
-   DASHBOARD STYLES
-   ========================================= */
-
-.dashboard-header {
-  background: var(--gradient);
-  color: var(--text-light);
-}
-
-.dashboard-sidebar {
-  background: var(--primary);
-  color: var(--text-light);
-}
-
-.dashboard-sidebar a {
-  color: var(--text-light);
-  transition: all 0.3s ease;
-}
-
-.dashboard-sidebar a:hover,
-.dashboard-sidebar a.active {
+.btn-sunshine:hover {
   background: var(--secondary);
-  color: var(--primary);
-}
-
-.dashboard-card {
-  background: var(--text-light);
-  border-radius: 15px;
-  box-shadow: var(--shadow);
-  border: var(--border);
-  transition: all 0.3s ease;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* =========================================
-   RESPONSIVE DESIGN
-   ========================================= */
-
-@media (max-width: 768px) {
-  .btn-earthy {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-  
-  .navbar-menu {
-    background: var(--gradient);
-  }
-  
-  .signup-split-card,
-  .login-split-card {
-    flex-direction: column;
-    width: 95vw;
-    max-width: 400px;
-  }
-  
-  .signup-welcome-side,
-  .login-welcome-side {
-    border-radius: 24px 24px 0 0;
-    min-height: 200px;
-  }
-}
-
-/* =========================================
-   ANIMATIONS
-   ========================================= */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* =========================================
-   UTILITY CLASSES
-   ========================================= */
-
-.text-primary { color: var(--primary); }
-.text-secondary { color: var(--secondary); }
-.text-accent { color: var(--accent); }
-.text-dark { color: var(--text-dark); }
-.text-light { color: var(--text-light); }
-
-.bg-primary { background: var(--primary); }
-.bg-secondary { background: var(--secondary); }
-.bg-accent { background: var(--accent); }
-.bg-light { background: var(--bg-light); }
-.bg-gradient { background: var(--gradient); }
-
-.border-primary { border-color: var(--primary); }
-.border-secondary { border-color: var(--secondary); }
-.border-accent { border-color: var(--accent); }
-
-.shadow-soft { box-shadow: var(--shadow); }
-.shadow-soft-hover { box-shadow: var(--shadow-hover); } 
-
-.navbar, .navbar-menu, .navbar-logo span, .navbar-menu li a {
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-.navbar-logo span {
-  font-size: 1.2em !important;
-}
-
-.navbar-menu li a {
-  font-size: 1.1em !important;
+  color: var(--text-light);
 } 
