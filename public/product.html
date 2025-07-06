@@ -6,6 +6,7 @@
     <title>Shop Products - Innovista</title>
     <link rel="stylesheet" href="assets/css/product.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- 1. Add modal CSS in <head> after other CSS links -->
@@ -307,8 +308,8 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="navbar-actions">
-                <button type="button" class="btn-earthy" id="openLoginModal">Login</button>
-                <button type="button" class="btn-earthy" id="openSignupModal">Sign Up</button>
+                <button type="button" class="btn-blue" id="openLoginModal">Login</button>
+                <button type="button" class="btn-blue" id="openSignupModal">Sign Up</button>
             </div>
             <button class="navbar-toggle" id="navbar-toggle">
                 <span class="navbar-toggle-icon"></span>
@@ -326,646 +327,646 @@
 
     <!-- Main Content Section -->
     <section class="main-content">
-        <div class="container">
+      <div class="container">
             <div class="content-wrapper">
-                <!-- Sidebar Navigation -->
-                <aside class="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Services</h3>
-                    </div>
-                  <nav class="service-nav">
-                        <ul>
-                            <li class="nav-item active" data-service="interior-design">
-                                <i class="fas fa-home"></i>
-                                <span>Interior Design</span>
-                            </li>
-                            <li class="nav-item" data-service="painting">
-                                <i class="fas fa-paint-brush"></i>
-                                <span>Painting</span>
-                            </li>
-                            
-                        </ul>
-                    </nav>
+                    <!-- Sidebar Navigation -->
+                    <aside class="sidebar">
+              <div class="sidebar-header">
+                <h3>Services</h3>
+              </div>
+              <nav class="service-nav">
+                <ul>
+                  <li class="nav-item active" data-service="interior-design">
+                    <i class="fas fa-home"></i>
+                    <span>Interior Design</span>
+                  </li>
+                  <li class="nav-item" data-service="painting">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Painting</span>
+                  </li>
+                                
+                </ul>
+              </nav>
 
-                    <!-- Category Selection moved to sidebar -->
-                    <div class="sidebar-categories">
-                        <div class="sidebar-header">
-                            <h3>Browse by Category</h3>
-                        </div>
-                        <div class="sidebar-category-list">
-                            <div class="sidebar-category-item" data-category="furniture">
-                                <i class="fas fa-couch"></i>
-                                <span>Furniture</span>
-                            </div>
-                            <div class="sidebar-category-item" data-category="bath">
-                                <i class="fas fa-bath"></i>
-                                <span>Bathroom</span>
-                            </div>
-                            <div class="sidebar-category-item" data-category="lighting">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>Lighting</span>
-                            </div>
-                            <div class="sidebar-category-item" data-category="kitchen">
-                                <i class="fas fa-utensils"></i>
-                                <span>Kitchen</span>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+              <!-- Category Selection moved to sidebar -->
+              <div class="sidebar-categories">
+                <div class="sidebar-header">
+                  <h3>Browse by Category</h3>
+                </div>
+                <div class="sidebar-category-list">
+                  <div class="sidebar-category-item" data-category="furniture">
+                    <i class="fas fa-couch"></i>
+                    <span>Furniture</span>
+                  </div>
+                  <div class="sidebar-category-item" data-category="bath">
+                    <i class="fas fa-bath"></i>
+                    <span>Bathroom</span>
+                  </div>
+                  <div class="sidebar-category-item" data-category="lighting">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Lighting</span>
+                  </div>
+                  <div class="sidebar-category-item" data-category="kitchen">
+                    <i class="fas fa-utensils"></i>
+                    <span>Kitchen</span>
+                </div>
+              </div>
+            </div>
+          </aside>
 
                 <!-- Main Product Area -->
                 <main class="product-area">
-                    <!-- Interior Design Section -->
-                    <div class="product-section active" id="interior-design-section">
-                        <div class="section-header">
-                            <h2>Interior Design Collection</h2>
-                            <p>Premium furnishings and materials curated for sophisticated living spaces</p>
+              <!-- Interior Design Section -->
+              <div class="product-section active" id="interior-design-section">
+                <div class="section-header">
+                  <h2>Interior Design Collection</h2>
+                  <p>Premium furnishings and materials curated for sophisticated living spaces</p>
+                </div>
+
+                <!-- Subcategory Selection (Hidden by default) -->
+                <div class="subcategory-selection" id="subcategorySelection" style="display: none;">
+                  <!-- <h3>Featured Categories</h3> -->
+                  <div class="subcategory-grid" id="subcategoryGrid">
+                    <!-- Subcategories will be populated dynamically -->
+                  </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="interiorProducts">
+                  <h3>Featured Products</h3>
+                  <div class="products-list">
+                    <!-- 9 Different Sofa Products with Local Images -->
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Buchanan Roll Arm Upholstered Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge premium">Premium</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Buchanan Roll Arm Upholstered Sofa Sectional</h4>
+                        <p class="brand-name">Pottery Barn</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.8)</span>
                         </div>
-
-                        <!-- Subcategory Selection (Hidden by default) -->
-                        <div class="subcategory-selection" id="subcategorySelection" style="display: none;">
-                            <!-- <h3>Featured Categories</h3> -->
-                            <div class="subcategory-grid" id="subcategoryGrid">
-                                <!-- Subcategories will be populated dynamically -->
-                            </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Gray</option>
+                              <option>Beige</option>
+                              <option>Navy Blue</option>
+                              <option>Charcoal</option>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
                         </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 1,19,900</span>
+                          <span class="original-price">Rs. 1,59,900</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                        <!-- Product Grid -->
-                        <div class="product-grid" id="interiorProducts">
-                            <h3>Featured Products</h3>
-                            <div class="products-list">
-                                <!-- 9 Different Sofa Products with Local Images -->
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Buchanan Roll Arm Upholstered Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge premium">Premium</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Buchanan Roll Arm Upholstered Sofa Sectional</h4>
-                                        <p class="brand-name">Pottery Barn</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.8)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Gray</option>
-                                                    <option>Beige</option>
-                                                    <option>Navy Blue</option>
-                                                    <option>Charcoal</option>
-                                                    <option>White</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 1,19,900</span>
-                                            <span class="original-price">Rs. 1,59,900</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/contemporary-sofa-set.jpg" alt="Stevie Brown Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge">Memory Foam</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Stevie Brown 78" Sofa & 65" Loveseat</h4>
+                        <p class="brand-name">Bob's Discount Furniture</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.6)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Brown</option>
+                              <option>Gray</option>
+                              <option>Beige</option>
+                              <option>Black</option>
+                              <option>Navy</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 59,800</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/contemporary-sofa-set.jpg" alt="Stevie Brown Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge">Memory Foam</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Stevie Brown 78" Sofa & 65" Loveseat</h4>
-                                        <p class="brand-name">Bob's Discount Furniture</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.6)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Brown</option>
-                                                    <option>Gray</option>
-                                                    <option>Beige</option>
-                                                    <option>Black</option>
-                                                    <option>Navy</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 59,800</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/luxury-sofa-design.jpg" alt="Aspen Beige Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge">Transitional</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Aspen Beige 86" Sofa & 61" Loveseat</h4>
+                        <p class="brand-name">Bob's Discount Furniture</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.7)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Beige</option>
+                              <option>Gray</option>
+                              <option>White</option>
+                              <option>Light Brown</option>
+                              <option>Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 59,800</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/luxury-sofa-design.jpg" alt="Aspen Beige Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge">Transitional</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Aspen Beige 86" Sofa & 61" Loveseat</h4>
-                                        <p class="brand-name">Bob's Discount Furniture</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.7)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Beige</option>
-                                                    <option>Gray</option>
-                                                    <option>White</option>
-                                                    <option>Light Brown</option>
-                                                    <option>Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 59,800</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/elegant-living-room-furniture.jpg" alt="Remi Modular Sectional" onclick="openProductModal(this)">
+                        <div class="product-badge premium">Premium</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Remi Modular 70" 3-Piece Sectional</h4>
+                        <p class="brand-name">West Elm</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.9)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Gray</option>
+                              <option>Navy Blue</option>
+                              <option>Charcoal</option>
+                              <option>Beige</option>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 1,83,600</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/elegant-living-room-furniture.jpg" alt="Remi Modular Sectional" onclick="openProductModal(this)">
-                                        <div class="product-badge premium">Premium</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Remi Modular 70" 3-Piece Sectional</h4>
-                                        <p class="brand-name">West Elm</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.9)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Gray</option>
-                                                    <option>Navy Blue</option>
-                                                    <option>Charcoal</option>
-                                                    <option>Beige</option>
-                                                    <option>White</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 1,83,600</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Huatean Home Modular Sectional" onclick="openProductModal(this)">
+                        <div class="product-badge">U-Shaped</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Huatean Home Modular Sectional</h4>
+                        <p class="brand-name">Amazon</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.6)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Gray</option>
+                              <option>Beige</option>
+                              <option>Navy Blue</option>
+                              <option>Charcoal</option>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 45,000</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Huatean Home Modular Sectional" onclick="openProductModal(this)">
-                                        <div class="product-badge">U-Shaped</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Huatean Home Modular Sectional</h4>
-                                        <p class="brand-name">Amazon</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.6)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Gray</option>
-                                                    <option>Beige</option>
-                                                    <option>Navy Blue</option>
-                                                    <option>Charcoal</option>
-                                                    <option>White</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 45,000</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/luxury-sofa-design.jpg" alt="Karl Home Sectional Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge">Chenille</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Karl Home Sectional Sofa</h4>
+                        <p class="brand-name">Amazon</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          <span>(4.5)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Gray</option>
+                              <option>Beige</option>
+                              <option>Navy Blue</option>
+                              <option>Charcoal</option>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 52,500</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/luxury-sofa-design.jpg" alt="Karl Home Sectional Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge">Chenille</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Karl Home Sectional Sofa</h4>
-                                        <p class="brand-name">Amazon</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(4.5)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Gray</option>
-                                                    <option>Beige</option>
-                                                    <option>Navy Blue</option>
-                                                    <option>Charcoal</option>
-                                                    <option>White</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 52,500</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Playmax Gray Sectional" onclick="openProductModal(this)">
+                        <div class="product-badge">USB Ports</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Playmax Gray 94" 2-Piece Sectional</h4>
+                        <p class="brand-name">Bob's Discount Furniture</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.7)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Gray</option>
+                              <option>Beige</option>
+                              <option>Navy Blue</option>
+                              <option>Charcoal</option>
+                              <option>White</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 74,900</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/modern-living-room-sofa.jpg" alt="Playmax Gray Sectional" onclick="openProductModal(this)">
-                                        <div class="product-badge">USB Ports</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Playmax Gray 94" 2-Piece Sectional</h4>
-                                        <p class="brand-name">Bob's Discount Furniture</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.7)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Gray</option>
-                                                    <option>Beige</option>
-                                                    <option>Navy Blue</option>
-                                                    <option>Charcoal</option>
-                                                    <option>White</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 74,900</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/contemporary-sofa-set.jpg" alt="Phantom Beige Reclining Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge">Reclining</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Phantom Beige Manual Reclining Sofa</h4>
+                        <p class="brand-name">Bob's Discount Furniture</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.6)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Beige</option>
+                              <option>Gray</option>
+                              <option>Brown</option>
+                              <option>Black</option>
+                              <option>Navy</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 89,850</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/contemporary-sofa-set.jpg" alt="Phantom Beige Reclining Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge">Reclining</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Phantom Beige Manual Reclining Sofa</h4>
-                                        <p class="brand-name">Bob's Discount Furniture</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.6)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Beige</option>
-                                                    <option>Gray</option>
-                                                    <option>Brown</option>
-                                                    <option>Black</option>
-                                                    <option>Navy</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 89,850</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/elegant-living-room-furniture.jpg" alt="Luxury Velvet Sectional Sofa" onclick="openProductModal(this)">
+                        <div class="product-badge">Velvet</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Luxury Velvet Sectional Sofa</h4>
+                        <p class="brand-name">Premium Home</p>
+                        <p class="category-name">Sofas</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.9)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Navy Blue</option>
+                              <option>Emerald Green</option>
+                              <option>Burgundy</option>
+                              <option>Charcoal</option>
+                              <option>Blush Pink</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 1,25,000</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/elegant-living-room-furniture.jpg" alt="Luxury Velvet Sectional Sofa" onclick="openProductModal(this)">
-                                        <div class="product-badge">Velvet</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Luxury Velvet Sectional Sofa</h4>
-                                        <p class="brand-name">Premium Home</p>
-                                        <p class="category-name">Sofas</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.9)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Navy Blue</option>
-                                                    <option>Emerald Green</option>
-                                                    <option>Burgundy</option>
-                                                    <option>Charcoal</option>
-                                                    <option>Blush Pink</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 1,25,000</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <!-- Bed Products -->
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/modern-bedroom-interior.jpg" alt="Queen Size Platform Bed" onclick="openProductModal(this)">
+                        <div class="product-badge popular">Popular</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Queen Size Platform Bed</h4>
+                        <p class="brand-name">BedLux</p>
+                        <p class="category-name">Beds</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.8)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Walnut Brown</option>
+                              <option>Oak Natural</option>
+                              <option>Mahogany Dark</option>
+                              <option>White Gloss</option>
+                              <option>Black Matte</option>
+                              <option>Gray Wood</option>
+                              <option>Beige Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 22,000</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <!-- Bed Products -->
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/modern-bedroom-interior.jpg" alt="Queen Size Platform Bed" onclick="openProductModal(this)">
-                                        <div class="product-badge popular">Popular</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Queen Size Platform Bed</h4>
-                                        <p class="brand-name">BedLux</p>
-                                        <p class="category-name">Beds</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.8)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Walnut Brown</option>
-                                                    <option>Oak Natural</option>
-                                                    <option>Mahogany Dark</option>
-                                                    <option>White Gloss</option>
-                                                    <option>Black Matte</option>
-                                                    <option>Gray Wood</option>
-                                                    <option>Beige Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 22,000</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/contemporary-bed-frame.jpg" alt="Contemporary Upholstered Bed" onclick="openProductModal(this)">
+                        <div class="product-badge premium">Premium</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Contemporary Upholstered Bed</h4>
+                        <p class="brand-name">BedLux</p>
+                        <p class="category-name">Beds</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.9)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Walnut Brown</option>
+                              <option>Oak Natural</option>
+                              <option>Mahogany Dark</option>
+                              <option>White Gloss</option>
+                              <option>Black Matte</option>
+                              <option>Gray Wood</option>
+                              <option>Beige Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 28,500</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/contemporary-bed-frame.jpg" alt="Contemporary Upholstered Bed" onclick="openProductModal(this)">
-                                        <div class="product-badge premium">Premium</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Contemporary Upholstered Bed</h4>
-                                        <p class="brand-name">BedLux</p>
-                                        <p class="category-name">Beds</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.9)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Walnut Brown</option>
-                                                    <option>Oak Natural</option>
-                                                    <option>Mahogany Dark</option>
-                                                    <option>White Gloss</option>
-                                                    <option>Black Matte</option>
-                                                    <option>Gray Wood</option>
-                                                    <option>Beige Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 28,500</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/modern-bedroom-interior.jpg" alt="Modern Wooden Bed Frame" onclick="openProductModal(this)">
+                        <div class="product-badge">Standard</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Modern Wooden Bed Frame</h4>
+                        <p class="brand-name">BedLux</p>
+                        <p class="category-name">Beds</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          <span>(4.6)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Walnut Brown</option>
+                              <option>Oak Natural</option>
+                              <option>Mahogany Dark</option>
+                              <option>White Gloss</option>
+                              <option>Black Matte</option>
+                              <option>Gray Wood</option>
+                              <option>Beige Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 18,500</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/modern-bedroom-interior.jpg" alt="Modern Wooden Bed Frame" onclick="openProductModal(this)">
-                                        <div class="product-badge">Standard</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Modern Wooden Bed Frame</h4>
-                                        <p class="brand-name">BedLux</p>
-                                        <p class="category-name">Beds</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <span>(4.6)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Walnut Brown</option>
-                                                    <option>Oak Natural</option>
-                                                    <option>Mahogany Dark</option>
-                                                    <option>White Gloss</option>
-                                                    <option>Black Matte</option>
-                                                    <option>Gray Wood</option>
-                                                    <option>Beige Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 18,500</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/elegant-bed-design.jpg" alt="Elegant Canopy Bed" onclick="openProductModal(this)">
+                        <div class="product-badge">Compact</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>Elegant Canopy Bed</h4>
+                        <p class="brand-name">BedLux</p>
+                        <p class="category-name">Beds</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.5)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Walnut Brown</option>
+                              <option>Oak Natural</option>
+                              <option>Mahogany Dark</option>
+                              <option>White Gloss</option>
+                              <option>Black Matte</option>
+                              <option>Gray Wood</option>
+                              <option>Beige Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 12,000</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/elegant-bed-design.jpg" alt="Elegant Canopy Bed" onclick="openProductModal(this)">
-                                        <div class="product-badge">Compact</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>Elegant Canopy Bed</h4>
-                                        <p class="brand-name">BedLux</p>
-                                        <p class="category-name">Beds</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.5)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Walnut Brown</option>
-                                                    <option>Oak Natural</option>
-                                                    <option>Mahogany Dark</option>
-                                                    <option>White Gloss</option>
-                                                    <option>Black Matte</option>
-                                                    <option>Gray Wood</option>
-                                                    <option>Beige Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 12,000</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="product-item" data-category="furniture">
-                                    <div class="product-image">
-                                        <img src="assets/images/images/king-size-bed.jpg" alt="King Size Luxury Bed" onclick="openProductModal(this)">
-                                        <div class="product-badge luxury">Luxury</div>
-                                    </div>
-                                    <div class="product-details">
-                                        <h4>King Size Luxury Bed</h4>
-                                        <p class="brand-name">BedLux</p>
-                                        <p class="category-name">Beds</p>
-                                        <div class="product-rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>(4.9)</span>
-                                        </div>
-                                        <div class="product-options">
-                                            <div class="option-group">
-                                                <label>Color:</label>
-                                                <select>
-                                                    <option>Walnut Brown</option>
-                                                    <option>Oak Natural</option>
-                                                    <option>Mahogany Dark</option>
-                                                    <option>White Gloss</option>
-                                                    <option>Black Matte</option>
-                                                    <option>Gray Wood</option>
-                                                    <option>Beige Cream</option>
-                                                </select>
-                                            </div>
-                                            <div class="option-group">
-                                                <label>Quantity:</label>
-                                                <input type="number" min="1" value="1">
-                                            </div>
-                                        </div>
-                                        <div class="price-section">
-                                            <span class="price">Rs. 35,000</span>
-                                            <button class="btn-add-cart">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="product-item" data-category="furniture">
+                      <div class="product-image">
+                        <img src="assets/images/images/king-size-bed.jpg" alt="King Size Luxury Bed" onclick="openProductModal(this)">
+                        <div class="product-badge luxury">Luxury</div>
+                      </div>
+                      <div class="product-details">
+                        <h4>King Size Luxury Bed</h4>
+                        <p class="brand-name">BedLux</p>
+                        <p class="category-name">Beds</p>
+                        <div class="product-rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <span>(4.9)</span>
+                        </div>
+                        <div class="product-options">
+                          <div class="option-group">
+                            <label>Color:</label>
+                            <select>
+                              <option>Walnut Brown</option>
+                              <option>Oak Natural</option>
+                              <option>Mahogany Dark</option>
+                              <option>White Gloss</option>
+                              <option>Black Matte</option>
+                              <option>Gray Wood</option>
+                              <option>Beige Cream</option>
+                            </select>
+                          </div>
+                          <div class="option-group">
+                            <label>Quantity:</label>
+                            <input type="number" min="1" value="1">
+                          </div>
+                        </div>
+                        <div class="price-section">
+                          <span class="price">Rs. 35,000</span>
+                          <button class="btn-add-cart">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
 
                                 <div class="product-item" data-category="furniture">
                                     <div class="product-image">
