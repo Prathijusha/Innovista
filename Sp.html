@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovista</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f4f4f4;
+      padding-top: 80px; /* adjust if your navbar is tall */
+    }
+    .navbar-custom {
+      background: #fff;
+      border-bottom: 2px solid #f2f2f2;
+      padding: 0.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #222;
+      text-decoration: none;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 16px;
+    }
+    .nav-links-inline {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-left: 2rem;
+    }
+    .nav-links-inline a {
+      color: #222;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-links-inline a:hover {
+      color: #1a73e8;
+    }
+    .navbar-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-login {
+      border: 2px solid #1a237e;
+      color: #1a237e;
+      background: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.4rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-login:hover {
+      background: #1a237e;
+      color: #fff;
+    }
+    .btn-signup {
+      background: #1a237e;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.4rem 1.2rem;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-signup:hover {
+      background: #3949ab;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-custom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      .navbar-actions {
+        margin-top: 0.5rem;
+      }
+      .nav-links-inline {
+        gap: 1.2rem;
+        margin-left: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar-custom">
+    <a href="#" class="navbar-brand">
+      <img src="public/assets/images/logo.PNG" alt="Innovista Logo">
+      INNOVISTA
+    </a>
+    <div class="nav-links-inline">
+      <a href="Account.html"><i class="fa fa-user-cog"></i> Account</a>
+      <a href="Finance.html"><i class="fa fa-wallet"></i> Finance</a>
+      <a href="Feedback.html"><i class="fa fa-comment-dots"></i> Feedback</a>
+      <a href="Tracking.html"><i class="fa fa-map-marker-alt"></i> Tracking</a>
+      <a href="assets/SpContact.html"><i class="fa fa-phone"></i> Contact</a>
+      <a href="Notifications.html"><i class="fa fa-bell"></i> Notifications</a>
+    </div>
+    <div class="dropdown" style="margin-left: 2rem;">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg"
+           alt="profile"
+           class="rounded-circle"
+           style="width: 44px; height: 44px; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor:pointer;"
+           id="profileDropdown"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown" style="min-width: 200px; border-radius: 12px;">
+        <li class="text-center pt-3 pb-2">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile" class="rounded-circle mb-2" style="width: 48px; height: 48px; object-fit: cover;">
+          <div style="font-weight: 700; font-size: 1.2rem;">provider04</div>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-center" href="#">My Account</a></li>
+        <li><a class="dropdown-item text-center" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Hero section or other content goes here -->
+  <div style="height: 400px; background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover; position: relative;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; color: #fff;">
+      <h1 style="font-size: 3.5rem; font-weight: 700;">Transforming Spaces, Restoring Dreams</h1>
+    </div>
+  </div>
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); max-width: 350px; margin: auto;">
+        <div class="modal-body text-center p-4 position-relative">
+          <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="font-size: 1.5rem;"></button>
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+          <h4 class="mb-1" id="profileModalLabel">Provider04</h4>
+          <div class="text-muted mb-2">Provider</div>
+          <hr>
+          <div class="mb-1 text-muted" style="font-size: 0.95rem;">Account Details</div>
+          <div class="mb-1">provider04</div>
+          <div class="mb-4">provider04@gmail.com</div>
+          <button type="button" class="btn btn-danger w-50" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(function(item) {
+      if (item.textContent.trim() === 'My Account') {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          var modal = new bootstrap.Modal(document.getElementById('profileModal'));
+          modal.show();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

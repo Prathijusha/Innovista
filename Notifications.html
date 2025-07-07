@@ -1,0 +1,157 @@
+<!-- Bootstrap & FontAwesome CDN (add in <head> if not already present) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  .navbar-custom {
+    background: #fff;
+    border-bottom: 2px solid #f2f2f2;
+    padding: 0.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #222;
+    text-decoration: none;
+  }
+  .navbar-brand img {
+    height: 40px;
+    margin-right: 16px;
+  }
+  .nav-links-inline {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 2rem;
+  }
+  .nav-links-inline a {
+    color: #222;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-links-inline a:hover {
+    color: #1a73e8;
+  }
+  @media (max-width: 991.98px) {
+    .navbar-custom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+    .nav-links-inline {
+      gap: 1.2rem;
+      margin-left: 0.5rem;
+    }
+  }
+</style>
+
+<nav class="navbar-custom">
+  <a href="Account.html" class="navbar-brand">
+    <img src="public/assets/images/logo.PNG" alt="Innovista Logo">
+    INNOVISTA
+  </a>
+  <div class="nav-links-inline">
+    <a href="Account.html"><i class="fa fa-user-cog"></i> Account</a>
+    <a href="Finance.html"><i class="fa fa-wallet"></i> Finance</a>
+    <a href="Feedback.html"><i class="fa fa-comment-dots"></i> Feedback</a>
+    <a href="Tracking.html"><i class="fa fa-map-marker-alt"></i> Tracking</a>
+    <a href="SpContact.html"><i class="fa fa-phone"></i> Contact</a>
+    <a href="Notifications.html"><i class="fa fa-bell"></i> Notifications</a>
+  </div>
+  <div class="dropdown" style="margin-left: 2rem;">
+    <img src="https://randomuser.me/api/portraits/men/32.jpg"
+         alt="profile"
+         class="rounded-circle"
+         style="width: 44px; height: 44px; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor:pointer;"
+         id="profileDropdown"
+         data-bs-toggle="dropdown"
+         aria-expanded="false">
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown" style="min-width: 200px; border-radius: 12px;">
+      <li class="text-center pt-3 pb-2">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile" class="rounded-circle mb-2" style="width: 48px; height: 48px; object-fit: cover;">
+        <div style="font-weight: 700; font-size: 1.2rem;">provider04</div>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item text-center" href="#">My Account</a></li>
+      <li><a class="dropdown-item text-center" href="#">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Bootstrap JS (add before </body> if not already present) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.querySelectorAll('.dropdown-item').forEach(function(item) {
+    if (item.textContent.trim() === 'My Account') {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Show your profile modal here if needed
+      });
+    }
+  });
+</script>
+
+<!-- Service Requests Section -->
+<div style="max-width: 700px; margin: 40px auto 0 auto;">
+  <h2 style="text-align: center; font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; margin-bottom: 1.5rem;">
+    Service Requests
+  </h2>
+  <div style="background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem 2.5rem 1.5rem 2.5rem;">
+    <div style="font-size: 1.08rem;">
+      <div style="display: flex; margin-bottom: 0.7rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Name:</span>
+        <span style="color: #222;">Alice Smith</span>
+      </div>
+      <div style="display: flex; margin-bottom: 0.7rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Email:</span>
+        <span style="color: #222;">alice.smith@example.com</span>
+      </div>
+      <div style="display: flex; margin-bottom: 0.7rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Location:</span>
+        <span style="color: #222;">Colombo</span>
+      </div>
+      <div style="display: flex; margin-bottom: 0.7rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Expected Service:</span>
+        <span style="color: #222;">Need electrical services for my home.</span>
+      </div>
+      <div style="display: flex; margin-bottom: 0.7rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Expected Service Start Date:</span>
+        <span style="color: #222;">2024-07-01</span>
+      </div>
+      <div style="display: flex; margin-bottom: 1.2rem;">
+        <span style="font-weight: 700; color: #2471A3; min-width: 210px;">Expected Service End Date:</span>
+        <span style="color: #222;">2024-07-05</span>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+      <button class="btn btn-success" id="acceptRequestBtn" style="font-weight: 600; min-width: 100px; border-radius: 6px;">Accept</button>
+      <button class="btn btn-danger" id="declineRequestBtn" style="font-weight: 600; min-width: 100px; border-radius: 6px;">Decline</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add this script at the end of your body or in a <script> block -->
+<script>
+  document.getElementById('acceptRequestBtn').onclick = function() {
+    alert('Service request accepted!');
+  };
+  document.getElementById('declineRequestBtn').onclick = function() {
+    alert('Service request declined.');
+  };
+</script>

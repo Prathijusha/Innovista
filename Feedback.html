@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovista</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f4f4f4;
+      padding-top: 80px; /* adjust if your navbar is tall */
+    }
+    .navbar-custom {
+      background: #fff;
+      border-bottom: 2px solid #f2f2f2;
+      padding: 0.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: #222;
+      text-decoration: none;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 16px;
+    }
+    .nav-links-inline {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-left: 2rem;
+    }
+    .nav-links-inline a {
+      color: #222;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-links-inline a:hover {
+      color: #1a73e8;
+    }
+    .navbar-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-login {
+      border: 2px solid #1a237e;
+      color: #1a237e;
+      background: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.4rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-login:hover {
+      background: #1a237e;
+      color: #fff;
+    }
+    .btn-signup {
+      background: #1a237e;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 0.4rem 1.2rem;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-signup:hover {
+      background: #3949ab;
+    }
+    @media (max-width: 991.98px) {
+      .navbar-custom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      .navbar-actions {
+        margin-top: 0.5rem;
+      }
+      .nav-links-inline {
+        gap: 1.2rem;
+        margin-left: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar-custom">
+    <a href="Account.html" class="navbar-brand">
+      <img src="public/assets/images/logo.PNG" alt="Innovista Logo">
+      INNOVISTA
+    </a>
+    <div class="nav-links-inline">
+      <a href="Account.html"><i class="fa fa-user-cog"></i> Account</a>
+      <a href="Finance.html"><i class="fa fa-wallet"></i> Finance</a>
+      <a href="Feedback.html"><i class="fa fa-comment-dots"></i> Feedback</a>
+      <a href="Tracking.html"><i class="fa fa-map-marker-alt"></i> Tracking</a>
+      <a href="SpContact.html"><i class="fa fa-phone"></i> Contact</a>
+      <a href="Notifications.html"><i class="fa fa-bell"></i> Notifications</a>
+    </div>
+    <div class="dropdown" style="margin-left: 2rem;">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg"
+           alt="profile"
+           class="rounded-circle"
+           style="width: 44px; height: 44px; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor:pointer;"
+           id="profileDropdown"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown" style="min-width: 200px; border-radius: 12px;">
+        <li class="text-center pt-3 pb-2">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profile" class="rounded-circle mb-2" style="width: 48px; height: 48px; object-fit: cover;">
+          <div style="font-weight: 700; font-size: 1.2rem;">provider04</div>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-center" href="#">My Account</a></li>
+        <li><a class="dropdown-item text-center" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div style="max-width: 850px; margin: 40px auto;">
+    <div style="background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2.5rem 2.5rem 2rem 2.5rem; border: 1px solid #eee;">
+      <h2 style="text-align: center; font-family: 'Montserrat', Arial, sans-serif; font-weight: 500; margin-bottom: 2rem;">Customer Feedback</h2>
+      
+      <!-- Feedback 1 -->
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-weight: 700; font-size: 1.1rem;">John Doe</div>
+        <div style="color: #FFD700; margin: 0.2rem 0;">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <div>Excellent service! Highly recommend.</div>
+      </div>
+      <hr style="margin: 0.5rem 0 1.5rem 0; border-color: #eee;">
+      
+      <!-- Feedback 2 -->
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-weight: 700; font-size: 1.1rem;">Jane Smith</div>
+        <div style="color: #FFD700; margin: 0.2rem 0;">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <div>Good job, but can improve punctuality.</div>
+      </div>
+      <hr style="margin: 0.5rem 0 1.5rem 0; border-color: #eee;">
+      
+      <!-- Feedback 3 -->
+      <div>
+        <div style="font-weight: 700; font-size: 1.1rem;">Alice Johnson</div>
+        <div style="color: #FFD700; margin: 0.2rem 0;">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <div>Average experience, expected better communication.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(function(item) {
+      if (item.textContent.trim() === 'My Account') {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Show your profile modal here if needed
+        });
+      }
+    });
+  </script>
+</body>
+</html>
