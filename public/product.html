@@ -9,290 +9,829 @@
     <link rel="stylesheet" href="assets/css/theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 1. Add modal CSS in <head> after other CSS links -->
     <style>
-    .signup-split-card { display: flex; flex-direction: row; width: 900px; min-height: 540px; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,41,59,0.10); background: none; max-height: 90vh; overflow-y: auto; padding: 0 !important; }
-    .signup-welcome-side { background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat; color: #fff; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 !important; border-radius: 0 24px 24px 0; width: 50%; position: relative; padding-left: 0; padding-right: 0; box-sizing: border-box; }
-    .signup-welcome-side::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30,41,59,0.45); border-radius: 0 24px 24px 0; z-index: 1; }
-    .signup-welcome-side .signup-title, .signup-welcome-side .signup-subtitle { position: relative; z-index: 2; max-width: none; margin-left: 0; margin-right: 0; text-align: center; }
-    .signup-form-side { background: #fff; flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 !important; border-radius: 24px 0 0 24px; width: 50%; padding-left: 32px; padding-right: 32px; }
-    .signup-form-side form { width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 1.1rem; }
-    .form-group, .password-group { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
-    .input-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #46807f; font-size: 1.2rem; pointer-events: none; z-index: 2; }
-    .form-group input { width: 100%; padding: 0.9rem 1rem 0.9rem 2.5rem; border-radius: 10px; border: 1.5px solid #e0e0e0; background: #f5f7fa; font-size: 1rem; font-weight: 500; transition: border 0.2s, box-shadow 0.2s; outline: none; margin-top: 0.1rem; box-sizing: border-box; }
-    .signup-btn { width: 100%; padding: 1rem 0; border-radius: 10px; background: #3b5bdb; color: #fff; font-size: 1.1rem; font-weight: 700; border: none; margin-top: 0.7rem; cursor: pointer; transition: background 0.2s; }
-    .signup-btn:hover { background: #274690; }
-    .signup-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem; text-align: center; width: 100%; }
-    .signup-subtitle { font-size: 1.2rem; color: #e0e0e0; margin-bottom: 0; text-align: center; width: 100%; }
-    .required { color: #b71c1c; font-weight: bold; }
-    .error { color: #b71c1c; font-size: 0.97em; margin-top: 0.2em; font-weight: 500; }
-    .password-rules { font-size: 0.97em; color: #555; margin-top: 0.2em; background: #f1f5fa; padding: 0.4em 0.7em; border-radius: 6px; margin-bottom: 0.2em; }
-    .terms { color: #888; font-size: 0.97em; text-align: center; margin-top: 1.5rem; margin-bottom: 0.2rem; }
-    .user-type-btn-group { margin-top: 24px; display: flex; gap: 0.5rem; margin-bottom: 1rem; width: 100%; justify-content: center; flex-wrap: wrap; }
-    .user-type-btn-select { flex: 1 1 90px; min-width: 90px; max-width: 140px; padding: 0.4rem 0.5rem; border-radius: 6px; border: 2px solid #3b5bdb; background: #fff; color: #3b5bdb; font-size: 0.98rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s, border 0.2s; box-sizing: border-box; }
-    .user-type-btn-select.active, .user-type-btn-select:focus { background: #3b5bdb; color: #fff; border: 2px solid #3b5bdb; }
-    .signup-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; justify-content: center; align-items: center; padding-top: 32px; padding-bottom: 32px; align-items: flex-start; }
-    .signup-modal.active { display: flex; }
-    .signup-modal-overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(30,41,59,0.25); backdrop-filter: blur(6px); z-index: 1; }
-    .signup-modal-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; max-height: calc(100vh - 64px); overflow-y: auto; margin-top: 0; margin-bottom: 0; border-radius: 24px; background: #fff; box-shadow: 0 8px 32px rgba(30,41,59,0.18); padding: 0 !important; }
-    .signup-modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 2rem; color: #3b5bdb; cursor: pointer; z-index: 3; }
-    .main-footer {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .main-footer.visible {
-      display: block;
-      opacity: 1;
-    }
-    </style>
-
-    <!-- Signup Modal CSS -->
-    <style>
-    /* Modal background */
-    #signup-modal-bg {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(4px);
-      justify-content: center; align-items: center;
-    }
-
-    /* Modal container */
-    #signup-modal {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-      display: flex;
-      max-width: 700px;
-      width: 95vw;
-      min-height: 400px;
-      overflow: hidden;
-      animation: fadeIn 0.3s;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95);} to { opacity: 1; transform: scale(1);} }
-
-    /* Left: Form */
-    .signup-modal-left {
-      flex: 1.2;
-      padding: 32px 24px;
-      display: flex; flex-direction: column; justify-content: center;
-      background: #f8f9fa;
-      min-width: 300px;
-      overflow-y: auto;
-    }
-    .signup-modal-left h2 { margin-bottom: 16px; }
-    .signup-modal-left form { display: flex; flex-direction: column; gap: 12px; }
-    .signup-modal-left input, .signup-modal-left select {
-      padding: 10px 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
-    }
-    .signup-modal-left button {
-      background: #007bff; color: #fff; border: none; border-radius: 6px;
-      padding: 10px; font-size: 1rem; cursor: pointer; margin-top: 8px;
-      transition: background 0.2s;
-    }
-    .signup-modal-left button:hover { background: #0056b3; }
-    .signup-modal-left .step { display: none; }
-    .signup-modal-left .step.active { display: block; }
-    .signup-modal-left .back-btn { background: #e0e0e0; color: #333; margin-right: 8px; }
-    .signup-modal-left .back-btn:hover { background: #bdbdbd; }
-
-    /* Right: Welcome */
-    .signup-modal-right {
-      flex: 1;
-      background: linear-gradient(135deg, #007bff 60%, #6dd5ed 100%);
-      color: #fff;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 32px 16px;
-      min-width: 200px;
-    }
-    .signup-modal-right h2 { margin-bottom: 12px; }
-    .signup-modal-right p { font-size: 1.1rem; }
-
-    /* Close button */
-    #signup-modal-close {
-      position: absolute; top: 18px; right: 24px; font-size: 1.8rem; color: #888;
-      background: none; border: none; cursor: pointer; z-index: 10001;
-      transition: color 0.2s;
-    }
-    #signup-modal-close:hover { color: #007bff; }
-
-    @media (max-width: 600px) {
-      #signup-modal { flex-direction: column; min-width: 0; }
-      .signup-modal-right { min-width: 0; padding: 24px 8px; }
-      .signup-modal-left { padding: 24px 8px; }
-    }
-    </style>
-
-    <!-- Signup Modal Popup -->
-    <div id="signup-modal-bg">
-      <div id="signup-modal">
-        <button id="signup-modal-close" aria-label="Close">&times;</button>
-        <div class="signup-modal-left">
-          <div class="step step-1 active">
-            <h2>Sign Up</h2>
-            <form id="signup-form">
-              <select id="user-type" required>
-                <option value="" disabled selected>Select user type</option>
-                <option value="customer">Customer</option>
-                <option value="provider">Service Provider</option>
-              </select>
-              <input type="text" id="name" placeholder="Full Name" required>
-              <input type="email" id="email" placeholder="Email" required>
-              <input type="password" id="password" placeholder="Password" required>
-              <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-              <div id="provider-extra" style="display:none;">
-                <input type="text" id="company" placeholder="Company Name">
-                <input type="file" id="portfolio" accept=".pdf,.jpg,.png,.doc,.docx">
-              </div>
-              <button type="submit">Next</button>
-            </form>
-          </div>
-          <div class="step step-2">
-            <h2>Terms &amp; Conditions</h2>
-            <div style="height:120px; overflow:auto; background:#fff; border:1px solid #eee; border-radius:6px; padding:8px; margin-bottom:12px;">
-              <p id="terms-text">
-                Please read and accept our terms and conditions to continue.
-              </p>
+   /* Signup Modal Styles */
+        .signup-modal {
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            background: rgba(30,41,59,0.25);
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            backdrop-filter: blur(5px);
+        }
+        .signup-modal.active {
+            display: flex;
+        }
+        .signup-modal-content {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(30,41,59,0.18);
+            margin: 2rem auto;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            overflow: visible;
+            position: relative;
+        }
+        .signup-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1.3rem;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(30,41,59,0.08);
+            transition: background 0.2s, border 0.2s;
+            z-index: 10;
+        }
+        .signup-modal-close:hover {
+            background: #f5f5f5;
+            border-color: #888;
+        }
+        .signup-split-card {
+            display: flex;
+            flex-direction: row;
+            width: 900px;
+            min-height: 540px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(30,41,59,0.10);
+            background: none;
+        }
+        .signup-welcome-side {
+            background: url('assets/images/images/service/signup.jpg') center center/cover no-repeat !important;
+            color: #fff;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 2.5rem;
+            border-radius: 0 24px 24px 0;
+            width: 50%;
+            position: relative;
+        }
+        .signup-welcome-side::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30,41,59,0.45);
+            border-radius: 0 24px 24px 0;
+            z-index: 1;
+        }
+        .signup-welcome-side .signup-title,
+        .signup-welcome-side .signup-subtitle {
+            position: relative;
+            z-index: 2;
+        }
+        .signup-form-side {
+            background: #fff;
+            flex: 1 1 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem 2.5rem;
+            border-radius: 24px 0 0 24px;
+            width: 50%;
+        }
+        .signup-form-side form {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            padding-bottom: 1rem;
+        }
+        .form-group, .password-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .input-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #46807f;
+            font-size: 1.2rem;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.5rem;
+            border-radius: 10px;
+            border: 1.5px solid #e0e0e0;
+            background: #f5f7fa;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: border 0.2s, box-shadow 0.2s;
+            outline: none;
+            margin-top: 0.1rem;
+            box-sizing: border-box;
+        }
+        .signup-btn {
+            width: 100%;
+            padding: 1rem 0;
+            border-radius: 10px;
+            background: var(--gradient);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            margin-top: 0.7rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .signup-btn:hover {
+            background: var(--secondary);
+            color: var(--text-light);
+        }
+        .signup-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            width: 100%;
+        }
+        .signup-subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .user-type-btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            width: 100%;
+            justify-content: center;
+        }
+        .user-type-btn-select {
+            flex: 1 1 0;
+            padding: 0.7rem 0.5rem;
+            border-radius: 8px;
+            border: 2px solid #3b5bdb;
+            background: #fff;
+            color: #3b5bdb;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .user-type-btn-select.active, .user-type-btn-select:focus {
+            background: #3b5bdb;
+            color: #fff;
+            border: 2px solid #3b5bdb;
+        }
+        .password-rules {
+            font-size: 0.97em;
+            color: #555;
+            margin-top: 0.2em;
+            background: #f1f5fa;
+            padding: 0.4em 0.7em;
+            border-radius: 6px;
+            margin-bottom: 0.2em;
+        }
+        .password-rule-ok {
+            color: #28a745 !important;
+        }
+        .terms {
+            color: #888;
+            font-size: 0.97em;
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+        .error {
+            color: #b71c1c;
+            font-size: 0.97em;
+            margin-top: 0.2em;
+            font-weight: 500;
+        }
+        @media (max-width: 1000px) {
+            .signup-split-card {
+                width: 98vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .signup-split-card {
+                flex-direction: column-reverse;
+                width: 100vw;
+                min-height: 0;
+                border-radius: 0;
+            }
+            .signup-form-side, .signup-welcome-side {
+                border-radius: 0;
+                min-height: 320px;
+                padding: 1.2rem 0.7rem;
+            }
+            .signup-title {
+                font-size: 1.3rem;
+            }
+            .signup-form-side form {
+                max-width: 100%;
+            }
+        }
+        </style>
+    <!-- Signup Modal -->
+<div id="signupModal" class="signup-modal">
+    <div class="signup-modal-overlay"></div>
+    <div class="signup-modal-content">
+        <button class="signup-modal-close" id="closeSignupModal">&times;</button>
+        <div class="signup-split-card">
+            <div class="signup-form-side">
+                <form id="signupForm" autocomplete="off">
+                    <div class="user-type-btn-group">
+                        <button type="button" class="user-type-btn-select active" id="btnCustomer">Sign up as Customer</button>
+                        <button type="button" class="user-type-btn-select" id="btnProvider">Sign up as Service Provider</button>
+                        <input type="hidden" id="userType" name="userType" value="customer">
+                    </div>
+                    <div id="customerFields">
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-user"></i></span>
+                            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                            <div class="error" id="fullnameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            <div class="error" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-phone"></i></span>
+                            <input type="text" id="phone" name="phone" maxlength="10" placeholder="Phone Number" required>
+                            <div class="error" id="phoneError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-home"></i></span>
+                            <input type="text" id="address" name="address" placeholder="Address" required>
+                            <div class="error" id="addressError"></div>
+                        </div>
+                    </div>
+                    <div id="providerFields" style="display:none;">
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-user"></i></span>
+                            <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name">
+                            <div class="error" id="providerFullnameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address">
+                            <div class="error" id="providerEmailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-phone"></i></span>
+                            <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number">
+                            <div class="error" id="providerPhoneError"></div>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-folder-open"></i></span>
+                            <input type="file" id="portfolio" name="portfolio" multiple accept="image/*">
+                            <div id="portfolioFiles" style="margin-top:0.5rem;"></div>
+                            <div class="error" id="portfolioError"></div>
+                        </div>
+                    </div>
+                    <div class="form-group password-group">
+                        <span class="input-icon"><i class="fa fa-lock"></i></span>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <div class="password-rules">
+                            <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
+                                <li id="rule-length">At least 8 characters</li>
+                                <li id="rule-uppercase">At least one uppercase letter</li>
+                                <li id="rule-lowercase">At least one lowercase letter</li>
+                                <li id="rule-number">At least one number</li>
+                                <li id="rule-special">At least one special character</li>
+                            </ul>
+                        </div>
+                        <div class="error" id="passwordError"></div>
+                    </div>
+                    <button type="submit" class="user-type-btn signup-btn" style="margin-bottom: 1rem;">Sign Up</button>
+                </form>
+                
+                <!-- Multi-step signup sections -->
+                <div id="termsStep" style="display:none; margin-top:2rem;">
+                    <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
+                        <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Terms and Conditions</h2>
+                        <div style="font-size:1.01rem; margin-bottom:1.2rem; line-height:1.6;">
+                            By proceeding with your booking on Innovista, you agree to the following terms and conditions. All appointments are subject to confirmation based on the availability of the selected service provider. Once a booking is confirmed, it cannot be cancelled for a refund. However, you may request to reschedule your appointment at least 24 hours in advance, subject to the service provider's availability. Refunds will not be issued for cancellations, change of mind, dissatisfaction with design preferences, or delays caused by the customer. Service timelines may vary due to external factors such as weather conditions, supply availability, or prior project delays. Innovista will make reasonable efforts to inform you in advance of any such changes. As a customer, you are responsible for providing accurate contact details and ensuring access to the service location at the agreed time. Innovista connects you with independent service providers and does not take responsibility for any disputes or damages related to their services. By signing up or making a booking, you acknowledge and accept these terms in full.
+                        </div>
+                        <div style="margin-bottom:1.2rem;">
+                            <input type="checkbox" id="acceptTerms"> <label for="acceptTerms">I accept the terms and conditions</label>
+                        </div>
+                        <button id="termsNextBtn" class="signup-btn" style="width:100%;" disabled>Next</button>
+                    </div>
+                </div>
+                <div id="verifyStep" style="display:none; margin-top:2rem;">
+                    <div style="max-width: 420px; background: #E7EFC7; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
+                        <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:1.1rem; color:#8A784E;">Verify Your Account</h2>
+                        <div style="font-size:1.01rem; margin-bottom:1.2rem;">Enter the 6-digit verification code sent to your email/phone.</div>
+                        <div id="codeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;">
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
+                        </div>
+                        <button id="verifyBtn" class="signup-btn" style="width:100%;">Verify</button>
+                        <div id="verifyError" style="color:#b71c1c; margin-top:0.7em; font-size:1em;"></div>
+                    </div>
+                </div>
+                <div id="successStep" style="display:none; margin-top:2rem;">
+                    <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2.2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222; text-align:center;">
+                        <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Account Successfully Created!</h2>
+                        <div style="font-size:1.08rem; margin-bottom:1.2rem;">Welcome to Innovista. You can now log in and start booking services.</div>
+                        <a href="login.html" class="signup-btn" style="width:100%; text-align:center; display:inline-block;">Go to Login</a>
+                    </div>
+                </div>
+                <!-- End multi-step signup sections -->
+                
+                <div class="terms">
+                    By continuing, you agree to our <a href="#" style="color:#46807f;text-decoration:none;">Terms</a> and <a href="#" style="color:#46807f;text-decoration:none;">Privacy Policy</a>.
+                </div>
             </div>
-            <label><input type="checkbox" id="accept-terms"> I accept the terms and conditions</label>
-            <div style="margin-top:12px;">
-              <button class="back-btn" type="button">Back</button>
-              <button id="terms-next-btn" type="button" disabled>Next</button>
+            <div class="signup-welcome-side">
+                <div class="signup-title">Welcome to Innovista</div>
+                <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
+                
+                <!-- Login link for existing users -->
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); position: relative; z-index: 2;">
+                    <p style="margin: 0 0 0.8rem 0; color: #fff; font-size: 1rem; font-weight: 500;">Already have an account?</p>
+                    <a href="login.html" style="color: #fff; text-decoration: none; font-weight: 600; font-size: 1rem; padding: 0.7rem 1.5rem; border: 2px solid #fff; border-radius: 8px; transition: all 0.3s ease; display: inline-block; background: rgba(255,255,255,0.1);">Login Here</a>
+                </div>
             </div>
-          </div>
-          <div class="step step-3">
-            <h2>Verify Email</h2>
-            <p>Enter the 6-digit code sent to your email.</p>
-            <input type="text" id="verification-code" maxlength="6" placeholder="123456" required>
-            <div style="margin-top:12px;">
-              <button class="back-btn" type="button">Back</button>
-              <button id="verify-btn" type="button">Verify</button>
-            </div>
-          </div>
-          <div class="step step-4">
-            <h2>Success!</h2>
-            <p>Your account has been created.<br>Welcome to Innovista!</p>
-            <button id="signup-done-btn" type="button">Done</button>
-          </div>
         </div>
-        <div class="signup-modal-right">
-          <h2>Welcome!</h2>
-          <p>Join Innovista to access exclusive services and offers.<br>Already have an account? <a href="#" style="color:#fff;text-decoration:underline;">Log in</a></p>
-        </div>
-      </div>
     </div>
+  </div>
+  <div id="loginModal" class="login-modal">
+    <div class="login-modal-overlay"></div>
+    <div class="login-modal-content">
+        <button class="login-modal-close" id="closeLoginModal">&times;</button>
+        <div class="login-split-card">
+            <div class="login-form-side">
+                <div class="login-step-container" style="width:100%; max-width:420px; margin:0 auto; position:relative;">
+                   
+  
+                    <!-- Step 2: OTP Verification -->
+                    <div id="loginOtpSection" class="otp-section" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Verify Your Account</h3>
+                        <p style="font-size:0.98rem; color:#333; margin-bottom:1.2rem;">Enter the 6-digit code sent to your email to complete your login.</p>
+                        <div id="loginOtpInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;"></div>
+                        <div id="loginOtpError" style="color:#b71c1c; font-size:0.97em; margin-bottom:0.7rem;"></div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button type="button" id="loginOtpBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
+                            <button id="loginOtpVerifyBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Verify</button>
+                        </div>
+                    </div>
+  
+                    <!-- Step 3: Success Message -->
+                    <div id="loginSuccessSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.3rem; font-weight:800; color:#46807f; margin-bottom:1.2rem;">Login Successful!</h3>
+                        <p style="font-size:1.05rem; color:#333;">Welcome back to Innovista. Redirecting to your dashboard...</p>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+  </div>
 
-    <!-- Signup Modal JS -->
-    <script>
+   <!-- Signup Modal Script -->
+<script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Modal elements
-      const modalBg = document.getElementById('signup-modal-bg');
-      const modal = document.getElementById('signup-modal');
-      const closeBtn = document.getElementById('signup-modal-close');
-      const steps = modal.querySelectorAll('.step');
-      const form = document.getElementById('signup-form');
-      const userType = document.getElementById('user-type');
-      const providerExtra = document.getElementById('provider-extra');
-      const termsText = document.getElementById('terms-text');
-      const acceptTerms = document.getElementById('accept-terms');
-      const termsNextBtn = document.getElementById('terms-next-btn');
-      const verificationCode = document.getElementById('verification-code');
-      const verifyBtn = document.getElementById('verify-btn');
-      const doneBtn = document.getElementById('signup-done-btn');
-
-      // Show/hide provider fields
-      userType.addEventListener('change', function() {
-        if (userType.value === 'provider') {
-          providerExtra.style.display = '';
-          termsText.textContent = "As a Service Provider, you agree to provide accurate portfolio information and adhere to Innovista's quality standards. Please read and accept our terms and conditions to continue.";
-        } else {
-          providerExtra.style.display = 'none';
-          termsText.textContent = "Please read and accept our terms and conditions to continue.";
+  // User type toggle logic
+  const btnCustomer = document.getElementById('btnCustomer');
+  const btnProvider = document.getElementById('btnProvider');
+  const userTypeInput = document.getElementById('userType');
+  const customerFields = document.getElementById('customerFields');
+  const providerFields = document.getElementById('providerFields');
+  btnCustomer.addEventListener('click', function() {
+    btnCustomer.classList.add('active');
+    btnProvider.classList.remove('active');
+    userTypeInput.value = 'customer';
+    customerFields.style.display = '';
+    providerFields.style.display = 'none';
+  });
+  btnProvider.addEventListener('click', function() {
+    btnProvider.classList.add('active');
+    btnCustomer.classList.remove('active');
+    userTypeInput.value = 'provider';
+    customerFields.style.display = 'none';
+    providerFields.style.display = '';
+  });
+  
+  // Step elements
+  const signupForm = document.getElementById('signupForm');
+  const termsSection = document.getElementById('termsSection');
+  const verificationSection = document.getElementById('verificationSection');
+  const successSection = document.getElementById('successSection');
+  const acceptTerms = document.getElementById('acceptTerms');
+  const termsNextBtn = document.getElementById('termsNextBtn');
+  const termsBackBtn = document.getElementById('termsBackBtn');
+  const verifyBtn = document.getElementById('verifyBtn');
+  const verifyBackBtn = document.getElementById('verifyBackBtn');
+  const codeInputsDiv = document.getElementById('codeInputs');
+  const verificationError = document.getElementById('verificationError');
+  
+  // Provider step elements
+  const providerTermsSection = document.getElementById('providerTermsSection');
+  const providerVerificationSection = document.getElementById('providerVerificationSection');
+  const providerSuccessSection = document.getElementById('providerSuccessSection');
+  const acceptProviderTerms = document.getElementById('acceptProviderTerms');
+  const providerTermsNextBtn = document.getElementById('providerTermsNextBtn');
+  const providerTermsBackBtn = document.getElementById('providerTermsBackBtn');
+  const providerVerifyBtn = document.getElementById('providerVerifyBtn');
+  const providerVerifyBackBtn = document.getElementById('providerVerifyBackBtn');
+  const providerCodeInputsDiv = document.getElementById('providerCodeInputs');
+  const providerVerificationError = document.getElementById('providerVerificationError');
+  
+  // Show only one step at a time (for both flows)
+  function showStep(step) {
+    [signupForm, termsSection, verificationSection, successSection, providerTermsSection, providerVerificationSection, providerSuccessSection].forEach(s => s.style.display = 'none');
+    step.style.display = '';
+  }
+  // Initial state
+  showStep(signupForm);
+  
+  // Form submit (customer or provider)
+  signupForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const userType = userTypeInput.value;
+    if (userType === 'customer') {
+      showStep(termsSection);
+      acceptTerms.checked = false;
+      termsNextBtn.style.display = 'none';
+    } else if (userType === 'provider') {
+      showStep(providerTermsSection);
+      acceptProviderTerms.checked = false;
+      providerTermsNextBtn.style.display = 'none';
+    }
+  });
+  
+  // Customer terms accept logic
+  acceptTerms.addEventListener('change', function() {
+    termsNextBtn.style.display = this.checked ? '' : 'none';
+  });
+  // Customer Terms Next/Back
+  termsNextBtn.addEventListener('click', function() {
+    showStep(verificationSection);
+    verificationError.textContent = '';
+    codeInputsDiv.innerHTML = '';
+    // Create 6 input boxes
+    for (let i = 0; i < 6; i++) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = 1;
+      input.style.width = '2.2em';
+      input.style.height = '2.2em';
+      input.style.fontSize = '1.5em';
+      input.style.textAlign = 'center';
+      input.style.border = '1.5px solid #e0e0e0';
+      input.style.borderRadius = '6px';
+      input.style.margin = '0 0.1em';
+      input.style.outline = 'none';
+      input.style.background = '#f5f7fa';
+      input.style.transition = 'border 0.2s';
+      input.addEventListener('input', function() {
+        if (this.value.length === 1 && i < 5) {
+          codeInputsDiv.children[i+1].focus();
+        }
+        checkCodeFilled();
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value === '' && i > 0) {
+          codeInputsDiv.children[i-1].focus();
         }
       });
-
-      // Step navigation
-      function showStep(n) {
-        steps.forEach((step, i) => step.classList.toggle('active', i === n));
+      codeInputsDiv.appendChild(input);
+    }
+    codeInputsDiv.children[0].focus();
+    verifyBtn.style.display = 'none';
+  });
+  termsBackBtn.addEventListener('click', function() {
+    showStep(signupForm);
+  });
+  // Customer Verification Next/Back
+  function checkCodeFilled() {
+    const code = Array.from(codeInputsDiv.children).map(inp => inp.value).join('');
+    verifyBtn.style.display = code.length === 6 && /^[0-9]{6}$/.test(code) ? '' : 'none';
+  }
+  verifyBtn.addEventListener('click', function() {
+    const code = Array.from(codeInputsDiv.children).map(inp => inp.value).join('');
+    if (code.length === 6 && /^[0-9]{6}$/.test(code)) {
+      showStep(successSection);
+    } else {
+      verificationError.textContent = 'Please enter the 6-digit code.';
+    }
+  });
+  verifyBackBtn.addEventListener('click', function() {
+    showStep(termsSection);
+  });
+  
+  // Provider terms accept logic
+  acceptProviderTerms.addEventListener('change', function() {
+    providerTermsNextBtn.style.display = this.checked ? '' : 'none';
+  });
+  // Provider Terms Next/Back
+  providerTermsNextBtn.addEventListener('click', function() {
+    showStep(providerVerificationSection);
+    providerVerificationError.textContent = '';
+    providerCodeInputsDiv.innerHTML = '';
+    // Create 6 input boxes
+    for (let i = 0; i < 6; i++) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = 1;
+      input.style.width = '2.2em';
+      input.style.height = '2.2em';
+      input.style.fontSize = '1.5em';
+      input.style.textAlign = 'center';
+      input.style.border = '1.5px solid #e0e0e0';
+      input.style.borderRadius = '6px';
+      input.style.margin = '0 0.1em';
+      input.style.outline = 'none';
+      input.style.background = '#f5f7fa';
+      input.style.transition = 'border 0.2s';
+      input.addEventListener('input', function() {
+        if (this.value.length === 1 && i < 5) {
+          providerCodeInputsDiv.children[i+1].focus();
+        }
+        checkProviderCodeFilled();
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value === '' && i > 0) {
+          providerCodeInputsDiv.children[i-1].focus();
+        }
+      });
+      providerCodeInputsDiv.appendChild(input);
+    }
+    providerCodeInputsDiv.children[0].focus();
+    providerVerifyBtn.style.display = 'none';
+  });
+  providerTermsBackBtn.addEventListener('click', function() {
+    showStep(signupForm);
+  });
+  // Provider Verification Next/Back
+  function checkProviderCodeFilled() {
+    const code = Array.from(providerCodeInputsDiv.children).map(inp => inp.value).join('');
+    providerVerifyBtn.style.display = code.length === 6 && /^[0-9]{6}$/.test(code) ? '' : 'none';
+  }
+  providerVerifyBtn.addEventListener('click', function() {
+    const code = Array.from(providerCodeInputsDiv.children).map(inp => inp.value).join('');
+    if (code.length === 6 && /^[0-9]{6}$/.test(code)) {
+      showStep(providerSuccessSection);
+    } else {
+      providerVerificationError.textContent = 'Please enter the 6-digit code.';
+    }
+  });
+  providerVerifyBackBtn.addEventListener('click', function() {
+    showStep(providerTermsSection);
+  });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+  const loginModal = document.getElementById('loginModal');
+  const openLoginBtns = document.querySelectorAll('#openLoginModal, .btn-blue[href="login.html"]');
+  const closeLoginModal = document.getElementById('closeLoginModal');
+  openLoginBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        var modalContent = document.querySelector('.login-modal-content');
+        if (modalContent) modalContent.scrollTop = 0;
+      }, 10);
+    });
+  });
+  closeLoginModal.addEventListener('click', function() {
+    loginModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  loginModal.addEventListener('click', function(e) {
+    if (e.target === loginModal || e.target.classList.contains('login-modal-overlay')) {
+      loginModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Signup Modal Functionality
+  const signupModal = document.getElementById('signupModal');
+  const openSignupBtn = document.getElementById('openSignupModal');
+  const closeSignupModal = document.getElementById('closeSignupModal');
+  
+  openSignupBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    signupModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  closeSignupModal.addEventListener('click', function() {
+    signupModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  
+  signupModal.addEventListener('click', function(e) {
+    if (e.target === signupModal || e.target.classList.contains('signup-modal-overlay')) {
+      signupModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // User type toggle for signup modal
+  const btnCustomer = document.getElementById('btnCustomer');
+  const btnProvider = document.getElementById('btnProvider');
+  const userTypeInput = document.getElementById('userType');
+  const customerFields = document.getElementById('customerFields');
+  const providerFields = document.getElementById('providerFields');
+  
+  if (btnCustomer && btnProvider) {
+    btnCustomer.addEventListener('click', function() {
+      btnCustomer.classList.add('active');
+      btnProvider.classList.remove('active');
+      userTypeInput.value = 'customer';
+      customerFields.style.display = '';
+      providerFields.style.display = 'none';
+    });
+    
+    btnProvider.addEventListener('click', function() {
+      btnProvider.classList.add('active');
+      btnCustomer.classList.remove('active');
+      userTypeInput.value = 'provider';
+      customerFields.style.display = 'none';
+      providerFields.style.display = '';
+    });
+  }
+  
+  // Password validation for signup modal
+  const passwordInput = document.getElementById('password');
+  if (passwordInput) {
+    passwordInput.addEventListener('input', function() {
+      const value = this.value;
+      const ruleLength = document.getElementById('rule-length');
+      const ruleUppercase = document.getElementById('rule-uppercase');
+      const ruleLowercase = document.getElementById('rule-lowercase');
+      const ruleNumber = document.getElementById('rule-number');
+      const ruleSpecial = document.getElementById('rule-special');
+      
+      if (ruleLength) ruleLength.classList.toggle('password-rule-ok', value.length >= 8);
+      if (ruleUppercase) ruleUppercase.classList.toggle('password-rule-ok', /[A-Z]/.test(value));
+      if (ruleLowercase) ruleLowercase.classList.toggle('password-rule-ok', /[a-z]/.test(value));
+      if (ruleNumber) ruleNumber.classList.toggle('password-rule-ok', /\d/.test(value));
+      if (ruleSpecial) ruleSpecial.classList.toggle('password-rule-ok', /[^A-Za-z0-9]/.test(value));
+    });
+  }
+  
+  // Multi-step signup functionality
+  const signupForm = document.getElementById('signupForm');
+  const termsStep = document.getElementById('termsStep');
+  const verifyStep = document.getElementById('verifyStep');
+  const successStep = document.getElementById('successStep');
+  const acceptTerms = document.getElementById('acceptTerms');
+  const termsNextBtn = document.getElementById('termsNextBtn');
+  const verifyBtn = document.getElementById('verifyBtn');
+  const codeInputs = document.getElementById('codeInputs');
+  const verifyError = document.getElementById('verifyError');
+  
+  // Show only one step at a time
+  function showStep(step) {
+    [signupForm, termsStep, verifyStep, successStep].forEach(s => {
+      if (s) s.style.display = 'none';
+    });
+    if (step) step.style.display = '';
+  }
+  
+  // Initial state
+  showStep(signupForm);
+  
+  // Form submit
+  if (signupForm) {
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      showStep(termsStep);
+      if (acceptTerms) acceptTerms.checked = false;
+      if (termsNextBtn) termsNextBtn.style.display = 'none';
+    });
+  }
+  
+  // Terms accept logic
+  if (acceptTerms) {
+    acceptTerms.addEventListener('change', function() {
+      if (termsNextBtn) termsNextBtn.style.display = this.checked ? '' : 'none';
+    });
+  }
+  
+  // Terms Next button
+  if (termsNextBtn) {
+    termsNextBtn.addEventListener('click', function() {
+      showStep(verifyStep);
+      if (verifyError) verifyError.textContent = '';
+      if (codeInputs) {
+        codeInputs.innerHTML = '';
+        // Create 6 input boxes
+        for (let i = 0; i < 6; i++) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.maxLength = 1;
+          input.style.width = '2.2em';
+          input.style.height = '2.2em';
+          input.style.fontSize = '1.5em';
+          input.style.textAlign = 'center';
+          input.style.border = '1.5px solid #e0e0e0';
+          input.style.borderRadius = '6px';
+          input.style.margin = '0 0.1em';
+          input.style.outline = 'none';
+          input.style.background = '#f5f7fa';
+          input.style.transition = 'border 0.2s';
+          input.addEventListener('input', function() {
+            if (this.value.length === 1 && i < 5) {
+              codeInputs.children[i+1].focus();
+            }
+            checkCodeFilled();
+          });
+          input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && this.value === '' && i > 0) {
+              codeInputs.children[i-1].focus();
+            }
+          });
+          codeInputs.appendChild(input);
+        }
+        codeInputs.children[0].focus();
       }
-
-      // Step 1: Form submit
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Basic validation
-        if (!userType.value || !form.name.value || !form.email.value || !form.password.value || !form['confirm-password'].value) {
-          alert('Please fill all required fields.');
-          return;
-        }
-        if (form.password.value !== form['confirm-password'].value) {
-          alert('Passwords do not match.');
-          return;
-        }
-        showStep(1);
-      });
-
-      // Step 2: Terms
-      termsNextBtn.addEventListener('click', function() {
-        showStep(2);
-      });
-      acceptTerms.addEventListener('change', function() {
-        termsNextBtn.disabled = !acceptTerms.checked;
-      });
-      modal.querySelectorAll('.step-2 .back-btn').forEach(btn => btn.onclick = () => showStep(0));
-
-      // Step 3: Verification
-      verifyBtn.addEventListener('click', function() {
-        if (verificationCode.value.length !== 6) {
-          alert('Please enter the 6-digit code.');
-          return;
-        }
-        showStep(3);
-      });
-      modal.querySelectorAll('.step-3 .back-btn').forEach(btn => btn.onclick = () => showStep(1));
-
-      // Step 4: Done
-      doneBtn.addEventListener('click', function() {
-        modalBg.style.display = 'none';
-        showStep(0);
-        form.reset();
-        acceptTerms.checked = false;
-        termsNextBtn.disabled = true;
-        verificationCode.value = '';
-      });
-
-      // Modal open/close
-      function openModal() {
-        modalBg.style.display = 'flex';
-        showStep(0);
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal() {
-        modalBg.style.display = 'none';
-        document.body.style.overflow = '';
-        showStep(0);
-        form.reset();
-        acceptTerms.checked = false;
-        termsNextBtn.disabled = true;
-        verificationCode.value = '';
-      }
-      closeBtn.onclick = closeModal;
-      modalBg.onclick = function(e) { if (e.target === modalBg) closeModal(); };
-
-      // Navbar Sign Up button
-      // Try both id and class for flexibility
-      const signupBtn = document.getElementById('signup-btn') || document.querySelector('.signup-btn');
-      if (signupBtn) {
-        signupBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          openModal();
-        });
+      if (verifyBtn) verifyBtn.style.display = 'none';
+    });
+  }
+  
+  // Check if code is filled
+  function checkCodeFilled() {
+    if (!codeInputs) return;
+    const code = Array.from(codeInputs.children).map(inp => inp.value).join('');
+    if (verifyBtn) verifyBtn.style.display = code.length === 6 && /^[0-9]{6}$/.test(code) ? '' : 'none';
+  }
+  
+  // Verify button
+  if (verifyBtn) {
+    verifyBtn.addEventListener('click', function() {
+      if (!codeInputs) return;
+      const code = Array.from(codeInputs.children).map(inp => inp.value).join('');
+      if (code.length === 6 && /^[0-9]{6}$/.test(code)) {
+        showStep(successStep);
+      } else {
+        if (verifyError) verifyError.textContent = 'Please enter the 6-digit code.';
       }
     });
+  }
+  });
     </script>
-</head>
+    <!-- Place password rule script at the very end -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Try both possible password fields (customer and provider)
+      var passwordInputs = [
+        document.getElementById('password'),
+        document.getElementById('providerPassword')
+      ].filter(Boolean);
+  
+      var ruleLength = document.getElementById('rule-length');
+      var ruleUppercase = document.getElementById('rule-uppercase');
+      var ruleLowercase = document.getElementById('rule-lowercase');
+      var ruleNumber = document.getElementById('rule-number');
+      var ruleSpecial = document.getElementById('rule-special');
+  
+      passwordInputs.forEach(function(passwordInput) {
+        passwordInput.addEventListener('input', function() {
+          var value = passwordInput.value;
+          if (ruleLength) ruleLength.classList.toggle('password-rule-ok', value.length >= 8);
+          if (ruleUppercase) ruleUppercase.classList.toggle('password-rule-ok', /[A-Z]/.test(value));
+          if (ruleLowercase) ruleLowercase.classList.toggle('password-rule-ok', /[a-z]/.test(value));
+          if (ruleNumber) ruleNumber.classList.toggle('password-rule-ok', /\d/.test(value));
+          if (ruleSpecial) ruleSpecial.classList.toggle('password-rule-ok', /[^A-Za-z0-9]/.test(value));
+        });
+      });
+    });
+    </script>
+  
+  
 <body>
     <header class="main-header">
         <nav class="navbar container">
