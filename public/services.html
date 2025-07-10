@@ -1,10 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Signup Toggle Example</title>
-  <style>
-    .user-type-btn-group {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Innovista</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/services.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+    /* ...modal and form styles from home.html... */
+    .signup-split-card { display: flex; flex-direction: row; width: 900px; min-height: 540px; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,41,59,0.10); background: none; max-height: 90vh; overflow-y: auto; padding: 0 !important; }
+    .signup-welcome-side { background: url('assets/images/images/service/sign.jpg') center center/cover no-repeat; color: #fff; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 !important; border-radius: 0 24px 24px 0; width: 50%; position: relative; padding-left: 0; padding-right: 0; box-sizing: border-box; }
+    .signup-welcome-side::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30,41,59,0.45); border-radius: 0 24px 24px 0; z-index: 1; }
+    .signup-welcome-side .signup-title, .signup-welcome-side .signup-subtitle { position: relative; z-index: 2; max-width: none; margin-left: 0; margin-right: 0; text-align: center; }
+    .signup-form-side { background: #fff; flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 !important; border-radius: 24px 0 0 24px; width: 50%; padding-left: 32px; padding-right: 32px; }
+    .signup-form-side form { width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-group, .password-group { position: relative; display: flex; flex-direction: column; align-items: flex-start; }
+    .input-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: #46807f; font-size: 1.2rem; pointer-events: none; z-index: 2; }
+    .form-group input { width: 100%; padding: 0.9rem 1rem 0.9rem 2.5rem; border-radius: 10px; border: 1.5px solid #e0e0e0; background: #f5f7fa; font-size: 1rem; font-weight: 500; transition: border 0.2s, box-shadow 0.2s; outline: none; margin-top: 0.1rem; box-sizing: border-box; }
+    .signup-btn { width: 100%; padding: 1rem 0; border-radius: 10px; background: #3b5bdb; color: #fff; font-size: 1.1rem; font-weight: 700; border: none; margin-top: 0.7rem; cursor: pointer; transition: background 0.2s; }
+    .signup-btn:hover { background: #274690; }
+    .signup-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem; text-align: center; width: 100%; }
+    .signup-subtitle { font-size: 1.2rem; color: #e0e0e0; margin-bottom: 0; text-align: center; width: 100%; }
+    .required { color: #b71c1c; font-weight: bold; }
+    .error { color: #b71c1c; font-size: 0.97em; margin-top: 0.2em; font-weight: 500; }
+    .password-rules { font-size: 0.97em; color: #555; margin-top: 0.2em; background: #f1f5fa; padding: 0.4em 0.7em; border-radius: 6px; margin-bottom: 0.2em; }
+    .terms { color: #888; font-size: 0.97em; text-align: center; margin-top: 1.5rem; margin-bottom: 0.2rem; }
+    .user-type-btn-group { margin-top: 24px; display: flex; gap: 0.5rem; margin-bottom: 1rem; width: 100%; justify-content: center; flex-wrap: wrap; }
+    .user-type-btn-select { flex: 1 1 90px; min-width: 90px; max-width: 140px; padding: 0.4rem 0.5rem; border-radius: 6px; border: 2px solid #3b5bdb; background: #fff; color: #3b5bdb; font-size: 0.98rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s, border 0.2s; box-sizing: border-box; }
+    .user-type-btn-select.active, .user-type-btn-select:focus { background: #3b5bdb; color: #fff; border: 2px solid #3b5bdb; }
+    .signup-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; justify-content: center; align-items: center; padding-top: 32px; padding-bottom: 32px; align-items: flex-start; }
+    .signup-modal.active { display: flex; }
+    .signup-modal-overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background: rgba(30,41,59,0.25); backdrop-filter: blur(6px); z-index: 1; }
+    .signup-modal-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; max-height: calc(100vh - 64px); overflow-y: auto; margin-top: 0; margin-bottom: 0; border-radius: 24px; background: #fff; box-shadow: 0 8px 32px rgba(30,41,59,0.18); padding: 0 !important; }
+    .signup-modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; font-size: 2rem; color: #3b5bdb; cursor: pointer; z-index: 3; }
+    .main-footer {
+      display: block;
+      opacity: 1;
+      transition: opacity 0.4s;
+    }
+    .main-footer.visible {
+      display: block;
+      opacity: 1;
+    }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar container">
+            <a href="/" class="navbar-logo">
+                <img src="assets/images/logo.png" alt="Innovista Logo">
+                <span>INNOVISTA</span>
+            </a>
+            <ul style="list-style-type:none;" class="navbar-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button type="button" class="btn-blue" id="openLoginModal">Login</button>
+                <button type="button" class="btn-blue" id="openSignupModal">Sign Up</button>
+            </div>
+            <button class="navbar-toggle" id="navbar-toggle">
+                <span class="navbar-toggle-icon"></span>
+            </button>
+        </nav>
+    </header>
+    <!-- Services Hero Section -->
+    <section class="services-hero" style="margin-top: 80px;">
+      <div class="hero-slider">
+        <img src="assets/images/images/service/interior 1.jpg" class="hero-slide active" alt="Service Slide 1">
+        <img src="assets/images/images/service/head2.jpg" class="hero-slide" alt="Service Slide 2">
+        <img src="assets/images/images/service/head3.jpg" class="hero-slide" alt="Service Slide 3">
+        </div>
+            <div class="hero-content">
+                <h1>Our Premium Services</h1>
+                <p>Transform your space with our expert interior design, painting, and restoration services in Northern Province</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">Customer Rating</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Expert Providers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Selection Layout: Vertical Sidebar -->
+    <div class="services-layout">
+      <aside class="service-sidebar">
+        <button class="service-tab active" data-service="interior-design">Interior Design</button>
+        <button class="service-tab" data-service="painting">Professional Painting</button>
+        <button class="service-tab" data-service="restoration">Restoration</button>
+      </aside>
+    <section class="services-section">
+            <div class="services-grid">
+          <!-- Interior Design -->
+          <div class="service-card interior-design-card" data-service="interior-design" style="position: relative;">
+            <div class="service-header-box">
+              <h3 class="interior-header-title">Interior Design</h3>
+              <p class="interior-header-desc">Transform your space with our comprehensive interior design services. Choose individual services or get our complete package.</p>
+                    </div>
+                    <div class="service-content">
+              <div class="subcategory-grid">
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/ceiling.jpg" alt="Ceiling & Lighting">
+                  <div class="subcategory-title">Ceiling & Lighting</div>
+                  <div class="subcategory-desc">Modern ceiling, bright lighting</div>
+                  <a class="get-service-link" href="ceiling.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/interior 1.jpg" alt="Space Planning">
+                  <div class="subcategory-title">Space Planning</div>
+                  <div class="subcategory-desc">Efficient, functional layouts</div>
+                  <a class="get-service-link" href="space.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/kitchen.avif" alt="Modular Kitchen">
+                  <div class="subcategory-title">Modular Kitchen</div>
+                  <div class="subcategory-desc">Smart, stylish kitchen solutions</div>
+                  <a class="get-service-link" href="Modular.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/bathroom.jpg" alt="Bathroom Design">
+                  <div class="subcategory-title">Bathroom Design</div>
+                  <div class="subcategory-desc">Elegant, relaxing bathroom spaces</div>
+                  <a class="get-service-link" href="Bathroom.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/wood.jpg" alt="Carpentry & Woodwork">
+                  <div class="subcategory-title">Carpentry & Woodwork</div>
+                  <div class="subcategory-desc">Custom woodwork, fine finishes</div>
+                  <a class="get-service-link" href="carpentry.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/furniture.jpg" alt="Furniture Design">
+                  <div class="subcategory-title">Furniture Design</div>
+                  <div class="subcategory-desc">Unique, comfortable furnishings</div>
+                  <a class="get-service-link" href="Furniture.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/consul.jpg" alt="Consultancy">
+                  <div class="subcategory-title">Consultancy</div>
+                  <div class="subcategory-desc">Expert interior design advice</div>
+                  <a class="get-service-link" href="Consultancy.html">Get Service <span class="arrow">&rarr;</span></a>
+                            </div>
+                        </div>
+                        <div class="package-section">
+                            <h4>Complete Package</h4>
+                            <p>Get all interior design services at a discounted rate</p>
+                            <button class="btn-get-package" onclick="window.location.href='serviceprovider.html'">Get Complete Package</button>
+                        </div>
+                    </div>
+                </div>
+          <!-- Painting -->
+          <div class="service-card painting-card" data-service="painting">
+            <div class="service-header-box">
+              <h3 class="interior-header-title">Professional Painting</h3>
+              <p class="interior-header-desc">Expert painting services for residential and commercial spaces. Choose individual services or get our complete package.</p>
+                    </div>
+                    <div class="service-content">
+              <div class="subcategory-grid">
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/interiorpaint.jpg" alt="Interior & Exterior Painting">
+                  <div class="subcategory-title">Interior & Exterior Painting</div>
+                  <div class="subcategory-desc">Beautiful indoor and weatherproof outdoor finishes</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/water.jpg" alt="Water Proofing & Damp Proof Painting">
+                  <div class="subcategory-title">Water Proofing & Damp Proof Painting</div>
+                  <div class="subcategory-desc">Protects against moisture</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/commercial.webp" alt="Commercial Painting">
+                  <div class="subcategory-title">Commercial Painting</div>
+                  <div class="subcategory-desc">Professional business finishes</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/art.jpg" alt="Wall Art">
+                  <div class="subcategory-title">Wall Art</div>
+                  <div class="subcategory-desc">Creative custom designs</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/paintconsul.jpg" alt="Consultation">
+                  <div class="subcategory-title">Consultation</div>
+                  <div class="subcategory-desc">Expert painting advice</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                            </div>
+                        </div>
+                        <div class="package-section">
+                            <h4>Complete Package</h4>
+                            <p>Get all painting services at a discounted rate</p>
+                            <button class="btn-get-package" onclick="window.location.href='serviceprovider.html'">Get Complete Package</button>
+                        </div>
+                    </div>
+                </div>
+          <!-- Restoration -->
+          <div class="service-card restoration-card" data-service="restoration">
+            <div class="service-header-box">
+              <h3 class="interior-header-title">Restoration Services</h3>
+              <p class="interior-header-desc">Restore and preserve the beauty of your property. Choose individual services or get our complete package.</p>
+                    </div>
+                    <div class="service-content">
+              <div class="subcategory-grid">
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/wallreno.jpg" alt="Wall Repairs and Paintings">
+                  <div class="subcategory-title">Wall Repairs and Paintings</div>
+                  <div class="subcategory-desc">Seamless wall restoration</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/floorreno.jpg" alt="Floor Replacement and Painting and Touchup">
+                  <div class="subcategory-title">Floor Replacement and Painting and Touchup</div>
+                  <div class="subcategory-desc">Fresh, flawless flooring</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/spacereno.jpg" alt="Old Space Transformation">
+                  <div class="subcategory-title">Old Space Transformation</div>
+                  <div class="subcategory-desc">Modernize your interiors</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/doorreno.jpg" alt="Door and Window Carpentry Repairs">
+                  <div class="subcategory-title">Door and Window Carpentry Repairs</div>
+                  <div class="subcategory-desc">Expert woodwork repairs</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                                </div>
+                <div class="subcategory-card">
+                  <img src="assets/images/images/service/roomreno.jpg" alt="Room or Building Renovate">
+                  <div class="subcategory-title">Room or Building Renovate</div>
+                  <div class="subcategory-desc">Complete space renewal</div>
+                  <a class="get-service-link" href="serviceprovider.html">Get Service <span class="arrow">&rarr;</span></a>
+                            </div>
+                        </div>
+                        <div class="package-section">
+                            <h4>Complete Package</h4>
+                            <p>Get all restoration services at a discounted rate</p>
+                            <button class="btn-get-package" onclick="window.location.href='serviceprovider.html'">Get Complete Package</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section>
+        </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Innovista. All rights reserved.</p>
+    </footer>
+
+<!-- Signup Modal Popup (from home.html) -->
+<div id="signupModal" class="signup-modal">
+    <div class="signup-modal-overlay"></div>
+    <div class="signup-modal-content">
+        <button class="signup-modal-close" id="closeSignupModal">&times;</button>
+        <div class="signup-split-card">
+            <div class="signup-form-side">
+                <div class="signup-step-container" style="width:100%; max-width:420px; margin:0 auto; position:relative;">
+                    <!-- Step 1: Signup Form -->
+                    <form id="signupForm" autocomplete="off">
+                        <div class="user-type-btn-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; width: 100%; justify-content: center;">
+                            <button type="button" class="user-type-btn-select active" id="btnCustomer">Customer</button>
+                            <button type="button" class="user-type-btn-select" id="btnProvider">Service Provider</button>
+                            <input type="hidden" id="userType" name="userType" value="customer">
+                        </div>
+                        <div id="customerFields">
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                                <div class="error" id="fullnameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                                <div class="error" id="emailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-phone"></i></span>
+                                <input type="text" id="phone" name="phone" maxlength="10" placeholder="Phone Number" required>
+                                <div class="error" id="phoneError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-home"></i></span>
+                                <input type="text" id="address" name="address" placeholder="Address" required>
+                                <div class="error" id="addressError"></div>
+                            </div>
+                        </div>
+                        <div id="providerFields" style="display:none;">
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-user"></i></span>
+                                <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name" required>
+                                <div class="error" id="providerFullnameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                                <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address" required>
+                                <div class="error" id="providerEmailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-phone"></i></span>
+                                <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number" required>
+                                <div class="error" id="providerPhoneError"></div>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-folder-open"></i></span>
+                                <input type="file" id="portfolio" name="portfolio" multiple accept="image/*" required>
+                                <div id="portfolioFiles" style="margin-top:0.5rem;"></div>
+                                <div class="error" id="portfolioError"></div>
+                            </div>
+                        </div>
+                        <div class="form-group password-group">
+                            <span class="input-icon"><i class="fa fa-lock"></i></span>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            <div class="password-rules">
+                                <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
+                                    <li>At least 8 characters</li>
+                                    <li>At least one uppercase letter</li>
+                                    <li>At least one lowercase letter</li>
+                                    <li>At least one number</li>
+                                    <li>At least one special character</li>
+                                </ul>
+                            </div>
+                            <div class="error" id="passwordError"></div>
+                        </div>
+                        <button type="submit" class="user-type-btn signup-btn">Sign Up</button>
+                    </form>
+                    <!-- Step 2: Terms and Conditions -->
+                    <div id="termsSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto;">
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Terms and Conditions</h3>
+                        <div style="font-size:0.98rem; color:#333; max-height:220px; overflow-y:auto; margin-bottom:1.2rem;">
+                            By proceeding with your booking on Innovista, you agree to the following terms and conditions. All appointments are subject to confirmation based on the availability of the selected service provider. Once a booking is confirmed, it cannot be cancelled for a refund. However, you may request to reschedule your appointment at least 24 hours in advance, subject to the service provider's availability. Refunds will not be issued for cancellations, change of mind, dissatisfaction with design preferences, or delays caused by the customer. Service timelines may vary due to external factors such as weather conditions, supply availability, or prior project delays. Innovista will make reasonable efforts to inform you in advance of any such changes. As a customer, you are responsible for providing accurate contact details and ensuring access to the service location at the agreed time. Innovista connects you with independent service providers and does not take responsibility for any disputes or damages related to their services. By signing up or making a booking, you acknowledge and accept these terms in full.
+                        </div>
+                        <div style="margin-bottom:1.2rem;">
+                            <input type="checkbox" id="acceptTerms"> <label for="acceptTerms">I accept the Terms and Conditions</label>
+                        </div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button type="button" id="termsBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
+                            <button id="termsNextBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3: Verification Code -->
+                    <div id="verificationSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Verify Your Account</h3>
+                        <div style="font-size:0.98rem; color:#333; margin-bottom:1.2rem;">Enter the 6-digit code sent to your email/phone to complete your signup.</div>
+                        <div id="codeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;"></div>
+                        <div id="verificationError" style="color:#b71c1c; font-size:0.97em; margin-bottom:0.7rem;"></div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button type="button" id="verifyBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
+                            <button id="verifyBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Verify</button>
+                        </div>
+                    </div>
+                    <!-- Step 4: Success Message -->
+                    <div id="successSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.3rem; font-weight:800; color:#46807f; margin-bottom:1.2rem;">Account successfully created!</h3>
+                        <div style="font-size:1.05rem; color:#333;">Welcome to Innovista. You can now log in and start booking services.</div>
+                    </div>
+                    <!-- Step 2: Provider Terms and Conditions -->
+                    <div id="providerTermsSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto;">
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Provider Terms and Conditions</h3>
+                        <div style="font-size:0.98rem; color:#333; max-height:220px; overflow-y:auto; margin-bottom:1.2rem;">
+                            By registering as a service provider on Innovista, you agree to comply with the platform’s guidelines and service standards. You are responsible for providing accurate business details, pricing, availability, and maintaining clear communication with customers. All appointments accepted through Innovista must be honored unless rescheduling is absolutely necessary, in which case you must notify the customer in advance and offer an alternative time. Frequent last-minute cancellations or no-shows may result in temporary suspension or permanent removal from the platform. Payments for completed services are processed securely; however, Innovista is not liable for any disputes arising from unfulfilled or unsatisfactory services. You must deliver services as promised and uphold professional conduct at all times. Misuse of the platform, fraudulent activity, or failure to meet service expectations may result in account deactivation without prior notice. By joining Innovista, you acknowledge and accept these terms and agree to provide quality service to every customer.
+                        </div>
+                        <div style="margin-bottom:1.2rem;">
+                            <input type="checkbox" id="acceptProviderTerms"> <label for="acceptProviderTerms">I accept the Terms and Conditions</label>
+                        </div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button type="button" id="providerTermsBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
+                            <button id="providerTermsNextBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Next</button>
+                        </div>
+                    </div>
+                    <!-- Step 3: Provider Verification Code -->
+                    <div id="providerVerificationSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Verify Your Account</h3>
+                        <div style="font-size:0.98rem; color:#333; margin-bottom:1.2rem;">Enter the 6-digit code sent to your email/phone to complete your signup.</div>
+                        <div id="providerCodeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;"></div>
+                        <div id="providerVerificationError" style="color:#b71c1c; font-size:0.97em; margin-bottom:0.7rem;"></div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button type="button" id="providerVerifyBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
+                            <button id="providerVerifyBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Verify</button>
+                        </div>
+                    </div>
+                    <!-- Step 4: Provider Success Message -->
+                    <div id="providerSuccessSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
+                        <h3 style="font-size:1.3rem; font-weight:800; color:#46807f; margin-bottom:1.2rem;">Account successfully created!</h3>
+                        <div style="font-size:1.05rem; color:#333;">Welcome to Innovista. You can now log in and start offering your services.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="signup-welcome-side">
+                <div class="signup-title">Welcome to Innovista</div>
+                <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
+                <div class="signup-login-message" style="margin-top:2.2rem; text-align:center; font-size:1.05rem; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,0.5);">
+                  Already have an account?
+                  <a href="login.html" style="color:#ffd700; text-decoration:underline; font-weight:600;">Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Signup Modal Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // User type toggle
+  const btnCustomer = document.getElementById('btnCustomer');
+  const btnProvider = document.getElementById('btnProvider');
+  const userTypeInput = document.getElementById('userType');
+  const customerFields = document.getElementById('customerFields');
+  const providerFields = document.getElementById('providerFields');
+  btnCustomer.addEventListener('click', function() {
+    btnCustomer.classList.add('active');
+    btnProvider.classList.remove('active');
+    userTypeInput.value = 'customer';
+    customerFields.style.display = '';
+    providerFields.style.display = 'none';
+  });
+  btnProvider.addEventListener('click', function() {
+    btnProvider.classList.add('active');
+    btnCustomer.classList.remove('active');
+    userTypeInput.value = 'provider';
+    customerFields.style.display = 'none';
+    providerFields.style.display = '';
+  });
+
+  // Step elements
+  const signupForm = document.getElementById('signupForm');
+  const termsSection = document.getElementById('termsSection');
+  const verificationSection = document.getElementById('verificationSection');
+  const successSection = document.getElementById('successSection');
+  const acceptTerms = document.getElementById('acceptTerms');
+  const termsNextBtn = document.getElementById('termsNextBtn');
+  const termsBackBtn = document.getElementById('termsBackBtn');
+  const verifyBtn = document.getElementById('verifyBtn');
+  const verifyBackBtn = document.getElementById('verifyBackBtn');
+  const codeInputsDiv = document.getElementById('codeInputs');
+  const verificationError = document.getElementById('verificationError');
+
+  // Provider step elements
+  const providerTermsSection = document.getElementById('providerTermsSection');
+  const providerVerificationSection = document.getElementById('providerVerificationSection');
+  const providerSuccessSection = document.getElementById('providerSuccessSection');
+  const acceptProviderTerms = document.getElementById('acceptProviderTerms');
+  const providerTermsNextBtn = document.getElementById('providerTermsNextBtn');
+  const providerTermsBackBtn = document.getElementById('providerTermsBackBtn');
+  const providerVerifyBtn = document.getElementById('providerVerifyBtn');
+  const providerVerifyBackBtn = document.getElementById('providerVerifyBackBtn');
+  const providerCodeInputsDiv = document.getElementById('providerCodeInputs');
+  const providerVerificationError = document.getElementById('providerVerificationError');
+
+  // Show only one step at a time (for both flows)
+  function showStep(step) {
+    [signupForm, termsSection, verificationSection, successSection, providerTermsSection, providerVerificationSection, providerSuccessSection].forEach(s => s.style.display = 'none');
+    step.style.display = '';
+  }
+  // Initial state
+  showStep(signupForm);
+
+  // Form submit (customer or provider)
+  signupForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const userType = userTypeInput.value;
+    if (userType === 'customer') {
+      showStep(termsSection);
+      acceptTerms.checked = false;
+      termsNextBtn.style.display = 'none';
+    } else if (userType === 'provider') {
+      showStep(providerTermsSection);
+      acceptProviderTerms.checked = false;
+      providerTermsNextBtn.style.display = 'none';
+    }
+  });
+
+  // Customer terms accept logic
+  acceptTerms.addEventListener('change', function() {
+    termsNextBtn.style.display = this.checked ? '' : 'none';
+  });
+  // Customer Terms Next/Back
+  termsNextBtn.addEventListener('click', function() {
+    showStep(verificationSection);
+    verificationError.textContent = '';
+    codeInputsDiv.innerHTML = '';
+    // Create 6 input boxes
+    for (let i = 0; i < 6; i++) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = 1;
+      input.style.width = '2.2em';
+      input.style.height = '2.2em';
+      input.style.fontSize = '1.5em';
+      input.style.textAlign = 'center';
+      input.style.border = '1.5px solid #e0e0e0';
+      input.style.borderRadius = '6px';
+      input.style.margin = '0 0.1em';
+      input.style.outline = 'none';
+      input.style.background = '#f5f7fa';
+      input.style.transition = 'border 0.2s';
+      input.addEventListener('input', function() {
+        if (this.value.length === 1 && i < 5) {
+          codeInputsDiv.children[i+1].focus();
+        }
+        checkCodeFilled();
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value === '' && i > 0) {
+          codeInputsDiv.children[i-1].focus();
+        }
+      });
+      codeInputsDiv.appendChild(input);
+    }
+    codeInputsDiv.children[0].focus();
+    verifyBtn.style.display = 'none';
+  });
+  termsBackBtn.addEventListener('click', function() {
+    showStep(signupForm);
+  });
+  // Customer Verification Next/Back
+  function checkCodeFilled() {
+    const code = Array.from(codeInputsDiv.children).map(inp => inp.value).join('');
+    verifyBtn.style.display = code.length === 6 && /^[0-9]{6}$/.test(code) ? '' : 'none';
+  }
+  verifyBtn.addEventListener('click', function() {
+    const code = Array.from(codeInputsDiv.children).map(inp => inp.value).join('');
+    if (code.length === 6 && /^[0-9]{6}$/.test(code)) {
+      showStep(successSection);
+    } else {
+      verificationError.textContent = 'Please enter the 6-digit code.';
+    }
+  });
+  verifyBackBtn.addEventListener('click', function() {
+    showStep(termsSection);
+  });
+
+  // Provider terms accept logic
+  acceptProviderTerms.addEventListener('change', function() {
+    providerTermsNextBtn.style.display = this.checked ? '' : 'none';
+  });
+  // Provider Terms Next/Back
+  providerTermsNextBtn.addEventListener('click', function() {
+    showStep(providerVerificationSection);
+    providerVerificationError.textContent = '';
+    providerCodeInputsDiv.innerHTML = '';
+    // Create 6 input boxes
+    for (let i = 0; i < 6; i++) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = 1;
+      input.style.width = '2.2em';
+      input.style.height = '2.2em';
+      input.style.fontSize = '1.5em';
+      input.style.textAlign = 'center';
+      input.style.border = '1.5px solid #e0e0e0';
+      input.style.borderRadius = '6px';
+      input.style.margin = '0 0.1em';
+      input.style.outline = 'none';
+      input.style.background = '#f5f7fa';
+      input.style.transition = 'border 0.2s';
+      input.addEventListener('input', function() {
+        if (this.value.length === 1 && i < 5) {
+          providerCodeInputsDiv.children[i+1].focus();
+        }
+        checkProviderCodeFilled();
+      });
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value === '' && i > 0) {
+          providerCodeInputsDiv.children[i-1].focus();
+        }
+      });
+      providerCodeInputsDiv.appendChild(input);
+    }
+    providerCodeInputsDiv.children[0].focus();
+    providerVerifyBtn.style.display = 'none';
+  });
+  providerTermsBackBtn.addEventListener('click', function() {
+    showStep(signupForm);
+  });
+  // Provider Verification Next/Back
+  function checkProviderCodeFilled() {
+    const code = Array.from(providerCodeInputsDiv.children).map(inp => inp.value).join('');
+    providerVerifyBtn.style.display = code.length === 6 && /^[0-9]{6}$/.test(code) ? '' : 'none';
+  }
+  providerVerifyBtn.addEventListener('click', function() {
+    const code = Array.from(providerCodeInputsDiv.children).map(inp => inp.value).join('');
+    if (code.length === 6 && /^[0-9]{6}$/.test(code)) {
+      showStep(providerSuccessSection);
+    } else {
+      providerVerificationError.textContent = 'Please enter the 6-digit code.';
+    }
+  });
+  providerVerifyBackBtn.addEventListener('click', function() {
+    showStep(providerTermsSection);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const signupModal = document.getElementById('signupModal');
+  const openSignupBtns = document.querySelectorAll('#openSignupModal, .btn-primary[href="signup.html"]');
+  const closeSignupModal = document.getElementById('closeSignupModal');
+  openSignupBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      signupModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        var modalContent = document.querySelector('.signup-modal-content');
+        if (modalContent) modalContent.scrollTop = 0;
+      }, 10);
+    });
+  });
+  closeSignupModal.addEventListener('click', function() {
+    signupModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  signupModal.addEventListener('click', function(e) {
+    if (e.target === signupModal || e.target.classList.contains('signup-modal-overlay')) {
+      signupModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+    <script>
+    function redirectToProviders(service, category) {
+        alert('Redirecting to providers for ' + service + ' - ' + category);
+    }
+    // Service tab logic for vertical sidebar
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.service-tab');
+      const cards = document.querySelectorAll('.service-card');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          const service = this.getAttribute('data-service');
+          cards.forEach(card => {
+            if (card.classList.contains(service + '-card')) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+      // Show only the first service by default
+      cards.forEach(card => {
+        if (!card.classList.contains('interior-design-card')) {
+          card.style.display = 'none';
+        }
+      });
+    });
+    // Hero slider logic with left-slide effect
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index, prevIndex = null) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev');
+        if (i === index) {
+          slide.classList.add('active');
+        } else if (i === prevIndex) {
+          slide.classList.add('prev');
+        }
+      });
+    }
+
+    function nextSlide() {
+      const prevSlide = currentSlide;
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide, prevSlide);
+    }
+
+    setInterval(nextSlide, 4000);
+    showSlide(currentSlide);
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggle = document.getElementById('navbar-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        if(navbarToggle && navbarMenu) {
+            navbarToggle.addEventListener('click', function() {
+                navbarMenu.classList.toggle('active');
+            });
+        }
+    });
+    </script>
+    <script src="assets/js/main.js"></script>
+    <style>
+    .services-layout {
       display: flex;
       gap: 1rem;
       margin-bottom: 1.2rem;

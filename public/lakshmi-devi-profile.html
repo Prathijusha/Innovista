@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshmi Devi - Interior Design Specialist | Innovista</title>
+    <link rel="stylesheet" href="assets/css/services.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .provider-profile {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #3b5bdb;
+            box-shadow: 0 8px 25px rgba(59, 91, 219, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h1 {
+            color: #1a1a1a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .profile-title {
+            color: #3b5bdb;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b5bdb;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .profile-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .profile-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .section {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #3b5bdb;
+        }
+
+        .section h3 {
+            color: #1a1a1a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+        }
+
+        .services-list li:last-child {
+            border-bottom: none;
+        }
+
+        .services-list li::before {
+            content: "✓";
+            color: #3b5bdb;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .contact-info {
+            background: #3b5bdb;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .contact-info h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item i {
+            width: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: #3b5bdb;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #274690;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #3b5bdb;
+            padding: 1rem 2rem;
+            border: 2px solid #3b5bdb;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #3b5bdb;
+            color: white;
+        }
+
+        .awards-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .awards-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .awards-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .awards-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .awards-list li:last-child {
+            border-bottom: none;
+        }
+
+        .awards-list li::before {
+            content: "🏆";
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-sections {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar container">
+            <a href="/" class="navbar-logo">
+                <img src="assets/images/logo.PNG" alt="Innovista Logo">
+                <span>INNOVISTA</span>
+            </a>
+            <ul style="list-style-type:none;" class="navbar-menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="#" class="btn btn-primary" id="openSignupModal">Sign Up</a>
+            </div>
+            <button class="navbar-toggle" id="navbar-toggle">
+                <span class="navbar-toggle-icon"></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="provider-profile">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <img src="assets/images/images/luxury-living-room-furniture.jpg" alt="Lakshmi Devi">
+                </div>
+                <div class="profile-info">
+                    <h1>Lakshmi Devi</h1>
+                    <div class="profile-title">Award-Winning Interior Design Specialist</div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">Client Rating</div>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        Award-winning interior designer with 15 years of experience specializing in luxury residential and commercial spaces across Northern Province. Known for creating timeless, elegant designs that blend functionality with aesthetic appeal.
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-sections">
+                <div class="section">
+                    <h3><i class="fas fa-palette"></i> Specializations</h3>
+                    <ul class="services-list">
+                        <li>Luxury Residential Interiors</li>
+                        <li>Commercial Space Design</li>
+                        <li>Kitchen & Bathroom Remodeling</li>
+                        <li>Furniture Selection & Custom Design</li>
+                        <li>Color Consultation & Coordination</li>
+                        <li>Lighting Design & Installation</li>
+                        <li>Space Planning & Optimization</li>
+                        <li>Project Management & Coordination</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Service Areas</h3>
+                    <ul class="services-list">
+                        <li>Jaffna & Surrounding Areas</li>
+                        <li>Vavuniya District</li>
+                        <li>Mullaitivu District</li>
+                        <li>Kilinochchi District</li>
+                        <li>Mannar District</li>
+                        <li>Commercial Projects Island-wide</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="awards-section">
+                <h3><i class="fas fa-trophy"></i> Awards & Recognition</h3>
+                <ul class="awards-list">
+                    <li>Best Interior Designer - Northern Province 2023</li>
+                    <li>Excellence in Commercial Design - Sri Lanka Design Awards 2022</li>
+                    <li>Outstanding Residential Project - Interior Design Excellence 2021</li>
+                    <li>Customer Choice Award - Innovista Service Providers 2020</li>
+                    <li>Certified Professional Interior Designer - Sri Lanka Institute of Design</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-images"></i> Portfolio Highlights</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="assets/images/images/luxury-living-room-furniture.jpg" alt="Luxury Living Room">
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="assets/images/images/sophisticated-bedroom.jpg" alt="Sophisticated Bedroom">
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="assets/images/images/elegant-living-room-furniture.jpg" alt="Elegant Living Room">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h4><i class="fas fa-phone"></i> Contact Information</h4>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+94 77 123 4567</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>lakshmi.devi@innovista.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon-Sat, 9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Jaffna, Northern Province, Sri Lanka</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="contact.html" class="btn-primary">
+                    <i class="fas fa-calendar"></i> Book Consultation
+                </a>
+                <a href="services.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Services
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 
