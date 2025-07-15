@@ -16,7 +16,7 @@ body::before {
     filter: blur(8px) brightness(0.7);
     opacity: 0.85;
 }
-.signup-container {
+.login-container {
     max-width: 400px;
     margin: 60px auto;
     padding: 2rem 2.5rem;
@@ -26,17 +26,17 @@ body::before {
     position: relative;
     z-index: 1;
 }
-.signup-form h2 {
+.login-form h2 {
     text-align: center;
     color: var(--secondary, #ff9933);
     margin-bottom: 1.5rem;
 }
-.signup-form label {
+.login-form label {
     display: block;
     margin-bottom: 0.3rem;
     color: var(--text-dark, #2e2e2e);
 }
-.signup-form input {
+.login-form input {
     width: 100%;
     padding: 0.7rem;
     margin-bottom: 1rem;
@@ -59,20 +59,16 @@ body::before {
 .btn-sunshine:hover {
     background: var(--accent, #ffb84d);
 }
-.signup-container p {
+.login-container p {
     text-align: center;
     margin-top: 1rem;
     color: var(--text-dark, #2e2e2e);
 }
-.signup-container a {
+.login-container a {
     color: var(--secondary, #ff9933);
     text-decoration: none;
     font-weight: 500;
 }
-.signup-container a:hover {
+.login-container a:hover {
     text-decoration: underline;
-}
-.password-rule-ok {
-    color: #28a745 !important;
-    font-weight: bold;
 } 

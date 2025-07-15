@@ -1,6 +1,59 @@
 // JavaScript extracted from signup.html for signup modal and form
 
 document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.signup-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const address = document.getElementById('address');
+    const phone = document.getElementById('phone');
+
+    // Password rule elements
+    const ruleLength = document.getElementById('rule-length');
+    const ruleUppercase = document.getElementById('rule-uppercase');
+    const ruleLowercase = document.getElementById('rule-lowercase');
+    const ruleNumber = document.getElementById('rule-number');
+    const ruleSpecial = document.getElementById('rule-special');
+
+    password.addEventListener('input', function() {
+        const value = password.value;
+        ruleLength.classList.toggle('password-rule-ok', value.length >= 8);
+        ruleUppercase.classList.toggle('password-rule-ok', /[A-Z]/.test(value));
+        ruleLowercase.classList.toggle('password-rule-ok', /[a-z]/.test(value));
+        ruleNumber.classList.toggle('password-rule-ok', /\d/.test(value));
+        ruleSpecial.classList.toggle('password-rule-ok', /[^A-Za-z0-9]/.test(value));
+    });
+
+    form.addEventListener('submit', function(e) {
+        if (password.value !== confirmPassword.value) {
+            e.preventDefault();
+            alert('Passwords do not match!');
+            confirmPassword.focus();
+            return;
+        }
+        if (!address.value.trim()) {
+            e.preventDefault();
+            alert('Please enter your address.');
+            address.focus();
+            return;
+        }
+        if (!/^\d{10,15}$/.test(phone.value.trim())) {
+            e.preventDefault();
+            alert('Please enter a valid phone number (10-15 digits).');
+            phone.focus();
+            return;
+        }
+        // Password rules check
+        const value = password.value;
+        if (!(value.length >= 8 && /[A-Z]/.test(value) && /[a-z]/.test(value) && /\d/.test(value) && /[^A-Za-z0-9]/.test(value))) {
+            e.preventDefault();
+            alert('Password does not meet all requirements.');
+            password.focus();
+            return;
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
         signupForm.onsubmit = function(e) {

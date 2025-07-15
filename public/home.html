@@ -25,8 +25,8 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="navbar-actions">
-                <button type="button" class="btn-blue" id="openLoginModal">Login</button>
-                <button type="button" class="btn-blue" id="openSignupModal">Sign Up</button>
+                <a href="login.html" class="btn-sunshine">Login</a>
+                <a href="signup.html" class="btn-sunshine">Sign Up</a>
             </div>
             <button class="navbar-toggle" id="navbar-toggle">
                 <span class="navbar-toggle-icon"></span>
@@ -195,200 +195,12 @@
         <p>&copy; 2024 Innovista. All rights reserved.</p>
     </footer>
 
-<!-- Login Modal Popup -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/signup.css">
-
-<!-- Signup Modal -->
-<div id="signupModal" class="signup-modal">
-    <div class="signup-modal-overlay"></div>
-    <div class="signup-modal-content">
-        <button class="signup-modal-close" id="closeSignupModal">&times;</button>
-        <div class="signup-split-card">
-            <div class="signup-form-side">
-                <form id="signupForm" autocomplete="off">
-                    <div class="user-type-btn-group">
-                        <button type="button" class="user-type-btn-select active" id="btnCustomer">Sign up as Customer</button>
-                        <button type="button" class="user-type-btn-select" id="btnProvider">Sign up as Service Provider</button>
-                        <input type="hidden" id="userType" name="userType" value="customer">
-                    </div>
-                    <div id="customerFields">
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-user"></i></span>
-                            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
-                            <div class="error" id="fullnameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" id="email" name="email" placeholder="Email Address" required>
-                            <div class="error" id="emailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-phone"></i></span>
-                            <input type="text" id="phone" name="phone" maxlength="10" placeholder="Phone Number" required>
-                            <div class="error" id="phoneError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-home"></i></span>
-                            <input type="text" id="address" name="address" placeholder="Address" required>
-                            <div class="error" id="addressError"></div>
-                        </div>
-                    </div>
-                    <div id="providerFields" style="display:none;">
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-user"></i></span>
-                            <input type="text" id="providerFullname" name="providerFullname" placeholder="Full Name">
-                            <div class="error" id="providerFullnameError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" id="providerEmail" name="providerEmail" placeholder="Email Address">
-                            <div class="error" id="providerEmailError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-phone"></i></span>
-                            <input type="text" id="providerPhone" name="providerPhone" maxlength="10" placeholder="Phone Number">
-                            <div class="error" id="providerPhoneError"></div>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-folder-open"></i></span>
-                            <input type="file" id="portfolio" name="portfolio" multiple accept="image/*">
-                            <div id="portfolioFiles" style="margin-top:0.5rem;"></div>
-                            <div class="error" id="portfolioError"></div>
-                        </div>
-                    </div>
-                    <div class="form-group password-group">
-                        <span class="input-icon"><i class="fa fa-lock"></i></span>
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <div class="password-rules">
-                            <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
-                                <li id="rule-length">At least 8 characters</li>
-                                <li id="rule-uppercase">At least one uppercase letter</li>
-                                <li id="rule-lowercase">At least one lowercase letter</li>
-                                <li id="rule-number">At least one number</li>
-                                <li id="rule-special">At least one special character</li>
-                            </ul>
-                        </div>
-                        <div class="error" id="passwordError"></div>
-                    </div>
-                    <button type="submit" class="user-type-btn signup-btn" style="margin-bottom: 1rem;">Sign Up</button>
-                </form>
-                
-                <!-- Multi-step signup sections -->
-                <div id="termsStep" style="display:none; margin-top:2rem;">
-                    <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
-                        <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Terms and Conditions</h2>
-                        <div style="font-size:1.01rem; margin-bottom:1.2rem; line-height:1.6;">
-                            By proceeding with your booking on Innovista, you agree to the following terms and conditions. All appointments are subject to confirmation based on the availability of the selected service provider. Once a booking is confirmed, it cannot be cancelled for a refund. However, you may request to reschedule your appointment at least 24 hours in advance, subject to the service provider's availability. Refunds will not be issued for cancellations, change of mind, dissatisfaction with design preferences, or delays caused by the customer. Service timelines may vary due to external factors such as weather conditions, supply availability, or prior project delays. Innovista will make reasonable efforts to inform you in advance of any such changes. As a customer, you are responsible for providing accurate contact details and ensuring access to the service location at the agreed time. Innovista connects you with independent service providers and does not take responsibility for any disputes or damages related to their services. By signing up or making a booking, you acknowledge and accept these terms in full.
-                        </div>
-                        <div style="margin-bottom:1.2rem;">
-                            <input type="checkbox" id="acceptTerms"> <label for="acceptTerms">I accept the terms and conditions</label>
-                        </div>
-                        <button id="termsNextBtn" class="signup-btn" style="width:100%;" disabled>Next</button>
-                    </div>
-                </div>
-                <div id="verifyStep" style="display:none; margin-top:2rem;">
-                    <div style="max-width: 420px; background: #E7EFC7; border-radius: 12px; padding: 2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222;">
-                        <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:1.1rem; color:#8A784E;">Verify Your Account</h2>
-                        <div style="font-size:1.01rem; margin-bottom:1.2rem;">Enter the 6-digit verification code sent to your email/phone.</div>
-                        <div id="codeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;">
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                            <input type="text" maxlength="1" class="code-input" style="width:2.2em; height:2.2em; text-align:center; font-size:1.3em; border-radius:6px; border:1.5px solid #B1AB86; background:#fff;" />
-                        </div>
-                        <button id="verifyBtn" class="signup-btn" style="width:100%;">Verify</button>
-                        <div id="verifyError" style="color:#b71c1c; margin-top:0.7em; font-size:1em;"></div>
-                    </div>
-                </div>
-                <div id="successStep" style="display:none; margin-top:2rem;">
-                    <div style="max-width: 420px; background: #FEFAE0; border-radius: 12px; padding: 2.2rem 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); color: #222; text-align:center;">
-                        <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:1.2rem; color:#8A784E;">Account Successfully Created!</h2>
-                        <div style="font-size:1.08rem; margin-bottom:1.2rem;">Welcome to Innovista. You can now log in and start booking services.</div>
-                        <a href="login.html" class="signup-btn" style="width:100%; text-align:center; display:inline-block;">Go to Login</a>
-                    </div>
-                </div>
-                <!-- End multi-step signup sections -->
-                
-                <div class="terms">
-                    By continuing, you agree to our <a href="#" style="color:#46807f;text-decoration:none;">Terms</a> and <a href="#" style="color:#46807f;text-decoration:none;">Privacy Policy</a>.
-                </div>
-            </div>
-            <div class="signup-welcome-side">
-                <div class="signup-title">Welcome to Innovista</div>
-                <div class="signup-subtitle">Create your account and discover world-class service providers.</div>
-                
-                <!-- Login link for existing users -->
-                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); position: relative; z-index: 2;">
-                    <p style="margin: 0 0 0.8rem 0; color: #fff; font-size: 1rem; font-weight: 500;">Already have an account?</p>
-                    <a href="login.html" style="color: #fff; text-decoration: none; font-weight: 600; font-size: 1rem; padding: 0.7rem 1.5rem; border: 2px solid #fff; border-radius: 8px; transition: all 0.3s ease; display: inline-block; background: rgba(255,255,255,0.1);">Login Here</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="loginModal" class="login-modal">
-    <div class="login-modal-overlay"></div>
-    <div class="login-modal-content">
-        <button class="login-modal-close" id="closeLoginModal">&times;</button>
-        <div class="login-split-card">
-            <div class="login-form-side">
-                <div class="login-step-container" style="width:100%; max-width:420px; margin:0 auto; position:relative;">
-                    <!-- Step 1: Login Form -->
-                    <form id="loginForm" autocomplete="off">
-                        <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-align:center; color:#333;">Welcome Back</h3>
-                        
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
-                            <input type="email" id="loginEmail" name="email" placeholder="Email Address" required>
-                            <div class="error" id="loginEmailError"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <span class="input-icon"><i class="fa fa-lock"></i></span>
-                            <input type="password" id="loginPassword" name="password" placeholder="Password" required>
-                            <div class="error" id="loginPasswordError"></div>
-                        </div>
-                        
-                        <button type="submit" class="login-btn">Login</button>
-                        
-                        <div class="forgot-password">
-                            <a href="#" id="forgotPasswordLink">Forgot Password?</a>
-                        </div>
-                    </form>
-
-                    <!-- Step 2: OTP Verification -->
-                    <div id="loginOtpSection" class="otp-section" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
-                        <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem;">Verify Your Account</h3>
-                        <p style="font-size:0.98rem; color:#333; margin-bottom:1.2rem;">Enter the 6-digit code sent to your email to complete your login.</p>
-                        <div id="loginOtpInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;"></div>
-                        <div id="loginOtpError" style="color:#b71c1c; font-size:0.97em; margin-bottom:0.7rem;"></div>
-                        <div style="display:flex; gap:0.5rem;">
-                            <button type="button" id="loginOtpBackBtn" class="user-type-btn signup-btn" style="width:50%; background:#e0e0e0; color:#333;">Back</button>
-                            <button id="loginOtpVerifyBtn" class="user-type-btn signup-btn" style="width:50%; display:none;">Verify</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Success Message -->
-                    <div id="loginSuccessSection" style="display:none; padding: 24px; max-width: 420px; margin: 0 auto; text-align:center;">
-                        <h3 style="font-size:1.3rem; font-weight:800; color:#46807f; margin-bottom:1.2rem;">Login Successful!</h3>
-                        <p style="font-size:1.05rem; color:#333;">Welcome back to Innovista. Redirecting to your dashboard...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="login-welcome-side">
-                <div class="signup-title">Welcome Back</div>
-                <div class="signup-subtitle">Sign in to access your account and continue with your projects.</div>
-                <div class="signup-login-message" style="margin-top:2.2rem; text-align:center; font-size:1.05rem; color:#fff; text-shadow:0 1px 6px rgba(0,0,0,0.5);">
-                  Don't have an account?
-                  <a href="#" id="switchToSignup" onclick="switchToSignupModal()" style="color:#ffd700; text-decoration:underline; font-weight:600;">Sign up</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Remove all login/signup modal and form code here -->
+<!-- Add simple links instead -->
+<nav>
+  <a href="login.html" class="btn-sunshine">Login</a>
+  <a href="signup.html" class="btn-sunshine">Sign Up</a>
+</nav>
 
 <style>
 /* Login Modal Styles */
