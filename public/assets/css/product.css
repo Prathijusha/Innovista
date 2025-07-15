@@ -19,8 +19,8 @@ body {
 }
 
 .product-item, .product-card {
-  background: var(--secondary) !important;
-  color: var(--primary) !important;
+  background: #fff !important;
+  color: var(--text-dark) !important;
 }
 
 .price-section {
