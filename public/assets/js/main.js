@@ -29,4 +29,45 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   animate();
+
+  // Modal logic for signup and login
+  const signupModal = document.getElementById('signupModal');
+  const loginModal = document.getElementById('loginModal');
+  const openSignupBtns = document.querySelectorAll(".btn-sunshine[href='signup.html']");
+  const openLoginBtns = document.querySelectorAll(".btn-sunshine[href='login.html']");
+  const closeSignupModal = document.getElementById('closeSignupModal');
+  const closeLoginModal = document.getElementById('closeLoginModal');
+  const signupOverlay = document.querySelector('#signupModal .modal-overlay');
+  const loginOverlay = document.querySelector('#loginModal .modal-overlay');
+
+  openSignupBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          signupModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+      });
+  });
+  openLoginBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          loginModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+      });
+  });
+  if (closeSignupModal) closeSignupModal.addEventListener('click', function() {
+      signupModal.style.display = 'none';
+      document.body.style.overflow = '';
+  });
+  if (closeLoginModal) closeLoginModal.addEventListener('click', function() {
+      loginModal.style.display = 'none';
+      document.body.style.overflow = '';
+  });
+  if (signupOverlay) signupOverlay.addEventListener('click', function() {
+      signupModal.style.display = 'none';
+      document.body.style.overflow = '';
+  });
+  if (loginOverlay) loginOverlay.addEventListener('click', function() {
+      loginModal.style.display = 'none';
+      document.body.style.overflow = '';
+  });
 });

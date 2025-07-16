@@ -75,4 +75,28 @@ body::before {
 .password-rule-ok {
     color: #28a745 !important;
     font-weight: bold;
+}
+.user-type-btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+    justify-content: center;
+}
+.user-type-btn-select {
+    flex: 1 1 0;
+    padding: 0.7rem 0.5rem;
+    border-radius: 8px;
+    border: 2px solid #3b5bdb;
+    background: #fff;
+    color: #3b5bdb;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.user-type-btn-select.active, .user-type-btn-select:focus {
+    background: #3b5bdb;
+    color: #fff;
+    border: 2px solid #3b5bdb;
 } 

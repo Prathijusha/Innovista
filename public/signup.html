@@ -8,32 +8,75 @@
 </head>
 <body>
     <div class="signup-container">
-        <form class="signup-form" action="signup.php" method="POST">
-            <h2>Sign Up</h2>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address" required>
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required placeholder="e.g. 0771234567">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <div class="password-rules">
-                <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
-                    <li id="rule-length">At least 8 characters</li>
-                    <li id="rule-uppercase">At least one uppercase letter</li>
-                    <li id="rule-lowercase">At least one lowercase letter</li>
-                    <li id="rule-number">At least one number</li>
-                    <li id="rule-special">At least one special character</li>
-                </ul>
+        <form class="signup-form" id="signupForm" action="signup.php" method="POST" autocomplete="off">
+            <div id="formStep">
+                <h2>Sign Up</h2>
+                <div class="user-type-btn-group">
+                    <button type="button" class="user-type-btn-select active" id="btnCustomer">Customer</button>
+                    <button type="button" class="user-type-btn-select" id="btnProvider">Service Provider</button>
+                    <input type="hidden" id="userType" name="userType" value="customer">
+                </div>
+                <div id="customerFields">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required placeholder="e.g. 0771234567">
+                </div>
+                <div id="providerFields" style="display:none;">
+                    <label for="providerName">Name</label>
+                    <input type="text" id="providerName" name="providerName">
+                    <label for="providerEmail">Email</label>
+                    <input type="email" id="providerEmail" name="providerEmail">
+                    <label for="providerAddress">Address</label>
+                    <input type="text" id="providerAddress" name="providerAddress">
+                    <label for="portfolio">Portfolio (Upload Photos)</label>
+                    <input type="file" id="portfolio" name="portfolio" multiple accept="image/*">
+                </div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-rules">
+                    <ul style="margin:0.3em 0 0.2em 1.2em; padding:0; color:#b71c1c; font-size:0.97em;">
+                        <li id="rule-length">At least 8 characters</li>
+                        <li id="rule-uppercase">At least one uppercase letter</li>
+                        <li id="rule-lowercase">At least one lowercase letter</li>
+                        <li id="rule-number">At least one number</li>
+                        <li id="rule-special">At least one special character</li>
+                    </ul>
+                </div>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <button type="submit" class="btn-sunshine">Next</button>
             </div>
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-            <button type="submit" class="btn-sunshine">Sign Up</button>
         </form>
-        <p>Already have an account? <a href="login.html">Login here</a>.</p>
+        <div id="termsStep" style="display:none;">
+            <h2>Terms and Conditions</h2>
+            <div id="customerTerms" style="display:none;">
+                <p>By proceeding with your booking on Innovista, you agree to the following terms and conditions. All appointments are subject to confirmation based on the availability of the selected service provider. Once a booking is confirmed, it cannot be cancelled for a refund. However, you may request to reschedule your appointment at least 24 hours in advance, subject to the service provider's availability. Refunds will not be issued for cancellations, change of mind, dissatisfaction with design preferences, or delays caused by the customer. Service timelines may vary due to external factors such as weather conditions, supply availability, or prior project delays. Innovista will make reasonable efforts to inform you in advance of any such changes. As a customer, you are responsible for providing accurate contact details and ensuring access to the service location at the agreed time. Innovista connects you with independent service providers and does not take responsibility for any disputes or damages related to their services. By signing up or making a booking, you acknowledge and accept these terms in full.</p>
+            </div>
+            <div id="providerTerms" style="display:none;">
+                <p>As a service provider on Innovista, you agree to provide accurate information, maintain the quality of your services, and communicate promptly with customers. You are responsible for the completion and quality of the services you offer. Innovista acts as a platform to connect you with customers and is not liable for any disputes or damages arising from your services. You must comply with all applicable laws and regulations. By signing up, you acknowledge and accept these terms in full.</p>
+            </div>
+            <div style="margin:1.2rem 0;">
+                <input type="checkbox" id="acceptTerms"> <label for="acceptTerms">I accept the terms and conditions</label>
+            </div>
+            <button id="termsNextBtn" class="btn-sunshine" disabled>Next</button>
+        </div>
+        <div id="verifyStep" style="display:none;">
+            <h2>Verify Your Account</h2>
+            <p>Enter the 6-digit verification code sent to your email/phone.</p>
+            <div id="codeInputs" style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1.2rem;"></div>
+            <button id="verifyBtn" class="btn-sunshine" style="width:100%;">Verify</button>
+            <div id="verifyError" style="color:#b71c1c; margin-top:0.7em; font-size:1em;"></div>
+        </div>
+        <div id="successStep" style="display:none;">
+            <h2>Account Successfully Created!</h2>
+            <div style="font-size:1.08rem; margin-bottom:1.2rem;">Welcome to Innovista. You can now log in and start booking services.</div>
+            <a href="login.html" class="btn-sunshine" style="width:100%; text-align:center; display:inline-block;">Go to Login</a>
+        </div>
     </div>
     <script src="assets/js/signup.js"></script>
 </body>
