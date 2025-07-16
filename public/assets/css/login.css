@@ -8,13 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: -1;
-    background: url('../images/images/interior_back.jpg') center center/cover no-repeat;
-    filter: blur(8px) brightness(0.7);
-    opacity: 0.85;
+    content: none;
 }
 .login-container {
     max-width: 400px;
