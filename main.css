@@ -1,0 +1,1233 @@
+
+
+/* =========================================
+   LAYOUT HELPERS
+   ========================================= */
+
+.page-section {
+    padding: 6rem 0; /* Adjust this one value to control all sections! */
+}
+
+/* For smaller screens, reduce the spacing */
+@media (max-width: 768px) {
+    .page-section {
+        padding: 4rem 0;
+    }
+}
+
+:root {
+--primary-color:#8B9B93;
+--secondary-color:rgb(218, 199, 163);
+--dark-color:#576F72;
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border:  2px solid #000000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--body-font);
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: var(--text-light);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.btn-innovista {
+  background: var(--dark-color);
+  color: var(--text-light);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.btn-innovista:hover {
+  background: var(--secondary);
+}
+
+/* =========================================
+   5. PAGE-SPECIFIC STYLES: HOME
+   (Desktop-First Approach)
+   ========================================= */
+
+/* --- Hero Section --- */
+.hero {
+    /* Wood-based gradient background */
+    background: var(--gradient);
+    
+    height: 85vh; /* A tall hero section for desktop */
+    color: var(--text-light); /* White text for contrast */
+    
+    /* Center the content perfectly */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    flex-direction: column;
+    
+    position: relative;
+    overflow: hidden;
+    
+
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-family: var(--header-font);
+    font-size: 3.5rem; /* Large, bold title */
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px; /* Keep paragraph readable */
+    margin: 0 auto 2rem; /* Center and add space below */
+}
+
+.hero-content .btn-primary {
+    font-size: 3rem;
+    padding: 15px 50px; /* A larger, more prominent button */
+}
+
+
+/* --- How It Works Section --- */
+.how-it-works {
+    padding: 6rem 0;
+    background-color: var(--grey-color); /* Subtle background color */
+    text-align: center;
+    margin-top: 0;
+}
+
+.how-it-works h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* On desktop, the steps are in a horizontal row */
+.steps {
+    display: flex;
+    justify-content: space-around; /* Distribute them evenly */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allows wrapping on medium screens */
+    gap: 2rem; /* Space between steps */
+    /* This uses the .container class for max-width and padding */
+}
+
+.step {
+    flex: 1; /* Each step takes up equal available space */
+    max-width: 320px; /* But not more than this width */
+    padding: 1.5rem;
+}
+
+.step-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 50%; /* A perfect circle */
+    
+    /* Center the number */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--header-font);
+    
+    margin: 0 auto 1.5rem; /* Center the icon horizontally */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #666; /* Slightly lighter text for the description */
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   6. RESPONSIVE OVERRIDES FOR SMALLER SCREENS
+   ========================================= */
+
+/* Styles for any screen with a max-width of 768px (tablets and mobiles) */
+@media (max-width: 768px) {
+
+    /* --- Hero Section Adjustments --- */
+    .hero {
+        height: 60vh; /* Make the hero section shorter on mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Reduce the main title's font size */
+    }
+
+    .hero-content p {
+        font-size: 1rem; /* Reduce the paragraph's font size */
+    }
+
+    /* --- How It Works Section Adjustments --- */
+    .how-it-works {
+        padding: 3rem 0; /* Reduce vertical padding on mobile */
+    }
+
+    /* The main layout change: stack the steps vertically */
+    .steps {
+        flex-direction: column; /* Change from row to column */
+        align-items: center; /* Center the items in the column */
+        gap: 3rem; /* Increase gap for vertical stacking */
+    }
+}
+/* =========================================
+   4. HEADER & NAVIGATION
+   ========================================= */
+
+/* --- Header & Navigation (Modern Styles) --- */
+.main-header {
+    background:transparent;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color:#ffffff;
+
+    /* ADD THIS: This makes the color change smooth */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* THIS IS THE NEW RULE FOR THE SCROLLED STATE */
+.main-header.scrolled {
+    /* 
+      Use RGBA for a semi-transparent white background.
+      The 'a' stands for alpha (opacity). 0.9 is 90% opaque.
+    */
+    background-color: rgba(255, 255, 255, 0.9);
+
+    /* Adds a modern "frosted glass" effect */
+    backdrop-filter: blur(10px);
+
+    /* Add a more noticeable shadow when scrolled */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+}
+
+.navbar.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar-logo img {
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 2.0rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li {
+    display: inline-block;
+}
+
+.navbar-menu a {
+    color: #000000;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    text-decoration: none;
+    padding: 6px 0;
+    position: relative;
+    transition: color 0.2s;
+    
+}
+
+.navbar-menu a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    left: 0;
+    width: 0;
+    background: var(--primary-color);
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transition: width 0.3s ease;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+    color:rgb(0, 0, 0);
+}
+
+.navbar-menu a:hover::after,
+.navbar-menu a.active::after {
+    width: 100%;
+}
+
+.navbar-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: black;
+    color: #222;
+    cursor: pointer;
+    margin-left: 1.2rem;
+}
+
+/* Responsive Header */
+@media (max-width: 900px) {
+    .navbar.container {
+        padding: 0 1rem;
+    }
+    .navbar-menu {
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
+        padding: 1.5rem 0;
+        z-index: 1001;
+        cursor: pointer;
+    }
+    .navbar-menu.active {
+        display: flex;
+    }
+    .navbar-menu li {
+        display: block;
+        text-align: center;
+        margin: 0.7rem 0;
+    }
+    .navbar-actions {
+        display: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+}
+
+
+
+/* --- Site Footer (custom for home page) --- */
+.site-footer {
+    background: #ffffff;
+    color: #ffffff;
+    padding: 2.5rem 0 1.2rem 0;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 3rem;
+}
+.site-footer .footer-links {
+    margin-bottom: 1.2rem;
+}
+.site-footer .footer-links a {
+    color: #fcfafa;
+    margin: 0 1.2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.site-footer .footer-links a:hover {
+    color: var(--primary-color, #112846);
+}
+.site-footer .footer-social {
+    margin-bottom: 1.2rem;
+}
+.site-footer .footer-social a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.site-footer .footer-social a:hover {
+    opacity: 1;
+}
+.site-footer .footer-social img {
+    width: 26px;
+    height: 26px;
+}
+.site-footer .footer-copy {
+    font-size: 0.95rem;
+    color: #f3f0f0;
+}
+
+/*=========================================
+   7. FOOTER
+   ========================================= */
+
+.main-footer {
+    
+    background-color:#EBE3D5;
+    color: #000000; /* A softer grey for better readability */
+    padding: 4rem 0 2rem; /* More top padding, less bottom */
+    margin-top: auto;
+    line-height: 1.7;
+}
+
+.footer-grid {
+    display: grid;
+    /* This creates a responsive grid that automatically adjusts columns */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem; /* Space between columns */
+    margin-bottom: 3rem;
+}
+
+.footer-column h4 {
+    color: var(--light-color); /* White headings */
+    font-family: var(--header-font);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Adds a small decorative underline to the headings */
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-column p {
+    margin-bottom: 1rem;
+    padding-right: 5rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding:0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-column ul a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-column ul a:hover {
+    color: var(--light-color);
+    padding-left: 5px; /* A subtle hover effect */
+}
+
+/* --- Social Media Icons --- */
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--light-color);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* --- Bottom Bar --- */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-bottom a {
+    color: #a9a9a9;
+    text-decoration: underline;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for the footer */
+@media (max-width: 768px) {
+    .footer-grid {
+        text-align: left; /* Change from centered to left-aligned on mobile */
+    }
+    .footer-column h4::after {
+        left: 0; /* Ensure underline stays left-aligned */
+    }
+}
+/* --- Responsive for About & Projects --- */
+@media (max-width: 900px) {
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-card {
+        width: 90vw;
+        max-width: 370px;
+    }
+}
+
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s;
+}
+
+.btn-pressed {
+    transform: scale(0.96);
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    background: rgba(0,0,0,0.15);
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Service Card Styles */
+.service-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    width: 320px;
+    overflow: hidden;
+    transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1), transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+.service-card img {
+    width: 350px;
+    height: 350px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);
+    will-change: transform;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.service-card:hover img {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(30,58,138,0.18);
+}
+/* --- Responsive for About & Projects --- */
+@media (max-width: 900px) {
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-card {
+        width: 90vw;
+        max-width: 370px;
+    }
+}
+/* --- THE LOGIN BUTTON (NEW GHOST/OUTLINE STYLE) --- */
+.btn-secondary {
+    background-color: transparent;        /* No background color */
+    color: var(--primary-color);          /* Blue text */
+    border-color: var(--primary-color);     /* Blue border */
+}
+
+/* Add a hover effect for the ghost button */
+.btn-secondary:hover {
+    background-color: var(--primary-color); /* Fill with blue on hover */
+    color: var(--light-color);              /* Make text white on hover */
+}
+
+.btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s;
+}
+
+.btn-pressed {
+    transform: scale(0.96);
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    background: rgba(122, 115, 63, 0.185);
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Service Card Styles */
+.service-card {
+  margin-bottom: 8rem;
+  background: var(--bg-light);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  width: 320px;
+  overflow: hidden;
+  transition: box-shadow 0.3s cubic-bezier(.4,2,.6,1), transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+.service-card img {
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);
+    will-change: transform;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.service-card:hover img {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(30,58,138,0.18);
+}
+/* =========================================
+   8. FEATURED PROVIDERS SECTION
+   ========================================= */
+.featured-providers {
+  padding: 2rem 0;
+  background-color: var(--light-color);
+}
+.featured-providers h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary-color, #000000);
+}
+.provider-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.provider-card {
+  background: var(--light-color);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(93,58,155,0.10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+}
+.provider-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.provider-card img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+}
+.provider-info {
+  padding: 1.5rem;
+}
+.provider-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: #000000;
+}
+.provider-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+/* =========================================
+   9. TESTIMONIALS SECTION
+   ========================================= */
+.testimonials {
+   
+    background-color: var(--primary-color);
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.testimonial-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3rem;
+    justify-content: flex-start;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.testimonial-slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonial-card {
+    background: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 450px;
+    position: relative;
+    border-left: 5px solid var(--primary-color);
+}
+
+.testimonial-card::before {
+    content: '“'; /* A decorative quote mark */
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    font-size: 5rem;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-family: 'Times New Roman', serif;
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.testimonial-card .author {
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: right;
+}
+
+body {
+    box-sizing: border-box;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Update base styles to use new theme */
+.main-header, .sidebar {
+  
+  color: var(--text-light);
+}
+.card, .dashboard-card, .welcome-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+}
+.btn-primary, .btn-secondary {
+  background: var(--gradient);
+  color: var(--text-light);
+  border: none;
+}
+.btn-primary:hover, .btn-secondary:hover {
+  background: var(--secondary);
+  color: var(--text-light);
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+}
+
+.why-choose-us {
+  margin-top: -4rem;
+  margin-bottom: 4rem;
+}
+.choose-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: -90px;
+  margin-bottom: 1.5rem;
+  z-index: 10;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .choose-cards {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+}
+.choose-card {
+ 
+  border-radius: 18px 18px 16px 16px;
+  box-shadow: 0 4px 24px rgba(93,58,155,0.10);
+  
+  min-width: 260px;
+  max-width: 340px;
+  flex: 1 1 280px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.choose-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(93,58,155,0.18);
+}
+.house-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  min-width: 320px;
+  max-width: 340px;
+  margin: 2rem 1rem 2.5rem 1rem;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.house-bg {
+  width: 320px;
+  height: 300px;
+  z-index: 1;
+  pointer-events: none;
+}
+.house-inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 24px 32px 24px;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: -260px;
+  z-index: 2;
+  position: relative;
+}
+.house-inner-content .choose-icon {
+  display: block;
+  margin: 8px auto 1.1rem auto;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  position: static;
+}
+.house-inner-content .choose-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.house-inner-content .choose-desc {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: center;
+}
+.house-inner-content {
+  padding-top: 32px;
+}
+@media (max-width: 900px) {
+  .choose-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .house-card {
+    max-width: 98vw;
+    width: 98vw;
+    min-width: 0;
+    height: 220px;
+  }
+  .house-bg {
+    width: 98vw;
+    height: 220px;
+  }
+}
+.house-card, .choose-card {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.house-inner-content .choose-title,
+.house-inner-content .choose-desc {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.testimonial-slider {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-light, #ffffff);
+  padding: 2rem 0;
+}
+
+.testimonial-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  will-change: transform;
+}
+
+.testimonial-card {
+  min-width: 320px;
+  max-width: 340px;
+  background: var(--accent, #8fb4aa);
+  color: var(--text-dark, #2f0b03);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+  padding: 2rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.testimonial-card .author {
+  display: block;
+  margin-top: 1.2rem;
+  font-weight: 600;
+  color: var(--primary, #581e13);
+}
+
+.testimonial-arrow {
+  z-index: 10;
+  pointer-events: auto;
+  background: #3b5bdb;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  box-shadow: 0 2px 8px rgba(93,58,155,0.10);
+  transition: background 0.2s;
+}
+
+.testimonial-arrow:hover {
+  background: #0b1e4a;
+}
+
+@media (max-width: 900px) {
+  .testimonial-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 1.2rem;
+  }
+  .testimonial-cards {
+    gap: 1rem;
+  }
+  .testimonial-slider {
+    max-width: 98vw;
+  }
+}
+@media (max-width: 700px) {
+  .testimonial-slider {
+    max-width: 98vw;
+  }
+  .testimonial-card {
+    padding: 1.2rem;
+  }
+}
+/* =========================================
+   10. WHY CHOOSE US SECTION
+   ========================================= */
+
+.why-choose-us {
+    
+    /* Use the light grey background for visual separation */
+    background-color: var(--grey-color); 
+}
+
+.why-choose-us h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--dark-color);
+}
+
+.features-grid {
+    display: grid;
+    /* 
+      This is a powerful responsive grid. It will automatically create
+      as many columns as can fit that are at least 250px wide.
+      On mobile, they will automatically stack into a single column.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    text-align: center;
+}
+
+.feature-item i {
+    font-size: 3rem; /* Makes the icons large and impactful */
+    color: var(--primary-color); /* Uses your theme's primary color */
+    margin-bottom: 1.5rem;
+}
+
+.feature-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+    color: #666; /* Slightly lighter text for the description */
+    line-height: 1.6;
+    padding: 0 1rem; /* Adds a little horizontal padding */
+}
+/* =========================================
+   NEW: PORTFOLIO SECTION
+   ========================================= */
+
+.portfolio-section {
+    padding: 3rem 0;
+    background-color: var(--light-color);
+}
+
+/* A reusable class for section headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* The Grid Container */
+.portfolio-grid {
+    display: grid;
+    /* Create 4 columns of equal width */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* Each Portfolio Item */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    grid-column: span 2; /* Default: each item spans 2 columns */
+}
+
+/* This creates the dynamic masonry layout */
+@media (min-width: 768px) {
+    .portfolio-item {
+        grid-column: span 1; /* On medium screens, items take 1 column */
+    }
+    .portfolio-item.wide {
+        grid-column: span 2; /* Wide items take 2 columns */
+    }
+}
+@media (min-width: 992px) {
+    .portfolio-grid {
+        /* On large screens, we have 4 columns */
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* The Hover Overlay */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligns content to the bottom */
+    padding: 1.5rem;
+    
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease;
+}
+
+.portfolio-content h3 {
+    color: var(--light-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.55rem;
+    transform: translateY(20px); /* Start text off-screen */
+    transition: transform 0.5s ease;
+}
+
+.portfolio-content p {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(20px);
+    transition: transform 0.5s 0.1s ease; /* Delay this transition slightly */
+}
+
+
+/* --- Hover Effects --- */
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1; /* Show the overlay on hover */
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1); /* Zoom the image on hover */
+}
+
+.portfolio-item:hover .portfolio-content h3,
+.portfolio-item:hover .portfolio-content p {
+    transform: translateY(0); /* Slide the text into view on hover */
+}
