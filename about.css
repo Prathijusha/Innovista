@@ -1,0 +1,113 @@
+/* =========================================
+   STYLES FOR ABOUT.HTML
+   ========================================= */
+
+/* --- 1. Hero Section --- */
+.about-hero {
+    background-color: var(--grey-color);
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+/* --- 2. Our Mission Section --- */
+.our-mission {
+    padding: 5rem 0;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.mission-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.mission-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.mission-text p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+
+/* --- 3. Our Team Section --- */
+.our-team {
+    padding: 5rem 0;
+    background-color: var(--grey-color);
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 280px;
+}
+
+.team-member img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%; /* Makes the image a circle */
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--light-color);
+    box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.team-member h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+}
+
+.team-member p {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .mission-grid {
+        grid-template-columns: 1fr; /* Stack the mission columns on mobile */
+        gap: 2rem;
+    }
+
+    .mission-text {
+        text-align: center;
+    }
+
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+}

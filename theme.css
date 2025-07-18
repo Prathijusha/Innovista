@@ -1,0 +1,390 @@
+/* =========================================
+   GLOBAL BUTTON STYLES
+   ========================================= */
+
+.btn-earthy {
+
+  
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 16px;
+  
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+ 
+}
+
+.btn-earthy:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(185, 180, 169, 0.22);
+}
+
+.btn-earthy:active {
+  transform: translateY(0);
+}
+
+ 
+
+/* =========================================
+   HEADER & NAVIGATION STYLES
+   ========================================= */
+
+.main-header {
+  background-color:#8B9B93;
+  box-shadow: var(--shadow);
+}
+
+.navbar {
+  background: transparent;
+}
+
+.navbar-logo span {
+  color: #070707;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+}
+
+.navbar-menu li a {
+  color: #000000;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  
+}
+
+.navbar-menu li a:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.navbar-actions .btn {
+  background-color: #ffffff;
+  color: var(--text-dark);
+  border:  2px solid #000000;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.navbar-actions .btn:hover {
+  background: var(--secondary);
+  color: white;
+  border:  2px solid #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* =========================================
+   HERO SECTION STYLES
+   ========================================= */
+
+.hero {
+  background: var(--gradient);
+  color: var(--text-light);
+}
+
+.hero h1 {
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(138, 120, 78, 0.18);
+}
+
+.hero .btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.hero .btn-primary:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =========================================
+   SECTION STYLES
+   ========================================= */
+
+.why-choose-us,
+.how-it-works,
+.services-section,
+.featured-providers,
+.testimonials {
+  background: var(--bg-light);
+}
+
+.why-choose-us h2,
+.how-it-works h2,
+.services-section h2,
+.featured-providers h2,
+.testimonials h2 {
+  color: var(--primary);
+}
+
+/* =========================================
+   CARD STYLES
+   ========================================= */
+
+.choose-card,
+.service-card,
+.provider-card,
+.testimonial-card {
+  background: var(--text-light);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: var(--border);
+}
+
+.choose-card:hover,
+.service-card:hover,
+.provider-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.step-icon {
+  background: var(--gradient);
+  color: var(--text-light);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0 auto 20px;
+}
+
+/* =========================================
+   MODAL STYLES
+   ========================================= */
+
+.signup-modal-content,
+.login-modal-content {
+  background: var(--text-light);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(138, 120, 78, 0.10);
+}
+
+.signup-welcome-side,
+.login-welcome-side {
+  background: var(--accent);
+}
+
+.signup-title,
+.login-title {
+  color: var(--text-dark);
+}
+
+.signup-subtitle,
+.login-subtitle {
+  color: var(--accent);
+}
+
+.signup-btn,
+.login-btn {
+  background: var(--gradient);
+  color: var(--text-light);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover,
+.login-btn:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.user-type-btn-select {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-type-btn-select.active,
+.user-type-btn-select:hover {
+  background: var(--gradient);
+  color: var(--text-light);
+  border-color: var(--primary);
+}
+
+.form-group input {
+  border: 1.5px solid #e0e0e0;
+  background: #f5f7fa;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(138, 120, 78, 0.08);
+}
+
+.input-icon {
+  color: var(--primary);
+}
+
+/* =========================================
+   FOOTER STYLES
+   ========================================= */
+
+.main-footer {
+  background:#F0EBE3;
+  color: var(--text-dark);
+  text-align: left;
+  padding: 2rem 0;
+  box-shadow: var(--shadow);
+}
+
+/* =========================================
+   DASHBOARD STYLES
+   ========================================= */
+
+.dashboard-header {
+  background: var(--gradient);
+  color: var(--text-light);
+}
+
+.dashboard-sidebar {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.dashboard-sidebar a {
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.dashboard-sidebar a:hover,
+.dashboard-sidebar a.active {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.dashboard-card {
+  background: var(--text-light);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border: var(--border);
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+  .btn-earthy {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  
+  
+  .signup-split-card,
+  .login-split-card {
+    flex-direction: column;
+    width: 95vw;
+    max-width: 400px;
+  }
+  
+  .signup-welcome-side,
+  .login-welcome-side {
+    border-radius: 24px 24px 0 0;
+    min-height: 200px;
+  }
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--secondary); }
+.text-accent { color: var(--accent); }
+.text-dark { color: var(--text-dark); }
+.text-light { color: var(--text-light); }
+
+.bg-primary { background: var(--primary); }
+.bg-secondary { background: var(--secondary); }
+.bg-accent { background: var(--accent); }
+.bg-light { background: var(--bg-light); }
+.bg-gradient { background: var(--gradient); }
+
+.border-primary { border-color: var(--primary); }
+.border-secondary { border-color: var(--secondary); }
+.border-accent { border-color: var(--accent); }
+
+.shadow-soft { box-shadow: var(--shadow); }
+.shadow-soft-hover { box-shadow: var(--shadow-hover); } 
+
+.navbar, .navbar-menu, .navbar-logo span, .navbar-menu li a {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.navbar-logo span {
+  font-size: 1.2em !important;
+}
+
+.navbar-menu li a {
+  font-size: 1.1em !important;
+} 
